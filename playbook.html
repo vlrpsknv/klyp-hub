@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klyp — Design Lead Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Geist:wght@300..800&family=Geist+Mono:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="playbook">
+<div class="shell">
+  <div class="main">
+    <div class="article">
+
+<!-- ===== NAV ===== -->
+<nav class="toc">
+  <div class="wrap">
+    <div class="toc-inner">
+      <a href="#process">Процесс</a>
+      <a href="#methodology">Методология</a>
+      <a href="#console">Console UX</a>
+      <a href="#questions">Вопросы</a>
+      <a href="#answers">Ответы</a>
+      <a href="#value">Ценность</a>
+      <a href="#tools">Тулы</a>
+      <a href="#ds">Дизайн-система</a>
+      <a href="#tech">Тех. стек</a>
+      <a href="#vocab">Словарь</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-meta">
+      <span>Role <strong>Design Lead</strong></span>
+      <span>Product <strong>Publishing Console</strong></span>
+      <span>Timeline <strong>4 мес до MVP</strong></span>
+      <span>Date <strong>6 апреля 2026</strong></span>
+    </div>
+    <h1 class="display" style="font-size:clamp(2.5rem,7vw,5rem);font-weight:300;line-height:0.95;letter-spacing:-0.03em">
+      <span class="line">Design Lead</span>
+      <span class="line"><span class="italic">Playbook</span></span>
+    </h1>
+    <p class="lede">Компактная шпаргалка для онбординга в Clipt. Процесс, вопросы, инструменты, архитектура, vocabulary. Всё, чтобы думать как Lead, а не как исполнитель.</p>
+
+    <div class="metrics">
+      <div class="metric">
+        <span class="m-val">$11B</span>
+        <span class="m-label">Рынок micro-drama 2025</span>
+      </div>
+      <div class="metric">
+        <span class="m-val">4 мес</span>
+        <span class="m-label">До MVP</span>
+      </div>
+      <div class="metric">
+        <span class="m-val">0</span>
+        <span class="m-label">Self-serve creator consoles на рынке</span>
+      </div>
+      <div class="metric">
+        <span class="m-val">40-50x</span>
+        <span class="m-label">Экономия vs традиционная</span>
+      </div>
+    </div>
+
+    <div class="note" style="border-left-color:var(--sage);background:oklch(0.18 0.02 150 / 0.2)">
+      <h4 style="color:var(--sage)">Killer Insight (из свежего ресерча)</h4>
+      <p><strong>Ни одна micro-drama платформа не имеет self-serve creator publishing console.</strong> ReelShort, DramaBox, ShortMax, FlexTV, PineDrama &mdash; все работают как гейткиперы: контент заказывается, покупается или производится внутренне. Единственный конкурент &mdash; Vigloo Studio (Spoon Labs, март 2026), но у них только analytics dashboard, без creation tools.</p>
+      <p>Clipt сидит в <strong>полностью пустом квадранте</strong>: open/self-serve platform + AI creation suite. Это YouTube-before-YouTube-Studio момент для micro-drama. <strong>Используй эту фразу на онбординге.</strong></p>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 01. PROCESS ===== -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-num">01 &mdash; Процесс</div>
+    <h2>Первые 90 дней</h2>
+    <p>Что предлагать как дизайн-процесс. Адаптировано под стартап с 4-месячным MVP, dual-product (Console + App), команду в формировании.</p>
+
+    <div class="playbook">
+      <div class="do">
+        <h4>Делать</h4>
+        <ul>
+          <li><strong>Storyboard-first workflow</strong> <span class="h">[сначала раскадровка, потом генерация]</span> &mdash; UX Console повторяет 10-шаговый алгоритм создания видео</li>
+          <li><strong>Tokens before components</strong> <span class="h">[токены &mdash; базовые переменные: цвета, отступы, скругления. Сначала они, потом кнопки и карточки]</span></li>
+          <li><strong>Ship &rarr; Systematize</strong> <span class="h">[сначала выпускай, потом систематизируй]</span> &mdash; первые 2 недели wireframes <span class="h">[каркасные схемы экранов]</span>, не дизайн-система</li>
+          <li><strong>Prototype in Figma, validate in browser</strong> &mdash; hi-fi <span class="h">[высокая детализация]</span> Figma для alignment <span class="h">[согласования с командой]</span>, coded prototype <span class="h">[рабочий прототип в коде]</span> для validation <span class="h">[проверки на реальных пользователях]</span></li>
+          <li><strong>One source of truth</strong> <span class="h">[единый источник правды &mdash; одно место, где лежит актуальная версия]</span> &mdash; Figma Variables = source of truth, Code Connect для sync <span class="h">[синхронизации дизайна с кодом]</span></li>
+        </ul>
+      </div>
+      <div class="dont">
+        <h4>Не делать</h4>
+        <ul>
+          <li>Начинать с дизайн-системы без понимания product flows <span class="h">[пользовательских сценариев]</span></li>
+          <li>Делать pixel-perfect <span class="h">[идеально точный дизайн до пикселя]</span> до alignment <span class="h">[согласования]</span> по user flows <span class="h">[путям пользователя по экранам]</span></li>
+          <li>Проектировать оба продукта параллельно &mdash; сначала Console (фокус команды)</li>
+          <li>Копировать UI конкурентов &mdash; DramaBox/ReelShort не AI-native <span class="h">[изначально построены не вокруг AI]</span></li>
+          <li>Тратить неделю на buttons &mdash; это решения о tokens <span class="h">[переменных дизайн-системы]</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="roadmap">
+      <div class="phase">
+        <div class="phase-label">Неделя 1-2<br><span class="phase-tag tag-critical">Discovery</span></div>
+        <div class="phase-content">
+          <h3>Погружение и аудит</h3>
+          <ul>
+            <li><strong>Stakeholder interviews</strong> <span class="h">[интервью с ключевыми людьми]</span> &mdash; Ярослав (product vision <span class="h">[видение продукта]</span>), Артём (business model, unit economics <span class="h">[экономика одной единицы &mdash; сколько стоит/приносит один эпизод]</span>), devs (tech stack <span class="h">[набор технологий]</span>, constraints <span class="h">[ограничения]</span>)</li>
+            <li><strong>Competitor UX audit</strong> <span class="h">[аудит UX конкурентов &mdash; разбор сильных/слабых мест их интерфейсов]</span> &mdash; скачать ReelShort, DramaBox, LTX Studio, Krea. Записать screenflows <span class="h">[последовательности экранов]</span>, отметить паттерны <span class="h">[повторяющиеся решения]</span></li>
+            <li><strong>User persona workshops</strong> <span class="h">[воркшопы по портретам пользователей &mdash; кто наш типичный creator]</span> &mdash; Solo AI-artist vs micro-studio vs content agency. Разные workflows <span class="h">[рабочие процессы]</span>, разные потребности</li>
+            <li><strong>Алгоритм &rarr; User Flow</strong> <span class="h">[путь пользователя по экранам]</span> &mdash; декомпозировать 10-шаговый алгоритм в UX-screens и user journey map <span class="h">[карту пути пользователя]</span></li>
+            <li><strong>Information Architecture</strong> <span class="h">[информационная архитектура &mdash; что где лежит, как организованы экраны и навигация]</span> &mdash; структура Console: навигация, иерархия, ключевые экраны</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">Неделя 3-4<br><span class="phase-tag tag-key">Wireframes</span></div>
+        <div class="phase-content">
+          <h3>Структура и потоки</h3>
+          <ul>
+            <li><strong>Lo-fi wireframes</strong> <span class="h">[черновые каркасы экранов без визуального дизайна &mdash; только структура]</span> ключевых экранов Console: Dashboard <span class="h">[главный экран]</span>, Project, Storyboard <span class="h">[раскадровка]</span>, Scene Editor, Character Studio, Timeline <span class="h">[временная шкала монтажа]</span>, Preview, Publish</li>
+            <li><strong>Critical paths</strong> <span class="h">[критические пути &mdash; самые важные сценарии, без которых продукт не работает]</span> &mdash; 3 key flows: New Series &rarr; First Episode &rarr; Publish; Character Creation &rarr; Reuse <span class="h">[переиспользование]</span>; Scene &rarr; Generate &rarr; Edit &rarr; Approve</li>
+            <li><strong>Design sprint</strong> <span class="h">[интенсив по методологии Google Ventures: за 3-5 дней от идеи до тестируемого прототипа]</span> на самый рискованный flow</li>
+            <li><strong>Prototype testing</strong> <span class="h">[тестирование прототипа]</span> &mdash; внутренняя команда проходит flow, фиксируем friction points <span class="h">[точки трения &mdash; где пользователь спотыкается]</span></li>
+            <li><strong>Token foundation</strong> <span class="h">[фундамент токенов]</span> &mdash; параллельно закладываем primitives <span class="h">[базовые значения]</span>: цвета, spacing scale <span class="h">[шкала отступов]</span>, type scale <span class="h">[шкала размеров шрифтов]</span>, radius <span class="h">[скругления углов]</span>, motion <span class="h">[анимации]</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">Месяц 2<br><span class="phase-tag tag-key">Visual Design</span></div>
+        <div class="phase-content">
+          <h3>Визуальный язык и прототипы</h3>
+          <ul>
+            <li><strong>Visual explorations</strong> <span class="h">[визуальные исследования &mdash; 2-3 варианта стиля UI]</span>. Рекомендация: <em>Calm AI</em> <span class="h">[спокойный, ненавязчивый AI-интерфейс]</span> (ближе к Linear), не <em>Overwhelming AI</em> <span class="h">[перегруженный опциями]</span> (HeyGen)</li>
+            <li><strong>Hi-fi screens</strong> <span class="h">[экраны с высокой детализацией &mdash; выглядят как финальный продукт]</span> основных экранов после approve направления</li>
+            <li><strong>10 core components</strong> <span class="h">[базовых компонентов &mdash; переиспользуемых элементов интерфейса]</span> &mdash; Button, Input, Select, Checkbox, Card, Modal <span class="h">[всплывающее окно]</span>, Badge <span class="h">[значок-метка]</span>, Avatar, Toast <span class="h">[всплывающее уведомление]</span>, Progress</li>
+            <li><strong>Semantic tokens</strong> <span class="h">[смысловые токены &mdash; переменные, названные по назначению, а не по значению: &laquo;цвет-основного-текста&raquo; вместо &laquo;серый-900&raquo;]</span> &mdash; surface-primary, text-primary, border-interactive. Separate collections для Console и App</li>
+            <li><strong>Light + Dark modes</strong> <span class="h">[светлая и тёмная тема]</span></li>
+            <li><strong>Dev handoff</strong> <span class="h">[передача дизайна в разработку &mdash; процесс, где dev получает всё нужное для сборки]</span> первого flow &mdash; тестируем, что dev может собрать screen без дополнительных вопросов</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">Месяц 3<br><span class="phase-tag tag-nice">Iteration</span></div>
+        <div class="phase-content">
+          <h3>Product-specific паттерны и рафинирование</h3>
+          <ul>
+            <li><strong>Console-specific компоненты</strong>: Storyboard Card <span class="h">[карточка сцены в раскадровке]</span>, Generation Panel <span class="h">[панель генерации видео]</span>, Asset Browser <span class="h">[каталог ресурсов &mdash; картинки, персонажи, клипы]</span>, Timeline, Character Card, Cost Preview <span class="h">[превью стоимости перед генерацией]</span>, Quality Gate <span class="h">[контрольная точка качества &mdash; проверка перед публикацией]</span></li>
+            <li><strong>Streaming App foundation</strong> &mdash; начинаем wireframes App (feed <span class="h">[лента контента]</span>, player <span class="h">[видеоплеер]</span>, paywall <span class="h">[экран оплаты, блокирующий контент]</span>, creator profile, coin wallet <span class="h">[кошелёк монет]</span>)</li>
+            <li><strong>Design QA</strong> <span class="h">[проверка качества дизайна &mdash; сравнение собранного в коде с макетами]</span> &mdash; первые pages собраны в dev, ревью расхождений</li>
+            <li><strong>Documentation</strong> &mdash; guidelines <span class="h">[руководства по использованию компонентов]</span> на одной странице, Figma Code Connect</li>
+            <li><strong>Internal user testing</strong> <span class="h">[внутреннее тестирование на команде]</span> &mdash; команда проходит полный flow creation &rarr; publish</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">Месяц 4<br><span class="phase-tag tag-critical">MVP</span></div>
+        <div class="phase-content">
+          <h3>Полировка и запуск</h3>
+          <ul>
+            <li><strong>Bug fixes и pixel polish</strong> <span class="h">[финальная доводка до идеала]</span></li>
+            <li><strong>Onboarding flow</strong> <span class="h">[сценарий первого знакомства пользователя с продуктом]</span> &mdash; TTFV &lt; 5 минут <span class="h">[Time to First Value &mdash; время до первого &laquo;ага, это работает!&raquo;]</span>. Creator заходит &rarr; видит template &rarr; генерирует первый clip за 3 минуты</li>
+            <li><strong>Empty states</strong> <span class="h">[пустые состояния &mdash; что видит пользователь, когда данных ещё нет]</span> и <strong>error handling</strong> <span class="h">[обработка ошибок &mdash; что показываем, когда что-то пошло не так]</span></li>
+            <li><strong>Responsive QA</strong> <span class="h">[проверка на разных размерах экрана]</span></li>
+            <li><strong>Launch checklist</strong> <span class="h">[чек-лист перед запуском]</span> &mdash; Detach test <span class="h">[тест: сторонний дизайнер использует систему, не сломав её]</span>, A11y audit <span class="h">[аудит доступности для людей с ограничениями]</span>, performance check <span class="h">[проверка скорости загрузки]</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <h4>Ключевой принцип</h4>
+      <p><strong>Ship first, systematize second.</strong> <span class="h">[Сначала выпусти, потом систематизируй.]</span> Для 4-месячного MVP дизайн-система &mdash; это не первый deliverable <span class="h">[результат работы, который ты сдаёшь]</span>. Первый deliverable &mdash; рабочий user flow <span class="h">[путь пользователя по экранам]</span>, который можно тестировать. Система кристаллизуется из решений, принятых для product, а не наоборот.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 01b. DESIGN PROCESS DEEP DIVE ===== -->
+<section id="methodology">
+  <div class="wrap">
+    <div class="sec-num">01b &mdash; Методология</div>
+    <h2>Что я предлагаю как процесс</h2>
+    <p>Конкретные фреймворки и подходы, которые я принесу в команду. Каждый адаптирован под контекст: <strong>стартап, 4 месяца до MVP, два продукта, команда формируется</strong>.</p>
+
+    <!-- FRAMEWORK 1 -->
+    <details open>
+      <summary><span class="s-num">01</span> Compressed Double Diamond <span class="h">[сжатый двойной ромб]</span></summary>
+      <div class="acc-body">
+        <p><strong>Что это:</strong> Классический дизайн-процесс из двух ромбов. Первый ромб &mdash; понять проблему. Второй &mdash; найти решение. В каждом ромбе две фазы: <em>расширение</em> <span class="h">[собираем варианты, исследуем, генерим идеи]</span> и <em>сужение</em> <span class="h">[фильтруем, приоритизируем, выбираем лучшее]</span>.</p>
+        <p><strong>Почему именно это:</strong> Стандарт индустрии (British Design Council), но обычно занимает 3-6 месяцев. Для Clipt я сжимаю до 4 недель на первый diamond <span class="h">[ромб]</span> и 8 недель на второй, не теряя качества решений.</p>
+        <p><strong>Как это выглядит на практике для Clipt:</strong></p>
+        <ul>
+          <li><strong>Ромб 1 &mdash; Discover + Define</strong> <span class="h">[исследуй + определи]</span> (неделя 1-2): Собираю всю информацию &mdash; интервью с командой, аудит конкурентов, разбор алгоритма, портреты пользователей. Потом сужаю: формулирую ключевые проблемы, рисую user flows <span class="h">[пути пользователя]</span>, фиксирую scope <span class="h">[объём работы]</span></li>
+          <li><strong>Ромб 2 &mdash; Develop + Deliver</strong> <span class="h">[разработай + выпусти]</span> (неделя 3 → месяц 4): Генерирую варианты решений (wireframes, visual explorations), тестирую, сужаю до финального дизайна, передаю в разработку, полирую</li>
+        </ul>
+        <p><strong>Что команда от этого получает:</strong> Структурированный процесс вместо хаоса. Каждую неделю понятно, что делаем и почему. Минимум переделок, потому что решения проверены до того, как попали в код.</p>
+      </div>
+    </details>
+
+    <!-- FRAMEWORK 2 -->
+    <details>
+      <summary><span class="s-num">02</span> Design Sprint <span class="h">[дизайн-спринт &mdash; интенсив от идеи до тестируемого прототипа за 3-5 дней]</span></summary>
+      <div class="acc-body">
+        <p><strong>Что это:</strong> Методология Google Ventures. За 3-5 дней команда проходит полный цикл: <em>понять проблему → набросать решения → выбрать лучшее → сделать прототип → протестировать на реальных людях</em>. Без кода, без месяцев разработки.</p>
+        <p><strong>Когда использовать в Clipt:</strong> Для самых рискованных и непонятных задач. Примеры:</p>
+        <ul>
+          <li>"Как должен выглядеть flow генерации видео?" &mdash; это самый рискованный сценарий Console, от него зависит всё</li>
+          <li>"Как creator сохраняет и переиспользует персонажа?" &mdash; character consistency &mdash; это главная техническая проблема, и UX должен её решать</li>
+          <li>"Как выглядит paywall <span class="h">[экран оплаты]</span> в Streaming App?" &mdash; от этого зависит монетизация</li>
+        </ul>
+        <p><strong>Формат для стартапа:</strong> Сжатый до 3 дней (а не 5). День 1 &mdash; карта проблемы + наброски решений. День 2 &mdash; прототип в Figma. День 3 &mdash; тестируем внутри команды (или на 3-5 внешних людях). По результатам &mdash; решение принято, можно строить.</p>
+        <p><strong>Почему это ценно:</strong> Вместо 3 недель споров &laquo;как лучше&raquo; &mdash; 3 дня и ответ, подкреплённый тестом. Экономит время и убивает неопределённость.</p>
+      </div>
+    </details>
+
+    <!-- FRAMEWORK 3 -->
+    <details>
+      <summary><span class="s-num">03</span> Jobs-to-be-Done <span class="h">[JTBD &mdash; фреймворк &laquo;для какой работы пользователь нанимает наш продукт&raquo;]</span></summary>
+      <div class="acc-body">
+        <p><strong>Что это:</strong> Вместо того, чтобы думать &laquo;какие фичи добавить&raquo;, думаем &laquo;какую задачу пользователь пытается решить&raquo;. Пользователь не покупает дрель &mdash; он покупает дырку в стене.</p>
+        <p><strong>JTBD для Clipt Publishing Console:</strong></p>
+        <ul>
+          <li><strong>Основной Job:</strong> &laquo;Превратить мою идею в опубликованный эпизод AI-сериала с минимальной болью и предсказуемым качеством&raquo;</li>
+          <li><strong>Supporting Jobs</strong> <span class="h">[вспомогательные задачи]</span>:
+            <ul>
+              <li>&laquo;Сохранить внешность персонажа одинаковой через все сцены и эпизоды&raquo;</li>
+              <li>&laquo;Понять, сколько будет стоить генерация, до того как я нажму кнопку&raquo;</li>
+              <li>&laquo;Быстро перегенерировать одну плохую сцену, не трогая остальные&raquo;</li>
+              <li>&laquo;Понять, какой мой эпизод смотрят до конца, а какой бросают&raquo;</li>
+            </ul>
+          </li>
+        </ul>
+        <p><strong>JTBD для Streaming App:</strong></p>
+        <ul>
+          <li><strong>Основной Job:</strong> &laquo;Найти сериал, который затянет, и досмотреть его до конца&raquo;</li>
+          <li><strong>Supporting Jobs:</strong> &laquo;Вернуться к тому, на чём остановился&raquo;, &laquo;Найти что-то похожее на то, что понравилось&raquo;, &laquo;Не переплачивать за то, что не досмотрю&raquo;</li>
+        </ul>
+        <p><strong>Как использовать:</strong> Каждая фича и каждый экран оцениваются через JTBD. &laquo;Эта фича помогает пользователю выполнить его job? Да &rarr; делаем. Нет &rarr; в бэклог <span class="h">[очередь задач на потом]</span> или в мусор.&raquo;</p>
+      </div>
+    </details>
+
+    <!-- FRAMEWORK 4 -->
+    <details>
+      <summary><span class="s-num">04</span> Continuous Discovery <span class="h">[непрерывное исследование &mdash; каждую неделю узнаём что-то новое о пользователях]</span></summary>
+      <div class="acc-body">
+        <p><strong>Что это:</strong> Методология Терезы Торрес. Вместо &laquo;сделали research раз и забыли&raquo; &mdash; каждую неделю разговариваем хотя бы с одним пользователем или анализируем данные. Это привычка, не проект.</p>
+        <p><strong>Когда включать:</strong> После запуска MVP. До запуска &mdash; работаем с гипотезами и внутренним тестированием.</p>
+        <p><strong>Как это выглядит:</strong></p>
+        <ul>
+          <li><strong>Weekly user touchpoint</strong> <span class="h">[еженедельная точка контакта с пользователем]</span> &mdash; 15-30 минут, один creator. Не формальное интервью, а наблюдение: &laquo;покажи, как ты создаёшь эпизод&raquo;</li>
+          <li><strong>Opportunity Solution Tree</strong> <span class="h">[дерево возможностей &mdash; визуальная карта: цель → возможности → решения → эксперименты]</span> &mdash; обновляется каждую неделю</li>
+          <li><strong>Assumption mapping</strong> <span class="h">[карта допущений &mdash; что мы предполагаем, но не проверили]</span> &mdash; какие наши гипотезы самые рискованные? Проверяем их первыми</li>
+        </ul>
+        <p><strong>Почему это важно для Clipt:</strong> AI-видео &mdash; это новый рынок. Никто не знает, как creator хочет работать с AI-генерацией. Единственный способ узнать &mdash; спрашивать и наблюдать систематически, а не гадать.</p>
+      </div>
+    </details>
+
+    <!-- FRAMEWORK 5 -->
+    <details>
+      <summary><span class="s-num">05</span> Atomic Design <span class="h">[атомарный дизайн &mdash; сборка интерфейса от мельчайших элементов к страницам]</span></summary>
+      <div class="acc-body">
+        <p><strong>Что это:</strong> Методология Брэда Фроста. Интерфейс строится слоями, от простого к сложному:</p>
+        <ul>
+          <li><strong>Атомы</strong> &mdash; мельчайшие элементы: кнопка, иконка, текстовое поле, label <span class="h">[подпись]</span></li>
+          <li><strong>Молекулы</strong> &mdash; группа атомов: поле ввода + label + иконка ошибки = search bar <span class="h">[строка поиска]</span></li>
+          <li><strong>Организмы</strong> &mdash; группа молекул: header <span class="h">[шапка сайта]</span> = логотип + навигация + кнопка профиля</li>
+          <li><strong>Шаблоны</strong> &mdash; скелет страницы без реального контента</li>
+          <li><strong>Страницы</strong> &mdash; финальный экран с реальными данными</li>
+        </ul>
+        <p><strong>Зачем для Clipt:</strong> Два продукта (Console + App) должны использовать одни атомы, но собирать из них разные организмы. Кнопка &mdash; одна. Но карточка сериала в App и карточка проекта в Console &mdash; разные организмы из одних атомов. Это экономит время дизайна и разработки.</p>
+        <p><strong>На практике:</strong> Я строю дизайн-систему именно так &mdash; начинаю с tokens <span class="h">[переменных]</span> (это even ниже атомов), потом 10 core components <span class="h">[базовых компонентов]</span> (атомы + молекулы), потом product-specific паттерны <span class="h">[специфичные для продукта организмы]</span>.</p>
+      </div>
+    </details>
+
+    <!-- FRAMEWORK 6 -->
+    <details>
+      <summary><span class="s-num">06</span> Impact / Effort + Risk Matrix <span class="h">[матрица приоритизации &mdash; что делаем первым, а что потом]</span></summary>
+      <div class="acc-body">
+        <p><strong>Что это:</strong> Каждая задача оценивается по трём осям:</p>
+        <ul>
+          <li><strong>Impact</strong> <span class="h">[влияние]</span> &mdash; насколько это важно для пользователя и бизнеса. High = без этого продукт не работает</li>
+          <li><strong>Effort</strong> <span class="h">[трудозатраты]</span> &mdash; сколько времени займёт дизайн + разработка. Low = день, High = месяц</li>
+          <li><strong>Risk</strong> <span class="h">[риск]</span> &mdash; насколько велика вероятность, что мы ошибёмся. High = мы не знаем, как это должно работать</li>
+        </ul>
+        <p><strong>Правило приоритизации:</strong></p>
+        <ul>
+          <li><strong>High Impact + High Risk</strong> &rarr; делаем первыми, через design sprint <span class="h">[интенсив]</span>. Пример: flow генерации видео</li>
+          <li><strong>High Impact + Low Risk</strong> &rarr; делаем быстро, это &laquo;low-hanging fruit&raquo; <span class="h">[лёгкая победа &mdash; результат при минимальных усилиях]</span>. Пример: dashboard <span class="h">[главный экран]</span> со списком проектов</li>
+          <li><strong>Low Impact</strong> &rarr; после MVP. Пример: кастомные анимации, тёмная тема для Console</li>
+        </ul>
+        <p><strong>Для Clipt прямо сейчас (первые приоритеты):</strong></p>
+        <ul>
+          <li>Character consistency UX &mdash; <strong>high impact, high risk, medium effort</strong>. Первый приоритет</li>
+          <li>Generation flow (storyboard &rarr; generate &rarr; review) &mdash; <strong>high impact, high risk, high effort</strong>. Второй приоритет, через sprint</li>
+          <li>Dashboard + project management &mdash; <strong>high impact, low risk, low effort</strong>. Быстро закрываем</li>
+          <li>Publish flow &mdash; <strong>high impact, low risk, medium effort</strong>. Третий приоритет</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- FRAMEWORK 7 -->
+    <details>
+      <summary><span class="s-num">07</span> Progressive Fidelity <span class="h">[постепенное повышение детализации &mdash; от набросков к финалу]</span></summary>
+      <div class="acc-body">
+        <p><strong>Что это:</strong> Не рисуем сразу красиво. Повышаем детализацию постепенно, на каждом шаге получая фидбэк.</p>
+        <ul>
+          <li><strong>Уровень 1 &mdash; Sketch / Paper</strong> <span class="h">[набросок на бумаге]</span>: 5 минут. Для себя и для быстрого обсуждения идеи с product owner <span class="h">[владельцем продукта]</span>. Не показываем стейкхолдерам <span class="h">[заинтересованным лицам]</span></li>
+          <li><strong>Уровень 2 &mdash; Lo-fi wireframe</strong> <span class="h">[черновой каркас]</span>: 1-2 часа. Серые блоки, текст, стрелки. Для alignment <span class="h">[согласования]</span> структуры и логики с командой. &laquo;Правильные ли блоки на экране? Правильный ли порядок?&raquo;</li>
+          <li><strong>Уровень 3 &mdash; Mid-fi prototype</strong> <span class="h">[прототип средней детализации]</span>: 1-2 дня. Кликабельный, с реальной навигацией, но без финальных цветов и стиля. Для тестирования user flows <span class="h">[путей пользователя]</span></li>
+          <li><strong>Уровень 4 &mdash; Hi-fi mockup</strong> <span class="h">[детальный макет]</span>: 2-3 дня. Финальный визуал, анимации, states <span class="h">[состояния: hover, active, disabled, error, loading]</span>. Для утверждения и передачи в разработку</li>
+          <li><strong>Уровень 5 &mdash; Coded prototype</strong> <span class="h">[прототип в коде]</span>: 1-3 дня. Рабочий HTML/React. Для validation <span class="h">[проверки]</span> сложных взаимодействий, которые невозможно протестировать в Figma (video player, drag-and-drop, timeline)</li>
+        </ul>
+        <p><strong>Правило:</strong> Никогда не прыгаем с уровня 1 на уровень 4. Каждый уровень &mdash; это checkpoint <span class="h">[контрольная точка]</span>: &laquo;Мы идём правильно?&raquo; Дешевле исправить набросок, чем переделывать финальный макет.</p>
+        <p><strong>Для видео-платформы:</strong> Уровень 5 (coded prototype) особенно важен, потому что ключевые взаимодействия &mdash; video playback <span class="h">[воспроизведение видео]</span>, timeline scrubbing <span class="h">[перемотка по временной шкале]</span>, drag-and-drop <span class="h">[перетаскивание]</span> сцен в storyboard &mdash; невозможно проверить в статичном Figma.</p>
+      </div>
+    </details>
+
+    <!-- FRAMEWORK 8 -->
+    <details>
+      <summary><span class="s-num">08</span> Component-Driven Development <span class="h">[разработка от компонентов &mdash; дизайн и код строятся из одних блоков]</span></summary>
+      <div class="acc-body">
+        <p><strong>Что это:</strong> Дизайнер и разработчик работают с одним и тем же набором компонентов. Кнопка в Figma = кнопка в коде. Карточка в Figma = карточка в коде. Один source of truth <span class="h">[источник правды]</span>.</p>
+        <p><strong>Инструменты:</strong></p>
+        <ul>
+          <li><strong>Figma</strong> &mdash; здесь живут компоненты со всеми variants <span class="h">[вариантами: primary/secondary, small/medium/large, disabled/active]</span> и states <span class="h">[состояниями]</span></li>
+          <li><strong>Storybook</strong> <span class="h">[каталог компонентов в коде &mdash; dev видит каждый компонент изолированно с документацией]</span> &mdash; зеркало Figma в коде. Каждый компонент живёт отдельно, с примерами и документацией</li>
+          <li><strong>Figma Code Connect</strong> <span class="h">[плагин, связывающий компоненты Figma с кодом]</span> &mdash; dev кликает на компонент в Figma и видит, какой React-компонент ему соответствует</li>
+          <li><strong>Design Tokens</strong> <span class="h">[переменные дизайна]</span> → <strong>Style Dictionary</strong> <span class="h">[инструмент конвертации]</span> → <strong>CSS / Swift / Kotlin</strong> &mdash; цвета, шрифты, отступы автоматически попадают из Figma в код</li>
+        </ul>
+        <p><strong>Зачем:</strong> Разработчик не &laquo;на глаз&raquo; пытается повторить макет, а использует готовый компонент. Это быстрее, точнее, и поддерживаемо <span class="h">[можно менять в одном месте &mdash; обновится везде]</span>.</p>
+      </div>
+    </details>
+
+    <!-- FRAMEWORK 9 -->
+    <details>
+      <summary><span class="s-num">09</span> Dual-Product Strategy <span class="h">[стратегия для двух продуктов одновременно]</span></summary>
+      <div class="acc-body">
+        <p><strong>Проблема:</strong> Clipt строит два продукта: Console (web, для creators) и Streaming App (mobile, для зрителей). Это два разных мира с разными UX-паттернами <span class="h">[устоявшимися решениями]</span>.</p>
+        <p><strong>Что я предлагаю:</strong></p>
+        <ul>
+          <li><strong>Последовательно, не параллельно.</strong> Первые 2 месяца &mdash; Console (это фокус разработки). App &mdash; начинаем wireframes <span class="h">[каркасы]</span> на месяце 3, когда Console уже в коде</li>
+          <li><strong>Shared foundation, different expression</strong> <span class="h">[общий фундамент, разное выражение]</span>:
+            <ul>
+              <li>Одни tokens <span class="h">[переменные]</span> для базовых значений (цвета, шрифты, размеры)</li>
+              <li>Разные semantic tokens <span class="h">[смысловые переменные]</span> для каждого продукта (Console: светлая, dense <span class="h">[плотная]</span>, рабочая. App: тёмная, cinematic <span class="h">[кинематографичная]</span>, развлекательная)</li>
+              <li>Разные паттерны взаимодействия (Console: keyboard-first <span class="h">[управление с клавиатуры]</span>, table views <span class="h">[табличные представления]</span>. App: gesture-first <span class="h">[управление жестами]</span>, swipe <span class="h">[свайп]</span>, full-screen video)</li>
+            </ul>
+          </li>
+          <li><strong>Одна Figma library <span class="h">[библиотека]</span>, два product files.</strong> Общие компоненты (кнопки, inputs, модалки) лежат в library. Product-specific <span class="h">[специфичные для продукта]</span> компоненты (Storyboard Card, Video Player Card) лежат в файле продукта</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- FRAMEWORK 10 -->
+    <details>
+      <summary><span class="s-num">10</span> Метрики дизайна <span class="h">[как измерить, что дизайн работает]</span></summary>
+      <div class="acc-body">
+        <p><strong>Что предлагаю отслеживать:</strong></p>
+
+        <h4 style="margin-top:1rem">Console (для creators):</h4>
+        <ul>
+          <li><strong>TTFV</strong> <span class="h">[Time to First Value &mdash; время до первого &laquo;ага!&raquo;]</span> &mdash; сколько минут от регистрации до первого сгенерированного клипа. Цель: &lt; 5 минут</li>
+          <li><strong>Task completion rate</strong> <span class="h">[процент завершения задачи]</span> &mdash; какой процент начатых эпизодов доходит до публикации. Если <50% &mdash; UX broken <span class="h">[интерфейс мешает]</span></li>
+          <li><strong>Time per episode</strong> <span class="h">[время на эпизод]</span> &mdash; сколько часов от идеи до публикации. Цель: 2-4 часа для первого, &lt;1 часа для повторных</li>
+          <li><strong>Generation success rate</strong> <span class="h">[процент удачных генераций]</span> &mdash; сколько генераций creator оставляет vs перегенерирует. Low = промпт-инженеринг слишком сложный или defaults <span class="h">[настройки по умолчанию]</span> плохие</li>
+          <li><strong>SUS score</strong> <span class="h">[System Usability Scale &mdash; стандартный опросник юзабилити, 10 вопросов, оценка 0-100]</span> &mdash; после первого месяца</li>
+        </ul>
+
+        <h4 style="margin-top:1rem">Streaming App (для зрителей):</h4>
+        <ul>
+          <li><strong>Time to first play</strong> <span class="h">[время до первого просмотра]</span> &mdash; сколько секунд от открытия до начала просмотра. Цель: &lt; 10 секунд</li>
+          <li><strong>Episode completion rate</strong> <span class="h">[процент досмотра эпизода до конца]</span> &mdash; главный KPI <span class="h">[Key Performance Indicator &mdash; ключевой показатель эффективности]</span>. &lt;50% &mdash; плохо</li>
+          <li><strong>Episode-to-episode drop-off</strong> <span class="h">[отток между эпизодами &mdash; какой процент не переходит к следующему]</span> &mdash; &lt;15% у хороших серий</li>
+          <li><strong>Paywall conversion</strong> <span class="h">[конверсия в оплату на экране paywall]</span> &mdash; какой процент платит на каждом paywall point</li>
+          <li><strong>D1 / D7 / D30 retention</strong> <span class="h">[процент пользователей, вернувшихся через 1 / 7 / 30 дней]</span></li>
+        </ul>
+
+        <p><strong>Как это связано с дизайном:</strong> Каждая из этих метрик напрямую зависит от UX-решений. TTFV &mdash; от onboarding <span class="h">[сценария первого входа]</span>. Completion rate &mdash; от player UI <span class="h">[интерфейса плеера]</span>. Paywall conversion &mdash; от того, как выглядит и когда появляется карточка оплаты. Дизайн &mdash; это не &laquo;красиво&raquo;, это бизнес-результат.</p>
+      </div>
+    </details>
+
+    <div class="pullquote">
+      Constraints &mdash; лучший друг дизайнера. 4 месяца до MVP &mdash; это не проблема, это фильтр, который убивает всё лишнее и заставляет делать только то, что реально важно.
+    </div>
+
+    <div class="note" style="border-left-color:var(--sage);background:oklch(0.18 0.02 150 / 0.2)">
+      <h4 style="color:var(--sage)">Как это озвучить на встрече</h4>
+      <p>&laquo;Я предлагаю работать в сжатом Double Diamond: первые 2 недели &mdash; погружение и структура, потом wireframes и design sprint на самый рискованный flow, потом визуал и компоненты. Параллельно закладываю token-фундамент для дизайн-системы. Дизайн-система кристаллизуется из product decisions, а не наоборот. К концу месяца 2 у нас есть visual direction, 10 core components и первый flow в коде. К MVP &mdash; рабочий продукт, который можно тестировать.&raquo;</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02. CONSOLE UX ===== -->
+<section id="console">
+  <div class="wrap">
+    <div class="sec-num">02 &mdash; Publishing Console</div>
+    <h2>Алгоритм &rarr; UX-архитектура</h2>
+    <p>10-шаговый алгоритм создания AI-видео &mdash; это implicit product spec <span class="h">[неявная спецификация продукта &mdash; алгоритм по сути описывает, какие экраны нужны]</span>. Каждый шаг = экран или группа экранов в Console.</p>
+
+    <div class="ux-flow">
+      <div class="ux-step"><span class="step-n">01</span><span class="step-name">Идея</span><span class="step-screen">Idea Generator</span></div>
+      <div class="ux-step"><span class="step-n">02</span><span class="step-name">Персонаж</span><span class="step-screen">Character Studio</span></div>
+      <div class="ux-step"><span class="step-n">03</span><span class="step-name">Сезон</span><span class="step-screen">Series Board</span></div>
+      <div class="ux-step"><span class="step-n">04</span><span class="step-name">Эпизод</span><span class="step-screen">Episode Outline</span></div>
+      <div class="ux-step"><span class="step-n">05</span><span class="step-name">Сцены</span><span class="step-screen">Storyboard View</span></div>
+      <div class="ux-step"><span class="step-n">06</span><span class="step-name">Изображения</span><span class="step-screen">Image Panel</span></div>
+      <div class="ux-step"><span class="step-n">07</span><span class="step-name">Анимация</span><span class="step-screen">Clip Generator</span></div>
+      <div class="ux-step"><span class="step-n">08</span><span class="step-name">Озвучка</span><span class="step-screen">Audio Panel</span></div>
+      <div class="ux-step"><span class="step-n">09</span><span class="step-name">Монтаж</span><span class="step-screen">Timeline Editor</span></div>
+      <div class="ux-step"><span class="step-n">10</span><span class="step-name">Субтитры</span><span class="step-screen">Auto-Subs</span></div>
+    </div>
+
+    <h3>5 критических UX-вызовов Console</h3>
+
+    <details>
+      <summary><span class="s-num">01</span> Character Consistency &mdash; первый гражданин, не фича</summary>
+      <div class="acc-body">
+        <p><strong>Проблема:</strong> без reference images <span class="h">[эталонных изображений персонажа]</span> / LoRA <span class="h">[метод дообучения AI-модели на конкретного персонажа &mdash; &laquo;запоминание&raquo; внешности]</span> начинается character drift <span class="h">[дрейф персонажа &mdash; AI постепенно меняет внешность от сцены к сцене]</span> через 5 сцен. Персонаж меняет лицо, одежду, пропорции.</p>
+        <p><strong>Решение:</strong> Character Studio &mdash; dedicated <span class="h">[выделенный, отдельный]</span> экран. Creator создаёт персонажа один раз: 5+ baseline images <span class="h">[базовых изображений]</span> (front, profile, 3/4, emotions), текстовое описание, voice profile <span class="h">[голосовой профиль]</span>. Эти references автоматически подставляются во все сцены.</p>
+        <p><strong>Референс:</strong> Runway Gen-4 References, Kling Element Library, LTX Elements workflow.</p>
+        <p><strong>UX-детали:</strong></p>
+        <ul>
+          <li>Character card visible в storyboard sidebar постоянно</li>
+          <li>Consistency check перед generation &mdash; preview overlay персонажа на сцену</li>
+          <li>Version history для character evolution (сезон 1 vs сезон 2)</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">02</span> Credit Paranoia &mdash; страх тратить кредиты</summary>
+      <div class="acc-body">
+        <p><strong>Проблема:</strong> один 8-секундный клип может стоить 15-35% месячных бесплатных кредитов. Пользователь боится экспериментировать.</p>
+        <p><strong>Решение:</strong></p>
+        <ul>
+          <li><strong>Cost preview</strong> <span class="h">[предпросмотр стоимости]</span> перед каждой генерацией &mdash; "This will use ~5 credits ($0.50)"</li>
+          <li><strong>Draft mode</strong> <span class="h">[черновой режим]</span> &mdash; быстрая генерация в низком качестве (480p, fewer steps). -60-70% стоимости</li>
+          <li><strong>Batch 4 варианта</strong> <span class="h">[пакетная генерация &mdash; 4 варианта за один раз]</span> по цене 2.5 &mdash; как Midjourney. Выбрать лучший</li>
+          <li><strong>Undo/retry</strong> <span class="h">[отмена/повтор]</span> &mdash; если result плохой, вернуть 50% credits</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">03</span> Storyboard-first vs Prompt-first</summary>
+      <div class="acc-body">
+        <p><strong>Default <span class="h">[по умолчанию]</span>: Storyboard-first <span class="h">[сначала раскадровка]</span>.</strong> Пользователь видит 12-20 карточек сцен, каждая с описанием action/emotion/camera. Генерирует по одной сцене, retake per-shot <span class="h">[перегенерация одной конкретной сцены, а не всего видео]</span>.</p>
+        <p><strong>Toggle <span class="h">[переключатель]</span> для pro:</strong> Prompt-first mode <span class="h">[режим &laquo;сначала текстовый запрос&raquo;]</span> &mdash; описал весь эпизод текстом, AI разбил на сцены автоматически.</p>
+        <p><strong>Почему storyboard по умолчанию:</strong> LTX Studio установил стандарт. Narrative control <span class="h">[контроль над повествованием]</span>. Retake без перегенерации всего. Cognitive load <span class="h">[когнитивная нагрузка &mdash; сколько мозгу нужно обрабатывать]</span> ниже.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">04</span> Calm AI &mdash; Console ближе к Linear, не к HeyGen</summary>
+      <div class="acc-body">
+        <p><strong>Проблема конкурентов:</strong> Krea &mdash; "dense wall of options" <span class="h">[стена настроек &mdash; всё на одном экране, не знаешь куда смотреть]</span>. Runway 4.5 &mdash; "sidebar packed" <span class="h">[боковая панель забита кнопками]</span>. Overload <span class="h">[перегрузка]</span> на первом экране.</p>
+        <p><strong>Принцип:</strong> Director / Curator <span class="h">[режиссёр / куратор &mdash; ты задаёшь направление, AI исполняет]</span>, а не кнопочник. UX поддерживает direction, не micromanagement <span class="h">[не ручное управление каждой мелочью]</span>.</p>
+        <p><strong>Конкретно:</strong></p>
+        <ul>
+          <li><strong>Smart defaults</strong> <span class="h">[умные настройки по умолчанию &mdash; всё уже выставлено правильно для типичного случая]</span> <strong>+ progressive disclosure</strong> <span class="h">[постепенное раскрытие &mdash; сложные настройки прячутся, пока пользователь сам не захочет их открыть]</span>. Aspect ratio <span class="h">[соотношение сторон]</span>, duration, resolution &mdash; всё preset <span class="h">[предустановлено]</span> для vertical micro-drama. Менять только если нужно</li>
+          <li><strong>Prompt field first</strong> <span class="h">[поле ввода на первом плане &mdash; открыл приложение и сразу можешь писать запрос]</span>. Как Perplexity &mdash; сразу в поле ввода, без настройки</li>
+          <li><strong>Templates &gt; blank canvas</strong> <span class="h">[готовые шаблоны лучше пустого холста]</span>. Зашёл &rarr; увидел template (Romance, CEO Revenge, Alpha Werewolf) &rarr; собрал пилотный эпизод за 10 минут</li>
+          <li><strong>Guide when stuck, disappear when not</strong> <span class="h">[подсказывай, когда застрял &mdash; исчезай, когда всё понятно]</span>. Contextual hints <span class="h">[контекстные подсказки]</span> только при пустом state <span class="h">[состоянии экрана]</span> или ошибке</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">05</span> Multi-model switching в одном UI</summary>
+      <div class="acc-body">
+        <p><strong>Тренд 2026:</strong> пользователь не хочет 10 подписок. Krea, LTX Studio, Freepik Spaces &mdash; все конвергируют на multi-model access.</p>
+        <p><strong>Для Clipt Console:</strong> generation panel позволяет выбрать model (Kling / Runway / Veo / Sora) для каждой сцены. Разные модели лучше для разного:</p>
+        <ul>
+          <li><strong>Kling 2.6</strong> &mdash; длинные клипы (до 2-3 мин), best lip-sync, Element Library</li>
+          <li><strong>Runway Gen-4</strong> &mdash; Motion Brush, camera controls, references</li>
+          <li><strong>Veo 3.1</strong> &mdash; best realism/physics, native 4K</li>
+          <li><strong>Sora 2</strong> &mdash; best narrative intelligence, Cameo</li>
+        </ul>
+        <p><strong>UX:</strong> model selector в Generation Panel. Default рекомендация на основе типа сцены (dialogue &rarr; Kling, action &rarr; Veo, emotional close-up &rarr; Runway).</p>
+      </div>
+    </details>
+
+    <div class="pullquote">
+      Лучшие AI-продукты не кричат &laquo;I'm AI!&raquo;. Хорошие AI guide, great AI disappear.
+      <cite>Kate Syuma, AI UX Analyst</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03. QUESTIONS ===== -->
+<section id="questions">
+  <div class="wrap">
+    <div class="sec-num">03 &mdash; Задать</div>
+    <h2>Умные вопросы для онбординга</h2>
+    <p>Не интервью-вопросы, а вопросы первого рабочего дня. Показывают product thinking, не любопытство.</p>
+
+    <details>
+      <summary><span class="s-num">A</span> Product &amp; Vision</summary>
+      <div class="acc-body">
+        <div class="qa">
+          <div class="qa-item">
+            <div class="qa-q">Кто primary user Console &mdash; соло AI-artist, micro-студия, или контент-агентство?</div>
+            <div class="qa-a">Определяет complexity UX. Соло = простой wizard <span class="h">[пошаговый помощник]</span>. Студия = multiplayer <span class="h">[совместная работа нескольких человек]</span>, roles <span class="h">[роли: автор, редактор, admin]</span>, permissions <span class="h">[права доступа]</span>. Агентство = API-first <span class="h">[приоритет на программный интерфейс для автоматизации]</span>, batch <span class="h">[пакетная обработка &mdash; много задач разом]</span>.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Console &mdash; creation tool или management tool? Или оба?</div>
+            <div class="qa-a">Creation = генерация внутри Console. Management = загрузка готового видео. MVP scope <span class="h">[объём первой версии продукта]</span> вопрос. Скорее всего гибрид, но приоритет важен.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Monetization model для creators? Revenue share, subscription, или pay-per-generation?</div>
+            <div class="qa-a">Влияет на UX: earnings dashboard, payout page, analytics depth.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Есть ли pitch deck / strategy doc, который можно изучить?</div>
+            <div class="qa-a">Что говорили инвесторам &mdash; это ground truth для product vision.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Какие AI-видео тулы команда уже протестировала? Есть выбранный стек или тестируем с нуля?</div>
+            <div class="qa-a">Определяет, какие API подключать и какие UX-паттерны generation поддерживать.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">B</span> Команда &amp; Процесс</summary>
+      <div class="acc-body">
+        <div class="qa">
+          <div class="qa-item">
+            <div class="qa-q">Кто в команде сейчас? Кто выходит параллельно?</div>
+            <div class="qa-a">Конфигурация day-one. Кто второй дизайнер на Streaming App. Когда планируется расширение дизайн-команды.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Какой tech stack фронтенда? React/Next.js? Mobile &mdash; native или cross-platform?</div>
+            <div class="qa-a">Влияет на design handoff, component library strategy, prototyping approach.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Как организован product process? Sprints? Kanban? Какие тулы (Linear, Notion, Jira)?</div>
+            <div class="qa-a">Нужно встроиться в existing workflow, а не навязывать свой.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Design review &mdash; кто approve? Ярослав? Артём? Или автономия?</div>
+            <div class="qa-a">Определяет скорость итераций и уровень детализации в презентации решений.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">C</span> Brand &amp; Identity</summary>
+      <div class="acc-body">
+        <div class="qa">
+          <div class="qa-item">
+            <div class="qa-q">Clipt &mdash; финальное название или рабочее? Есть ли уже нейминг, логотип, первые концепты?</div>
+            <div class="qa-a">Если с нуля &mdash; это отдельный workstream. Если есть &mdash; нужно получить assets.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Какой тональный регистр бренда? Entertainment (тёплый, яркий) или Tech (минимальный, нейтральный)?</div>
+            <div class="qa-a">Console &mdash; скорее productivity/tech (Linear-like). App &mdash; скорее entertainment (яркий, immersive). Два разных визуальных языка.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">D</span> Формальные (контракт/оформление)</summary>
+      <div class="acc-body">
+        <div class="qa">
+          <div class="qa-item">
+            <div class="qa-q">Критерии прохождения испытательного (3 мес). Конкретные deliverables к 6 июля?</div>
+            <div class="qa-a">Фиксируем письменно. Метрики, milestones. Это must.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Задачи с &laquo;мягкими дедлайнами&raquo; к 26-27 апреля &mdash; какие именно?</div>
+            <div class="qa-a">Нужно понять scope до отпуска. Успеть продумать, чтобы не горело.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Доступы: Figma, Notion/Linear, Google Workspace, репозитории &mdash; что нужно получить сегодня?</div>
+            <div class="qa-a">Не уходить с онбординга без доступов. Иначе первый рабочий день = ноль продуктивности.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== 04. ANSWERS ===== -->
+<section id="answers">
+  <div class="wrap">
+    <div class="sec-num">04 &mdash; Ответить</div>
+    <h2>Что спросят &mdash; и как отвечать</h2>
+    <p>Типичные вопросы на онбординге Design Lead. Ответы адаптированы под контекст Clipt.</p>
+
+    <details>
+      <summary><span class="s-num">01</span> &laquo;Как ты видишь свою роль здесь?&raquo;</summary>
+      <div class="acc-body">
+        <p><strong>Плохо:</strong> "Буду рисовать экраны и делать дизайн-систему"</p>
+        <p><strong>Хорошо:</strong> "Моя задача &mdash; перевести product vision <span class="h">[видение продукта]</span> в интерфейсы, которые работают. Первые 2 недели &mdash; погружение: понять пользователей, алгоритм, технические ограничения. Потом &mdash; wireframes ключевых flows Console. К концу месяца &mdash; visual direction <span class="h">[визуальное направление &mdash; как продукт будет выглядеть]</span> и первые компоненты. Параллельно выстраиваю процесс, чтобы дизайн не был bottleneck <span class="h">[узким горлышком, тормозящим команду]</span> для разработки."</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">02</span> &laquo;Какой дизайн-процесс ты используешь?&raquo;</summary>
+      <div class="acc-body">
+        <p><strong>Ответ:</strong> "Зависит от стадии. Сейчас, pre-MVP &mdash; Double Diamond <span class="h">[&laquo;двойной ромб&raquo; &mdash; дизайн-процесс из 4 фаз: расширение → сужение → расширение → сужение]</span> adapted для speed:</p>
+        <ul>
+          <li><strong>Discover</strong> <span class="h">[исследуй]</span> (неделя 1-2): stakeholder interviews, competitor audit <span class="h">[разбор конкурентов]</span>, user persona <span class="h">[портрет пользователя]</span>. Не рисую, пока не пойму.</li>
+          <li><strong>Define</strong> <span class="h">[определи]</span> (неделя 2-3): IA <span class="h">[информационная архитектура]</span>, user flows, lo-fi wireframes <span class="h">[черновые каркасы]</span>. Alignment <span class="h">[согласование]</span> с product и dev.</li>
+          <li><strong>Develop</strong> <span class="h">[разработай]</span> (месяц 2): visual explorations, hi-fi <span class="h">[детальные макеты]</span>, components. Design sprint на riskiest flow <span class="h">[самый рискованный сценарий]</span>.</li>
+          <li><strong>Deliver</strong> <span class="h">[выпусти]</span> (месяц 3-4): handoff <span class="h">[передача в разработку]</span>, QA, polish <span class="h">[полировка]</span>, iteration <span class="h">[итерация &mdash; улучшение по результатам]</span> по feedback."</li>
+        </ul>
+        <p>"После MVP &mdash; continuous discovery <span class="h">[непрерывное исследование &mdash; каждую неделю узнаём что-то новое о пользователях]</span>: weekly user insights &rarr; design &rarr; ship &rarr; measure."</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">03</span> &laquo;Как приоритизируешь задачи?&raquo;</summary>
+      <div class="acc-body">
+        <p><strong>Ответ:</strong> "Impact / Effort matrix <span class="h">[матрица &laquo;влияние / трудозатраты&raquo; &mdash; оцениваем каждую задачу по двум осям]</span>, но с одним нюансом &mdash; для MVP я добавляю ось Risk <span class="h">[риска]</span>. Что может провалить запуск? Character consistency UX &mdash; high risk, high impact, medium effort. Это первый приоритет. Красивые анимации &mdash; low risk, medium impact, high effort. Это после MVP."</p>
+        <p>"Для ежедневной приоритизации &mdash; Jobs-to-be-Done <span class="h">[JTBD &mdash; фреймворк: какую &laquo;работу&raquo; пользователь &laquo;нанимает&raquo; наш продукт выполнить]</span>. Console: &laquo;превратить мою идею в опубликованный эпизод с минимальной болью&raquo;. Каждая фича оценивается по тому, насколько она приближает к этому."</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">04</span> &laquo;С чего начнёшь первую неделю?&raquo;</summary>
+      <div class="acc-body">
+        <p><strong>Ответ:</strong></p>
+        <ul>
+          <li><strong>День 1-2:</strong> Собрать все inputs &mdash; pitch deck, алгоритм, tech constraints, существующие наработки. Настроить Figma workspace.</li>
+          <li><strong>День 3:</strong> Декомпозировать 10-шаговый алгоритм в user journey map. Каждый шаг = экран.</li>
+          <li><strong>День 4-5:</strong> Lo-fi wireframes первого flow &mdash; "New Series &rarr; First Episode &rarr; Publish". Показать команде для раннего feedback.</li>
+        </ul>
+        <p>"К концу первой недели у вас будет IA Console и первый prototype для обсуждения."</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">05</span> &laquo;Нужна ли нам дизайн-система?&raquo;</summary>
+      <div class="acc-body">
+        <p><strong>Ответ:</strong> "Да, но не сейчас как отдельный проект. Дизайн-система кристаллизуется из product decisions. Сначала я приму решения о цветах, типографике, spacing через реальные экраны. Потом вычленю паттерны и систематизирую."</p>
+        <p>"Конкретно: <strong>месяц 1 &mdash; tokens</strong> (primitive + semantic). <strong>Месяц 2 &mdash; 10 core components.</strong> <strong>Месяц 3 &mdash; product-specific паттерны.</strong> К MVP у нас будет рабочая система, не абстрактная библиотека."</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">06</span> &laquo;Что ты знаешь про AI-video generation?&raquo;</summary>
+      <div class="acc-body">
+        <p><strong>Ответ:</strong> "Работал с генерацией на Flashyr (face consistency через Leonardo.ai, Seed Dream). Знаком с ландшафтом: Runway Gen-4 &mdash; лучший motion control, Kling 2.6 &mdash; longest clips + Element Library для consistency, Sora 2 &mdash; лучшая narrative intelligence, Veo 3.1 &mdash; best physics. Для micro-drama production character consistency &mdash; главный challenge, и сейчас это решается на 80% через references / LoRA / Element Libraries."</p>
+        <p>"Прочитал ваш алгоритм. Core rules (8 сек / 12-20 сцен / close-ups) &mdash; это выверенный базис. У меня есть вопросы по character consistency across seasons, reference library и quality gates &mdash; хочу понять, как вы планируете решать."</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">07</span> &laquo;Как работаешь с разработчиками?&raquo;</summary>
+      <div class="acc-body">
+        <p><strong>Ответ:</strong> "Три принципа:</p>
+        <ul>
+          <li><strong>Early involvement.</strong> <span class="h">[Ранее вовлечение]</span> Dev видит wireframes, а не готовый дизайн. Фидбэк на уровне 'это сложно реализовать' &mdash; до того, как я потрачу неделю на pixel-perfect.</li>
+          <li><strong>Shared language.</strong> <span class="h">[Общий язык]</span> Я пишу code (React, Next.js через Claude Code). Понимаю constraints <span class="h">[ограничения]</span>: rendering strategies <span class="h">[стратегии рендеринга &mdash; как страница формируется для пользователя]</span>, performance, a11y <span class="h">[accessibility &mdash; доступность]</span>. Общаемся на одном языке.</li>
+          <li><strong>Design tokens = contract.</strong> <span class="h">[Токены = контракт между дизайном и кодом]</span> Figma Variables &rarr; Style Dictionary &rarr; CSS/iOS/Android. Один source of truth, не PDF спека."</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">08</span> &laquo;Как относишься к сжатым срокам?&raquo;</summary>
+      <div class="acc-body">
+        <p><strong>Ответ:</strong> "4 месяца до MVP &mdash; это не проблема, это constraint <span class="h">[ограничение]</span>. Constraints &mdash; лучший друг дизайнера. Они убивают scope creep <span class="h">[расползание объёма &mdash; когда задача незаметно разрастается]</span> и заставляют принимать решения."</p>
+        <p>"Конкретно: я не буду рисовать 50 экранов. Я найду 5 critical paths <span class="h">[критических путей]</span>, отполирую их, остальное &mdash; wireframe <span class="h">[каркас]</span> + component library <span class="h">[библиотека компонентов]</span>. MVP &mdash; это не 'красиво', это 'работает и не отталкивает'."</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== 05. VALUE ===== -->
+<section id="value">
+  <div class="wrap">
+    <div class="sec-num">05 &mdash; Ценность</div>
+    <h2>Что я приношу</h2>
+    <p>Конкретные value props как Design Lead для Clipt. Не абстрактные скиллы, а применимые к задаче.</p>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">0&rarr;1</span>
+        <h3>Строил с нуля</h3>
+        <span class="card-sub">опыт</span>
+        <p>Flashyr &mdash; дизайн + фронт + бэк за неделю. SABKA &mdash; product design, UI, бизнес-логика. Не теоретик, а человек, который shipping продукты.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">AI</span>
+        <h3>AI-native мышление</h3>
+        <span class="card-sub">domain</span>
+        <p>RAG, LLM, видеогенерация, промптинг "по атомам". Месяц работы с Leonardo.ai, Seed Dream на face consistency. Понимаю capabilities и limitations моделей.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&lt;/&gt;</span>
+        <h3>Дизайнер + разработчик</h3>
+        <span class="card-sub">unicorn</span>
+        <p>Пишу React/Next.js через Claude Code. Понимаю rendering strategies, state management, a11y. Design handoff &mdash; без friction, потому что говорю на языке devs.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">Lead</span>
+        <h3>Лидовский опыт</h3>
+        <span class="card-sub">management</span>
+        <p>Альфа-Банк &mdash; вырос до Lead Designer. Управление процессами, менторинг, design review. Умею и соло, и с командой.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">$</span>
+        <h3>Unit Economics мышление</h3>
+        <span class="card-sub">product</span>
+        <p>~$100/эпизод cost. Нужно 166-1000 paid unlocks <span class="h">[платных разблокировок]</span> для окупаемости. Понимаю, что UX Console напрямую влияет на cost per episode <span class="h">[стоимость одного эпизода]</span> через efficiency workflow <span class="h">[оптимизацию рабочего процесса]</span>.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">V</span>
+        <h3>Vertical Drama контекст</h3>
+        <span class="card-sub">market</span>
+        <p>ReelShort, DramaBox, LTX Studio &mdash; знаю UX-паттерны, бизнес-модели, audience. Не нужен месяц на погружение в индустрию.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06. TOOLS ===== -->
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-num">06 &mdash; AI-тулы</div>
+    <h2>Ландшафт инструментов</h2>
+    <p>Quick reference: что рекомендовать команде. Актуально на апрель 2026.</p>
+
+    <h3>Video Generation</h3>
+    <div class="tool-grid">
+      <div class="tool" style="border-top:2px solid var(--gold)">
+        <span class="tool-name">Kling 3.0</span>
+        <span class="tool-type">Рекомендация #1 для Clipt &middot; Feb 2026</span>
+        <p><strong>Native 4K/60fps</strong>, клипы до 15s. Multi-shot storyboarding (до 6 camera cuts в одной генерации). <strong>Cross-shot character consistency</strong> built-in. Native audio в 6 языках + lip-sync. Multi-character dialogue.</p>
+        <span class="tool-price">Free 66 cr/day, Standard $10, Pro $26, Premier $65/mo. API ~$0.10/sec</span>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Runway Gen-4.5</span>
+        <span class="tool-type">#1 визуальное качество &middot; Early 2026</span>
+        <p>#1 на Artificial Analysis T2V leaderboard (1247 Elo). Best visual fidelity. Motion Brush, camera controls, Aleph in-video editing. References для consistency (в рамках одного клипа).</p>
+        <span class="tool-price">Standard $12, Pro $28/mo. Gen-4.5: $0.25/sec, Gen-4 Turbo: $0.05/sec</span>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Seedance 2.0</span>
+        <span class="tool-type">ByteDance &middot; Drama-specific &middot; Feb 2026</span>
+        <p><strong>Создан специально для short drama.</strong> Script + reference image &rarr; scenes с narrative coherence. Director-level camera control (dolly, rack focus, tracking). Интегрирован в CapCut Video Studio.</p>
+        <span class="tool-price">Via CapCut &middot; Legal risk: MPA complaints</span>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Veo 3.1</span>
+        <span class="tool-type">Лучший lip-sync &middot; Google</span>
+        <p><strong>Best lip-sync in the industry</strong> &mdash; критично для dialogue-heavy micro-drama. Native 4K, vertical video, synced audio. Character consistency.</p>
+        <span class="tool-price">Lite $0.05/sec, Full $0.15+/sec. Consumer: AI Pro $20, Ultra $250/mo</span>
+      </div>
+      <div class="tool">
+        <span class="tool-name">LTX Studio</span>
+        <span class="tool-type">#1 UX reference для Console</span>
+        <p>Storyboard-first workflow, multi-model (7 моделей включая Veo 3.1, Kling 2.6 Pro), Timeline Editor с Retake per-shot, Elements для reuse.</p>
+        <span class="tool-price">Various tiers</span>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Sora 2</span>
+        <span class="tool-type">OpenAI &middot; Нет API</span>
+        <p>15-25s, synced audio, Cameo. Хороший, но <strong>нет публичного API</strong> &mdash; невозможно интегрировать в pipeline. Только через ChatGPT Plus/Pro.</p>
+        <span class="tool-price">$20 Plus / $200 Pro</span>
+      </div>
+    </div>
+
+    <h3>Image Generation</h3>
+    <div class="tool-grid">
+      <div class="tool">
+        <span class="tool-name">FLUX.1 Krea Dev</span>
+        <span class="tool-type">Топ image model</span>
+        <p>Best quality open-source. ComfyUI support. Для character базовых images.</p>
+        <span class="tool-price">Open source / Krea sub</span>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Midjourney v7</span>
+        <span class="tool-type">Cinematic look</span>
+        <p>Мудборды, concept art, character design. Не для production pipeline, но для vision.</p>
+        <span class="tool-price">$10-60/mo</span>
+      </div>
+    </div>
+
+    <h3>Voice &amp; Audio</h3>
+    <div class="tool-grid">
+      <div class="tool">
+        <span class="tool-name">ElevenLabs</span>
+        <span class="tool-type">Best English quality</span>
+        <p>29 языков, voice cloning (1-5 мин source audio), per-character profiles. Лучший для hero character voices.</p>
+        <span class="tool-price">Starter $5, Creator $22, Pro $99/mo. ~$0.30/мин</span>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Fish Audio</span>
+        <span class="tool-type">Budget alternative &middot; #1 TTS-Arena</span>
+        <p><strong>#1 на TTS-Arena</strong> по качеству голоса. 13 языков. Нужно всего 10 сек source audio для клонирования. <strong>70% дешевле ElevenLabs.</strong></p>
+        <span class="tool-price">Plus from $11/mo. ~$0.08-0.10/мин</span>
+      </div>
+    </div>
+
+    <h3>Editing &amp; Post</h3>
+    <div class="tool-grid">
+      <div class="tool">
+        <span class="tool-name">Descript</span>
+        <span class="tool-type">Transcript-based editing</span>
+        <p>Удалить строку текста = удалить кусок видео. Резко снижает cognitive load. Для финального cut.</p>
+        <span class="tool-price">$24+/mo</span>
+      </div>
+      <div class="tool">
+        <span class="tool-name">DaVinci Resolve</span>
+        <span class="tool-type">Professional grade</span>
+        <p>Для production scale. Free version covers 90% needs. CapCut слабо для scale.</p>
+        <span class="tool-price">Free / $295 one-time</span>
+      </div>
+    </div>
+
+    <div class="note">
+      <h4>Направление индустрии</h4>
+      <p>Kling O1 показал тренд: от fragmented tools <span class="h">[разрозненных инструментов]</span> к unified production stack <span class="h">[единому набору инструментов в одном месте]</span>. <strong>Console Clipt должен стать этим unified stack для micro-drama.</strong> Не ещё один генератор, а end-to-end workflow <span class="h">[полный цикл от идеи до публикации]</span>.</p>
+    </div>
+
+    <h3>Cost per Episode (15 сцен &times; 8 сек = 2 мин)</h3>
+    <div class="metrics">
+      <div class="metric"><span class="m-val">$5-13</span><span class="m-label">AI cost (Kling 3.0 &rarr; Gen-4.5)</span></div>
+      <div class="metric"><span class="m-val">$14-21K</span><span class="m-label">Full AI pipeline / 22-ep series</span></div>
+      <div class="metric"><span class="m-val">$150-200K</span><span class="m-label">Traditional live-action / 22 ep</span></div>
+      <div class="metric"><span class="m-val">10-15x</span><span class="m-label">Cost advantage</span></div>
+    </div>
+
+    <div class="note">
+      <h4>Character Consistency Stack <span class="h">[стек сохранения внешности персонажа]</span> (best practice 2026)</h4>
+      <p><strong>Три уровня:</strong></p>
+      <ul style="font-size:0.9rem;color:var(--ink-dim)">
+        <li><strong>LoRA</strong> <span class="h">[дообучение модели на конкретного персонажа]</span> (strength 0.6) &mdash; body shape, hair, general appearance. Обучение на 15-30 изображениях, $8-15 на персонажа, 1-3 часа</li>
+        <li><strong>PuLID Adapter</strong> <span class="h">[адаптер для точного сохранения черт лица]</span> (strength 0.8) &mdash; precise facial features</li>
+        <li><strong>ControlNet (OpenPose)</strong> <span class="h">[контроль позы и положения тела на основе скелетной модели]</span></li>
+      </ul>
+      <p>Для Console: FLUX 2 Pro ($0.05/image) &rarr; character sheet <span class="h">[набор изображений персонажа с разных ракурсов]</span> &rarr; LoRA training &rarr; keyframes <span class="h">[ключевые кадры]</span> &rarr; Kling 3.0 (multi-shot consistency <span class="h">[сохранение внешности между кадрами]</span>) или Runway Gen-4.5 (hero shots <span class="h">[самые важные кадры, где нужно max качество]</span>).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07. DESIGN SYSTEM ===== -->
+<section id="ds">
+  <div class="wrap">
+    <div class="sec-num">07 &mdash; Дизайн-система</div>
+    <h2>Token Architecture <span class="h" style="font-size:0.5em">[архитектура дизайн-токенов &mdash; переменных, которые хранят все визуальные решения]</span></h2>
+    <p>Три яруса. Standard в 2026 &mdash; не опция, а ожидание.</p>
+
+    <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+      <div class="card">
+        <h3>Primitives</h3>
+        <span class="card-sub">Raw values <span class="h">[сырые значения]</span></span>
+        <p><code>color-blue-500</code>, <code>spacing-4</code>, <code>radius-sm</code>. Никогда не применяются напрямую в компонентах. <span class="h">Это как палитра красок &mdash; сами по себе не используются, но из них собираются осмысленные значения.</span></p>
+      </div>
+      <div class="card">
+        <h3>Semantic</h3>
+        <span class="card-sub">Purpose-driven <span class="h">[по назначению]</span></span>
+        <p><code>text-primary</code> <span class="h">[цвет основного текста]</span>, <code>surface-elevated</code> <span class="h">[фон приподнятого элемента]</span>, <code>border-interactive</code> <span class="h">[обводка интерактивного элемента]</span>. Ссылаются на primitives. Это то, что использует дизайнер.</p>
+      </div>
+      <div class="card">
+        <h3>Component</h3>
+        <span class="card-sub">v2 (not MVP)</span>
+        <p><code>button-primary-bg</code> <span class="h">[фон основной кнопки]</span>. Опциональный для v1. Добавлять когда система вырастет до 30+ компонентов.</p>
+      </div>
+    </div>
+
+    <h3>Dual-product token strategy</h3>
+    <div class="vocab">
+      <dt>Shared Primitives</dt>
+      <dd>Один collection &mdash; базовые цвета, spacing scale, radius scale, type scale. Одинаковые для Console и App.</dd>
+      <dt>Console Semantic</dt>
+      <dd>Productivity tool <span class="h">[рабочий инструмент]</span>: light-first <span class="h">[светлая тема основная]</span>, density-dense <span class="h">[плотная компоновка &mdash; много информации на экране]</span>, neutral palette + accent <span class="h">[нейтральные цвета + один яркий акцент]</span>. Ближе к Linear/Notion.</dd>
+      <dt>App Semantic</dt>
+      <dd>Entertainment <span class="h">[развлечение]</span>: dark-first <span class="h">[тёмная тема основная]</span>, cinematic <span class="h">[кинематографичный]</span>, bold palette <span class="h">[яркие насыщенные цвета]</span>. Ближе к Netflix/DramaBox.</dd>
+      <dt>Modes <span class="h">[режимы]</span></dt>
+      <dd>Light / Dark / High contrast <span class="h">[повышенный контраст для доступности]</span> (минимум). Brands / breakpoints mode <span class="h">[режим адаптации под разные бренды / размеры экрана]</span> (nice-to-have <span class="h">[было бы хорошо, но не обязательно]</span>).</dd>
+    </div>
+
+    <h3>Figma setup 2026</h3>
+    <ul>
+      <li><strong>Figma Variables</strong> <span class="h">[переменные Figma &mdash; хранят все токены прямо в файле]</span> &mdash; source of truth <span class="h">[единый источник правды]</span> (69.8% команд)</li>
+      <li><strong>Figma Slots</strong> <span class="h">[слоты &mdash; позволяют вставлять разный контент в одну структуру компонента]</span> (released March 2026) &mdash; для composition patterns <span class="h">[паттернов композиции &mdash; как компоненты собираются вместе]</span></li>
+      <li><strong>Style Dictionary</strong> <span class="h">[инструмент для экспорта токенов из дизайна в код]</span> &mdash; export JSON &rarr; CSS / iOS / Android</li>
+      <li><strong>Figma Code Connect</strong> <span class="h">[связь компонентов Figma с кодовыми компонентами &mdash; dev видит, какой код соответствует дизайну]</span></li>
+      <li><strong>Figma MCP</strong> <span class="h">[протокол, позволяющий AI-агентам работать с Figma напрямую]</span></li>
+    </ul>
+
+    <h3>10 Core Components (месяц 2)</h3>
+    <div class="ux-flow" style="grid-template-columns:repeat(5,1fr)">
+      <div class="ux-step"><span class="step-name">Button</span></div>
+      <div class="ux-step"><span class="step-name">Input</span></div>
+      <div class="ux-step"><span class="step-name">Select</span></div>
+      <div class="ux-step"><span class="step-name">Checkbox</span></div>
+      <div class="ux-step"><span class="step-name">Card</span></div>
+      <div class="ux-step"><span class="step-name">Modal</span></div>
+      <div class="ux-step"><span class="step-name">Badge</span></div>
+      <div class="ux-step"><span class="step-name">Avatar</span></div>
+      <div class="ux-step"><span class="step-name">Toast</span></div>
+      <div class="ux-step"><span class="step-name">Progress</span></div>
+    </div>
+
+    <div class="playbook">
+      <div class="do">
+        <h4>DS &mdash; делать</h4>
+        <ul>
+          <li>Начинать с decisions <span class="h">[решений]</span> (tokens), не с buttons</li>
+          <li>Валидировать через реальную page, собранную из компонентов</li>
+          <li>Detach test <span class="h">[тест на отсоединение &mdash; сторонний дизайнер попытался использовать систему и не сломал]</span></li>
+          <li>Auto Layout <span class="h">[автоматическая раскладка в Figma &mdash; элементы сами подстраиваются при изменении контента]</span> везде</li>
+          <li>Naming convention <span class="h">[соглашение по именованию &mdash; единые правила, как называть слои, компоненты, токены]</span> на одной странице</li>
+        </ul>
+      </div>
+      <div class="dont">
+        <h4>DS &mdash; не делать</h4>
+        <ul>
+          <li>Пытаться быть multi-brand agnostic <span class="h">[универсальным для нескольких брендов]</span> для одного продукта</li>
+          <li>Component layer <span class="h">[третий ярус токенов]</span> для v1</li>
+          <li>Валидировать через Dribbble screenshots <span class="h">[красивые картинки, оторванные от реальности]</span></li>
+          <li>50+ компонентов до первого shipped screen <span class="h">[экрана, который реально попал в код]</span></li>
+          <li>Documentation &gt; 500 слов per component <span class="h">[документация не должна быть романом]</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08. TECH ===== -->
+<section id="tech">
+  <div class="wrap">
+    <div class="sec-num">08 &mdash; Тех. контекст</div>
+    <h2>Technical Awareness</h2>
+    <p>Lead Product Designer не пишет код (ну, почти). Но понимание стека &mdash; это язык общения с devs и основа реалистичных решений.</p>
+
+    <details>
+      <summary><span class="s-num">A</span> UI Architecture</summary>
+      <div class="acc-body">
+        <div class="vocab">
+          <dt>Atomic Design</dt>
+          <dd>Компоненты от атомов (icon, label) к молекулам (input + label) к организмам (form) к шаблонам к страницам. Помогает structure design system.</dd>
+          <dt>FSD</dt>
+          <dd>Feature-Sliced Design. Фронтенд-архитектура по бизнес-сущностям. Код организован по фичам, не по типам файлов.</dd>
+          <dt>A11y</dt>
+          <dd>Accessibility. Семантический HTML (main, nav, section vs div), ARIA-атрибуты (aria-labelledby, aria-live). Console &mdash; web-app, A11y baseline нужен.</dd>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">B</span> Performance Metrics (Core Web Vitals)</summary>
+      <div class="acc-body">
+        <div class="vocab">
+          <dt>LCP</dt>
+          <dd><strong>Largest Contentful Paint.</strong> Время до появления главного элемента. Для Console &mdash; dashboard load. Для App &mdash; first video frame. Target: &lt;2.5s.</dd>
+          <dt>INP</dt>
+          <dd><strong>Interaction to Next Paint.</strong> Отклик UI на клик/ввод. Критично для Console &mdash; generation panel должен реагировать instant. Target: &lt;200ms.</dd>
+          <dt>CLS</dt>
+          <dd><strong>Cumulative Layout Shift.</strong> Стабильность верстки. Нет сдвигов при загрузке. Для Streaming App &mdash; video player не должен прыгать. Target: &lt;0.1.</dd>
+          <dt>FCP / TTFB</dt>
+          <dd>First Contentful Paint / Time to First Byte. Скорость первой отрисовки и ответа сервера.</dd>
+        </div>
+        <p><strong>Зачем знать:</strong> эти метрики влияют на SEO (Streaming App marketing pages), конверсию и retention. Дизайн-решения напрямую влияют &mdash; размер изображений, lazy loading, skeleton screens.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">C</span> Frameworks &amp; Rendering</summary>
+      <div class="acc-body">
+        <div class="vocab">
+          <dt>React + Next.js</dt>
+          <dd>Вероятный стек Console (web). Next.js даёт SSR/SSG из коробки. React ecosystem для компонентов.</dd>
+          <dt>TypeScript</dt>
+          <dd>Статическая типизация. Меньше ошибок. Предсказуемость изменений.</dd>
+          <dt>SSR vs CSR vs SSG</dt>
+          <dd><strong>SSR</strong> &mdash; сервер рендерит HTML (для SEO-страниц: marketing, show pages). <strong>CSR</strong> &mdash; клиент рендерит (для Console dashboard). <strong>SSG</strong> &mdash; статика (для блога, документации). Для Console &mdash; SSR для landing, CSR для app.</dd>
+          <dt>React Native / Flutter</dt>
+          <dd>Cross-platform для Streaming App. React Native &mdash; если web team сильная. Flutter &mdash; если нужна uniform UI. Уточнить на онбординге.</dd>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">D</span> State &amp; Data</summary>
+      <div class="acc-body">
+        <div class="vocab">
+          <dt>State Managers</dt>
+          <dd>Zustand (modern, simple), Redux Toolkit (classic), MobX. Хранят состояние UI: что в проекте, какие settings, что загружено.</dd>
+          <dt>TanStack Query</dt>
+          <dd>Серверные данные: кэширование, запросы. Для Console &mdash; списки проектов, assets, analytics.</dd>
+          <dt>API / REST / GraphQL</dt>
+          <dd>Контракт frontend ↔ backend. Console будет делать много запросов к AI APIs &mdash; important for loading states UX.</dd>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">E</span> Quality &amp; Monitoring</summary>
+      <div class="acc-body">
+        <div class="vocab">
+          <dt>Sentry</dt>
+          <dd>Error tracking. Автоматический отлов ошибок в production. Дизайнеру важно: error states в UI должны быть спроектированы.</dd>
+          <dt>Lighthouse</dt>
+          <dd>Аудит performance, a11y, SEO. Запускать на каждый major release. Baseline score &mdash; зафиксировать в первую неделю.</dd>
+          <dt>WebP / AVIF</dt>
+          <dd>Оптимизированные форматы изображений. Вместо PNG/JPEG. Для Console &mdash; thumbnails, previews. CDN для доставки.</dd>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== 09. VOCAB ===== -->
+<section id="vocab">
+  <div class="wrap">
+    <div class="sec-num">09 &mdash; Vocabulary</div>
+    <h2>Словарь micro-drama</h2>
+    <p>Термины, которые нужно знать и использовать в разговорах. Показывают, что ты в теме.</p>
+
+    <div class="vocab">
+      <dt>Vertical drama</dt>
+      <dd>Сериал в вертикальном формате 9:16, эпизоды 60-180 секунд. Не нарезанный long-form, а отдельный формат.</dd>
+
+      <dt>Micro-drama</dt>
+      <dd>= Vertical drama. Термин из Китая (duanju, 短剧). $11B market 2025.</dd>
+
+      <dt>Paywall point</dt>
+      <dd>Эпизод, на котором включается оплата. Обычно на клиффхэнгере. Standard: ep 4, 8, 13.</dd>
+
+      <dt>Coin-based unlock</dt>
+      <dd>Доминирующая модель монетизации. Пользователь покупает coins ($5-50), тратит на unlock (10-60 coins/ep ≈ $0.10-0.60).</dd>
+
+      <dt>ARPU / RPD</dt>
+      <dd>Average Revenue Per User / Revenue Per Download. ReelShort RPD ~$2.59, DramaBox ~$1.60.</dd>
+
+      <dt>Completion rate</dt>
+      <dd>Процент досмотра эпизода. Главный KPI. &lt;50% &mdash; переписывают последние 15 сек.</dd>
+
+      <dt>Episode drop-off</dt>
+      <dd>Процент ухода между эпизодами. &lt;15% ep1→ep2 у успешных серий.</dd>
+
+      <dt>Cliffhanger</dt>
+      <dd>Обрыв на пике эмоций. Ключевой retention hook. Taxonomy: identity reveal, betrayal, impossible choice, secret pregnancy.</dd>
+
+      <dt>Character consistency</dt>
+      <dd>Сохранение внешности персонажа через scenes/episodes. #1 technical challenge в AI video. Решается через References, LoRA, Element Library.</dd>
+
+      <dt>LoRA</dt>
+      <dd>Low-Rank Adaptation. Метод fine-tuning моделей для запоминания конкретного персонажа.</dd>
+
+      <dt>Reference images</dt>
+      <dd>Базовые изображения персонажа (front, profile, 3/4), которые подаются модели для consistency.</dd>
+
+      <dt>Element Library</dt>
+      <dd>Kling O1 feature. Сохранённые characters, objects, locations для reuse через scenes.</dd>
+
+      <dt>Motion Brush</dt>
+      <dd>Runway feature. Рисовать направление движения на конкретных частях frame <span class="h">[кадра]</span>. Уникальный competitive moat <span class="h">[конкурентный ров &mdash; преимущество, которое сложно повторить]</span>.</dd>
+
+      <dt>Retake per-shot</dt>
+      <dd>Перегенерация одной конкретной сцены, не всего видео целиком. LTX Studio pattern <span class="h">[паттерн &mdash; устоявшееся решение]</span>. Must-have <span class="h">[обязательная функция]</span> для Console.</dd>
+
+      <dt>TTFV</dt>
+      <dd>Time to First Value. &lt;5 минут для AI tool. &lt;10 секунд для Streaming App (first play).</dd>
+
+      <dt>Storyboard-first</dt>
+      <dd>Workflow: сначала разбить на сцены, потом генерировать. Vs prompt-first (описать целиком). Default для Console.</dd>
+
+      <dt>Creator profile</dt>
+      <dd>Страница автора в Streaming App. Аналогия: App Store developer page. Portfolio серий + metrics + subscribe.</dd>
+
+      <dt>Beat sheet</dt>
+      <dd>5-актная структура сезона с paywall points. Template для сценариста.</dd>
+
+      <dt>Show-centric vs Creator-centric</dt>
+      <dd>DramaBox &mdash; show-centric (зрители знают серию, не автора). Clipt может быть creator-centric (автор = бренд). Развилка.</dd>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPETITORS QUICK ===== -->
+<section id="competitors">
+  <div class="wrap">
+    <div class="sec-num">10 &mdash; Конкуренты</div>
+    <h2>Competitive Landscape</h2>
+
+    <h3>Прямые (AI-native platforms)</h3>
+    <div class="tool-grid">
+      <div class="tool">
+        <span class="tool-name">StoReel</span>
+        <span class="tool-type">Ближайший direct competitor</span>
+        <p>$34M raised (Mar 2026). Creator platform + viewer app. AI-made micro dramas. $20-40K per hour vs $150-200K live-action.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Vigloo Studio</span>
+        <span class="tool-type">First creator dashboard &middot; Mar 2026</span>
+        <p>Spoon Labs, South Korea. <strong>Первый creator-facing dashboard в индустрии</strong>, но только analytics + revenue tracking. Без creation tools, без self-publish.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">SkyReels</span>
+        <span class="tool-type">Open-source &middot; Kunlun Tech</span>
+        <p>Open-source AI drama creation framework. Script-to-video pipeline. <strong>Нет distribution</strong> &mdash; только creation.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Showrunner</span>
+        <span class="tool-type">Amazon-backed</span>
+        <p>AI animated series. South Park demo 80M+ views. Animated-only &mdash; не live-action.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">MicroDrama AI / Genra</span>
+        <span class="tool-type">Creation tools only</span>
+        <p>Script &rarr; character &rarr; scene &rarr; voice &rarr; post. Но <strong>disconnected от distribution</strong>. Create ≠ publish ≠ monetize.</p>
+      </div>
+    </div>
+
+    <h3>Доминирующие (non-AI, attention competitors)</h3>
+    <div class="tool-grid">
+      <div class="tool">
+        <span class="tool-name">ReelShort</span>
+        <span class="tool-type">$400M-1.2B+ revenue</span>
+        <p>191M+ downloads. US #2 video app. Live-action, human actors. RPD $2.59.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">DramaBox</span>
+        <span class="tool-type">$323M+ revenue</span>
+        <p>228M+ downloads. 6-month retention 17%. Disney accelerator. $913K/day coins.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">DramaWave</span>
+        <span class="tool-type">Fastest growth</span>
+        <p>Kunlun Tech. $240M ARR за 8 месяцев. Benchmark по speed-to-scale.</p>
+      </div>
+    </div>
+
+    <h3>Opportunity Spaces для Clipt</h3>
+    <ul>
+      <li><strong style="color:var(--gold)">Self-serve Creator Console <span class="h">[консоль для авторов, где они сами публикуют без одобрения платформы]</span> &mdash; ПУСТОЙ РЫНОК.</strong> Ни одна micro-drama платформа не даёт creator self-serve publishing <span class="h">[самостоятельную публикацию]</span>. Все гейткиперы <span class="h">[привратники &mdash; контент проходит через модерацию/закупку]</span>. <strong>Clipt = первый open/self-serve + AI creation.</strong></li>
+      <li><strong>AI-native cost advantage.</strong> <span class="h">[ценовое преимущество за счёт AI]</span> $14-21K за сезон vs $150-200K live-action <span class="h">[с живыми актёрами]</span>. 10-15x дешевле. Library scales <span class="h">[каталог контента масштабируется]</span> экспоненциально.</li>
+      <li><strong>Create + Publish + Monetize loop.</strong> <span class="h">[замкнутый цикл: создал → опубликовал → заработал]</span> AI creation tools (Genra, SkyReels) существуют, но disconnected <span class="h">[не связаны]</span> от distribution <span class="h">[дистрибуции &mdash; доставки контента зрителям]</span>. Clipt может замкнуть петлю.</li>
+      <li><strong>Creator profiles как retention surface.</strong> Ни у кого нет proper App Store-style creator pages.</li>
+      <li><strong>Serialized analytics.</strong> <span class="h">[Аналитика для сериалов]</span> Episode drop-off <span class="h">[отток между эпизодами]</span>, cliffhanger effectiveness <span class="h">[эффективность обрывов на пике]</span>, paywall conversion per episode <span class="h">[конверсия в оплату на каждом эпизоде]</span>. YouTube Studio не заточен под episodic content.</li>
+      <li><strong>Единственный ближайший конкурент:</strong> Vigloo Studio (Spoon Labs, South Korea, март 2026) &mdash; но только analytics dashboard, без creation tools.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== STREAMING APP QUICK ===== -->
+<section id="streaming">
+  <div class="wrap">
+    <div class="sec-num">11 &mdash; Streaming App</div>
+    <h2>UX-паттерны стриминга</h2>
+    <p>Не TikTok clone и не OTT clone <span class="h">[OTT = Over-the-Top, стриминг-платформа типа Netflix]</span>. Гибрид: algo-driven discovery <span class="h">[алгоритмическое открытие нового контента]</span> + show-centric retention <span class="h">[удержание через привязку к сериалу]</span> + coin-gated monetization <span class="h">[монетизация через внутреннюю валюту]</span>.</p>
+
+    <details>
+      <summary><span class="s-num">01</span> Feed &amp; Discovery</summary>
+      <div class="acc-body">
+        <ul>
+          <li><strong>Personalized binge feed</strong> <span class="h">[персонализированная лента для запойного просмотра]</span> &mdash; AI учится на том, что досмотрел / пропустил / пересмотрел. Обложки с hook-текстом <span class="h">[зацепляющим заголовком]</span>.</li>
+          <li><strong>Genre hubs</strong> <span class="h">[разделы по жанрам]</span> &mdash; Romance / Billionaire / Werewolf / Revenge. Navigation по вкусам, не по creators.</li>
+          <li><strong>Continue watching rail</strong> <span class="h">[полоска &laquo;продолжить просмотр&raquo; &mdash; вернуться к сериалу в 1 нажатие]</span>. Critical retention surface <span class="h">[ключевой элемент удержания]</span>.</li>
+          <li><strong>Next episode autoplay</strong> <span class="h">[автозапуск следующего эпизода]</span> &mdash; binge loop <span class="h">[петля запойного просмотра]</span>.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">02</span> Monetization UX</summary>
+      <div class="acc-body">
+        <ul>
+          <li><strong>Mid-episode paywall card</strong> <span class="h">[карточка оплаты посреди эпизода]</span> &mdash; не отдельный экран, а вставка. Fade <span class="h">[затемнение]</span> после клиффхэнгера &rarr; card &laquo;Unlock with 30 coins / Watch ad / Get VIP&raquo;.</li>
+          <li><strong>Coin wallet always visible</strong> <span class="h">[кошелёк монет всегда на виду]</span> &mdash; top bar <span class="h">[верхняя панель]</span>. Баланс виден в любой момент.</li>
+          <li><strong>Gamified daily login</strong> <span class="h">[игровая механика ежедневного входа]</span> &mdash; бесплатные coins за возврат, streak'и <span class="h">[серии дней подряд]</span>.</li>
+          <li><strong>Free coins on signup</strong> <span class="h">[бесплатные монеты при регистрации]</span> &mdash; 50-100 coins сразу. Пользователь пробует paywall без траты денег.</li>
+          <li><strong>Wait timer</strong> <span class="h">[таймер ожидания]</span> &mdash; ждать N часов для бесплатного unlock (как gacha <span class="h">[механика из мобильных игр: жди или плати]</span>), или заплатить.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">03</span> Onboarding</summary>
+      <div class="acc-body">
+        <ul>
+          <li><strong>First play &lt;10 секунд.</strong> Никакого signup wall <span class="h">[стены регистрации &mdash; когда нельзя ничего сделать без аккаунта]</span> до опыта. Рега только при interact (like, save).</li>
+          <li><strong>Taste onboarding</strong> <span class="h">[знакомство со вкусами &mdash; пользователь выбирает любимые жанры]</span> &mdash; 2-3 card swipes. Calibrates feed <span class="h">[настраивает ленту под вкусы]</span>.</li>
+          <li><strong>First episode always free + autoplay next.</strong></li>
+          <li><strong>Push notifications только после episode 3</strong> &mdash; когда уже вложился эмоционально.</li>
+          <li><strong>Daily quest introduced on day 2</strong> &mdash; не day 1.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="s-num">04</span> Creator Profile (App Store model)</summary>
+      <div class="acc-body">
+        <ul>
+          <li>Creator identity block (name, avatar, short bio, verified badge)</li>
+          <li>Primary metric (total views, subscribers, number of series)</li>
+          <li>Ongoing series with progress bar (&laquo;12/40 episodes, new every Tue/Fri&raquo;)</li>
+          <li>Completed series (archive, sorted by popularity)</li>
+          <li>Behind-the-scenes / making-of reel</li>
+          <li>Subscribe CTA + optional tip/donate</li>
+          <li>Release calendar</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== UX PATTERNS ===== -->
+<section id="patterns">
+  <div class="wrap">
+    <div class="sec-num">12 &mdash; UX Insights</div>
+    <h2>Что работает в AI Video UX</h2>
+
+    <div class="playbook">
+      <div class="do">
+        <h4>Работает</h4>
+        <ul>
+          <li><strong>Storyboard-first workflow</strong> <span class="h">[сначала раскадровка, потом генерация]</span></li>
+          <li><strong>Reference / Element library</strong> <span class="h">[библиотека эталонных изображений персонажей и объектов для переиспользования]</span></li>
+          <li><strong>Natural language editing</strong> <span class="h">[редактирование обычным языком: &laquo;сделай пальто синим&raquo;]</span> (Kling O1)</li>
+          <li><strong>Camera presets</strong> <span class="h">[предустановки камеры]</span> &mdash; pan <span class="h">[панорамирование]</span>, orbit <span class="h">[облёт]</span>, dolly <span class="h">[наезд/отъезд]</span></li>
+          <li><strong>Multi-model switching</strong> <span class="h">[переключение между AI-моделями в одном интерфейсе]</span></li>
+          <li><strong>Transcript-based editing</strong> <span class="h">[монтаж через текст &mdash; удалил строку = удалил кусок видео]</span> (Descript)</li>
+          <li><strong>Audio-to-video</strong> <span class="h">[загружаешь аудио → AI генерирует видео синхронно]</span> (LTX Studio)</li>
+          <li><strong>Batch 4 варианта</strong> <span class="h">[пакетная генерация &mdash; 4 варианта сразу, выбери лучший]</span></li>
+        </ul>
+      </div>
+      <div class="dont">
+        <h4>Не работает</h4>
+        <ul>
+          <li><strong>Overload</strong> <span class="h">[перегрузка опциями]</span> на первом экране &mdash; Krea, Runway 4.5</li>
+          <li><strong>Нет aha-момента</strong> <span class="h">[момента &laquo;вау, это работает!&raquo;]</span> за 40 сек &mdash; TTFV <span class="h">[время до первой ценности]</span> провален у всех</li>
+          <li><strong>Credit paranoia</strong> <span class="h">[страх потратить кредиты на неудачную генерацию]</span></li>
+          <li><strong>Fragmented multi-tool workflow</strong> <span class="h">[рабочий процесс раздроблен на 6 разных тулов, в каждом свой UI]</span></li>
+          <li><strong>Prompt engineering как барьер</strong> <span class="h">[для каждой модели нужен свой стиль написания запросов]</span></li>
+          <li><strong>ComfyUI complexity</strong> <span class="h">[невероятно мощный, но пугающе сложный интерфейс из узлов и связей]</span></li>
+          <li><strong>Overly "generative" chrome</strong> <span class="h">[интерфейс кричит &laquo;Я AI!&raquo; вместо того, чтобы быть незаметным]</span></li>
+          <li><strong>VIP-locked settings</strong> <span class="h">[настройки спрятаны за платный тариф &mdash; бесит]</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      TTFV (Time to First Value) &mdash; 5 минут максимум, желательно &lt;1 минуты. Если юзер не получил aha, он ушёл.
+      <cite>Ergomania, Product Adoption Strategies 2025</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REFERENCES ===== -->
+<section id="refs">
+  <div class="wrap">
+    <div class="sec-num">13 &mdash; Референсы</div>
+    <h2>Design References</h2>
+    <p>Что скачать, изучить, держать под рукой.</p>
+
+    <h4>Console UX Reference</h4>
+    <div class="tool-grid">
+      <div class="tool">
+        <span class="tool-name">LTX Studio</span>
+        <span class="tool-type">#1 reference для Console</span>
+        <p>Storyboard view, timeline editor, Elements workflow. Лучший AI video creation UX.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Linear</span>
+        <span class="tool-type">Productivity SaaS gold standard</span>
+        <p>Keyboard-first, command bar, motion, density. Target aesthetic для Console.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Notion</span>
+        <span class="tool-type">Block system</span>
+        <p>Flexible layout, slash commands. Gravitas + playful.</p>
+      </div>
+    </div>
+
+    <h4>Streaming App Reference</h4>
+    <div class="tool-grid">
+      <div class="tool">
+        <span class="tool-name">ReelShort / DramaBox</span>
+        <span class="tool-type">Market leaders</span>
+        <p>Скачать оба. Пройти onboarding, купить coins, дойти до paywall. Зафиксировать flows.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">YouTube Studio</span>
+        <span class="tool-type">Creator dashboard reference</span>
+        <p>Analytics, content management, publishing. Масштабный reference для Console management.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Perplexity</span>
+        <span class="tool-type">AI onboarding</span>
+        <p>&laquo;Drops you into prompt field with smart defaults&raquo;. Canonical TTFV example.</p>
+      </div>
+    </div>
+
+    <h4>Design System Reference</h4>
+    <div class="tool-grid">
+      <div class="tool">
+        <span class="tool-name">Material 3 Expressive</span>
+        <span class="tool-type">Android base</span>
+        <p>m3.material.io. Каркас для Android-based стриминга.</p>
+      </div>
+      <div class="tool">
+        <span class="tool-name">Apple HIG + Liquid Glass</span>
+        <span class="tool-type">iOS guideline</span>
+        <p>WWDC 2025 Liquid Glass. Unified material. Главный тренд 2025-2026 для Apple ecosystem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <p>Design Lead Playbook &middot; Clipt AI Video &middot; April 2026</p>
+    <p style="margin-top:0.5rem;font-size:0.6rem;opacity:0.5">Compiled from market research, competitor analysis, industry reports</p>
+  </div>
+</footer>
+
+<script>
+// Auto-open first detail in each section for context
+document.querySelectorAll('section').forEach(sec => {
+  const first = sec.querySelector('details');
+  if (first && !sec.querySelector('details[open]')) {
+    // Don't auto-open — let user control
+  }
+});
+
+// Smooth scroll for TOC
+document.querySelectorAll('.toc-inner a').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      document.querySelector(href)?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+// Active TOC highlight
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.toc-inner a').forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + entry.target.id
+          ? 'var(--gold)' : '';
+      });
+    }
+  });
+    </div>
+  </div>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

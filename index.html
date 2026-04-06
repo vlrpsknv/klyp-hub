@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klyp — Design Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Geist:wght@300..800&family=Geist+Mono:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="dashboard">
+<div class="shell">
+  <div class="main">
+    <!-- ═══════════ OVERVIEW ═══════════ -->
+    <div class="page active" id="page-overview">
+      <div class="page-title">Overview</div>
+      <div class="page-desc">Состояние проекта на одном экране</div>
+
+      <div class="stats">
+        <div class="stat"><div class="stat-n">1</div><div class="stat-label">созвон</div></div>
+        <div class="stat"><div class="stat-n">12</div><div class="stat-label">решений</div></div>
+        <div class="stat"><div class="stat-n">14</div><div class="stat-label">требований</div></div>
+        <div class="stat"><div class="stat-n">17</div><div class="stat-label">задач</div></div>
+        <div class="stat"><div class="stat-n">6</div><div class="stat-label">открытых</div></div>
+      </div>
+
+      <div class="section-header">Текущий спринт</div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Референсы + прототип Video Editor</span>
+          <span class="card-meta">до 8 апреля</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:10%"></div></div>
+        <div class="progress-label">10%</div>
+      </div>
+
+      <div class="section-header">Последний созвон</div>
+      <div class="card expandable" onclick="this.classList.toggle('open')">
+        <div class="card-header">
+          <div>
+            <span class="card-title">Онбординг-созвон</span>
+            <div class="card-meta" style="margin-top:2px">6 апреля 2026 — Ярослав, Валерий П., Валерий</div>
+          </div>
+          <span class="expand-icon">▸</span>
+        </div>
+        <div class="expand-content">
+          <div style="display:flex;gap:20px;margin-bottom:12px">
+            <div><span style="font-size:.7rem;color:var(--ink-4)">Решений</span><div style="font-size:1rem;color:var(--ink);font-weight:600">12</div></div>
+            <div><span style="font-size:.7rem;color:var(--ink-4)">Задач</span><div style="font-size:1rem;color:var(--ink);font-weight:600">17</div></div>
+            <div><span style="font-size:.7rem;color:var(--ink-4)">Открытых</span><div style="font-size:1rem;color:var(--ink);font-weight:600">6</div></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px">
+            <span class="tag">организация</span>
+            <span class="tag">publishing-console</span>
+            <span class="tag">video-editor</span>
+            <span class="tag">языки</span>
+            <span class="tag">дизайн</span>
+            <span class="tag">монетизация</span>
+          </div>
+          <div class="quote" style="margin-top:14px">
+            Самая большая боль — изолированное общение с нейронками. Если пофиксим — выделимся по UX.
+            <span class="quote-author">— Ярослав</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">Ближайшие задачи</div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Собрать референсы Video Editor<div class="action-note">Syntax AI, Hixfield, Mira, Sims editor</div></div><span class="action-badge">8 апр</span></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Собрать референсы Publishing Console<div class="action-note">YouTube Studio, Google Play Console, OnlyFans</div></div><span class="action-badge">8 апр</span></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Прототип Video Editor<div class="action-note">Layout, элементы, не интерактивный</div></div><span class="action-badge">8 апр</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Получить прототип стриминга → оценить</div><span class="action-badge">ожидание</span></div>
+
+      <div class="section-header">Открытые вопросы</div>
+      <div class="card-body">
+        <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Документ по миссии компании</div></div>
+        <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Регламент компенсации AI-подписок</div></div>
+        <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Расположение промт-инпута<span class="term-explain"> — центр vs бок vs collapsible</span></div></div>
+        <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Цветовая схема<span class="term-explain"> — data-driven, контекст кино</span></div></div>
+      </div>
+    </div>
+
+    <!-- ═══════════ MEETING DETAIL: Онбординг ═══════════ -->
+    <div class="page" id="page-meeting-0">
+      <div class="page-title">Онбординг-созвон</div>
+      <div class="page-desc">6 апреля 2026 — Ярослав Коляда, Валерий Примачук, Валерий</div>
+
+      <div class="stats">
+        <div class="stat"><div class="stat-n">12</div><div class="stat-label">решений</div></div>
+        <div class="stat"><div class="stat-n">17</div><div class="stat-label">задач</div></div>
+        <div class="stat"><div class="stat-n">6</div><div class="stat-label">открытых</div></div>
+        <div class="stat"><div class="stat-n">6</div><div class="stat-label">тем</div></div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:32px">
+        <span class="tag">организация</span>
+        <span class="tag">publishing-console</span>
+        <span class="tag">video-editor</span>
+        <span class="tag">языки</span>
+        <span class="tag">дизайн</span>
+        <span class="tag">монетизация</span>
+      </div>
+
+      <div class="section-header">Организация</div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Google Workspace</strong><span class="term-explain"> — корп. почта на домене Klyp, через неё все доступы</span></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Slack</strong><span class="term-explain"> — основной мессенджер команды</span></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Telegram</strong> — резервный канал коммуникации</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Влад</strong><span class="term-explain"> — орг. процессы, бюджет, финансы, договоры. Все орг. вопросы → к нему</span></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Понедельничные синки лидов</strong><span class="term-explain"> — еженедельная встреча руководителей всех направлений</span>. Первый пропустить, приходить с 13.04.</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Компенсация AI-подписок</strong> — регламент вырабатывается на этой неделе. В Slack есть опрос — ответить.</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Бюджет на исследование конкурентов</strong> — подписки на сервисы оплачивает компания, через Влада.</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Коммуникация</strong> — писать вопросы/идеи в любое время. Можно уйти в работу на 2 дня и прийти с результатом.</div></div>
+
+      <div class="section-header">Продукт — Позиционирование</div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>НЕ микродрамы</strong><span class="term-explain"> — не азиатский формат DramaBox/ReelShort</span>. Сериальный контент — связанные шорты, не рандомный фид.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Креатор-центричная платформа</strong> — креатор создаёт → публикует → шарит в соцсетях → привлекает зрителей на стриминг → зарабатывает.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Две рефералки:</strong> креатор → другие креаторы, креатор → зрители.</div></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text"><strong>Документ по миссии</strong> — подъедет скоро, даст больше контекста.</div></div>
+
+      <div class="section-header">Продукт — Publishing Console</div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Библиотека тайтлов = главный экран.</strong> Все тайтлы с минимальной аналитикой. Клик → детали, просмотры, как видят в фиде.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Детальная аналитика</strong> — отдельный раздел. Best performing<span class="term-explain"> — самые успешные тайтлы</span>, зрители/месяц, пиковая аудитория, охват.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Video Editor</strong> — третий по приоритету раздел.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Загрузка своего контента</strong> — без доп. оплаты. Нужна только подписка на паблишинг. Выбор серий, расписание, бесконечная догрузка.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Шеринг в соцсети</strong><span class="term-explain"> — кнопка публикации в Instagram/TikTok</span> — основной движок привлечения зрителей на стриминг.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Кабинет заработков</strong><span class="term-explain"> — earnings dashboard</span>. Детали не обсуждались.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Реферальная система</strong> — две рефералки (креаторы + зрители). Не на главной, но обязательная фича.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Аналогии:</strong> YouTube Studio, Instagram Studio, Google Play Console, App Store Console, OnlyFans (без adult).</div></div>
+
+      <div class="section-header">Продукт — Video Editor</div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Layout:</strong> контент по центру (вертикально), окно промтинга / управления справа.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Вдохновение:</strong> Sims character editor<span class="term-explain"> — RPG-стиль: объект по центру, панель настроек сбоку</span>. НЕ prompt-first с большой строкой внизу.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Файл-шеринг между AI = ГЛАВНЫЙ UX-дифференциатор.</strong> Файлы на серверах → бесшовный pipeline<span class="term-explain"> — цепочка обработки через несколько AI-сервисов без скачивания/загрузки</span>.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Два уровня пользователей:</strong> новичок (guided path<span class="term-explain"> — пошаговый путь с подсказками, готовые сцены, предложенные промты</span>) и про (full customization на каждом шаге). Один интерфейс.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Этапность:</strong> процесс разбит на этапы. Каждый этап = действие с файлом. Видишь файл + этап + действие.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Альтернатива промт-инпута:</strong> может быть по центру, незаметный, разворачивается в dev-mode. Оба варианта допустимы.</div></div>
+
+      <div class="section-header">Продукт — Языки и субтитры</div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Субтитры по дефолту</strong> — включены везде, генерируются нейронкой.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Зритель выбирает только язык</strong> — не отдельно звук + субтитры. Одно поле.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>10-20 бесплатных языков</strong> при создании. Дополнительные за деньги. Создание на любом языке.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Обложка:</strong> картинка (отдельно) + текст (отдельно, переводится под язык зрителя). Пайплайн создания обложки — отдельный процесс.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Техническое:</strong> видео хранится отдельно от аудио/субтитров. Накладываются при воспроизведении. Заложить в процесс с самого начала.</div></div>
+
+      <div class="section-header">Продукт — Монетизация</div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Подписка на паблишинг</strong><span class="term-explain"> — основная, даёт право публиковать</span>.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Токены за редактор</strong><span class="term-explain"> — внутренняя валюта за использование AI-инструментов</span>. Через подписки или прямую покупку.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Загрузка своего контента</strong> — только подписка, без доп. чаржа.</div></div>
+
+      <div class="section-header">Дизайн-решения</div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Double Diamond</strong><span class="term-explain"> — процесс: исследование → сужение → прототип → итерации</span>. Одобрен.</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Без брендинга на MVP.</strong> Функция > визуал. Нет дизайн-системы, создавать по ходу.</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Токенизация цвета</strong><span class="term-explain"> — один параметр меняет весь цвет интерфейса</span>. Ч/Б прототипы + цветовые варианты.</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Избегать токсичных цветов</strong> (зелёный Hixfield = плохо). Ориентир — кино: Netflix (красный), Кинопоиск (рыжий).</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Прототип формирует бизнес-требования</strong><span class="term-explain"> — требования не финальные, легче формировать глядя на прототип</span>.</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Идеи предлагать сразу</strong> — инициатива приветствуется.</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Прототип стриминга</strong> — пришлют для оценки, дать фидбэк. Не привязываться к его брендингу.</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Цвет = data-driven</strong> — привязка к кино, решение позже когда больше данных.</div></div>
+
+      <div class="section-header">Конкуренты и референсы</div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Syntax AI</strong> — популярен среди СНГ-креаторов, визуально приличный, пропихивают в гайдах.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Hixfield</strong> — большой на рынке, привычный. UI "казиношный матрас". Зелёный цвет = плохо. Но можно набрать функциональных идей.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Mira</strong> — пример центрального контента + боковые контролы (упомянут Ярославом).</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Bananas, Citri</strong> — AI-генерация, опционально пробовать заменять компоненты, смотреть quality/performance.</div></div>
+
+      <div class="section-header">Дедлайны</div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text"><strong>8 апреля 2026</strong> — референсы + прототип Video Editor. "Ребята, вот нарисовал за 2 дня, вот тут не углублялся".</div><span class="action-badge">8 апр</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text"><strong>Прототип стриминга</strong> — ждём от команды для оценки.</div><span class="action-badge">ожидание</span></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text"><strong>Опрос AI-подписок</strong> — ответить в Slack на этой неделе.</div><span class="action-badge">неделя</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text"><strong>Синки лидов</strong> — начать приходить с 13 апреля.</div><span class="action-badge">13 апр</span></div>
+
+      <div class="section-header">Ключевые цитаты</div>
+      <div class="quote">Самая большая боль везде — это то, что ты должен общаться с нейронками суперизолированно. Если мы пофиксим, мы будем в плане UX прямо выделяться очень сильно.<span class="quote-author">— Ярослав</span></div>
+      <div class="quote">Нам точно надо делать быстро. Сейчас мы не должны углубляться в очень большие детали.<span class="quote-author">— Ярослав</span></div>
+      <div class="quote">Бизнес-требования не до конца сформированы. Будет намного легче это делать, глядя на примерное что-то, что мы нарисовали.<span class="quote-author">— Ярослав</span></div>
+      <div class="quote">Мы связаны с сериальным контентом. Это просто шорты, которые не рандомно заполняют фид, а связаны по смыслу.<span class="quote-author">— Ярослав</span></div>
+      <div class="quote">Это не только creator platform, это ещё и как YouTube Studio или Instagram Studio.<span class="quote-author">— Валерий Примачук</span></div>
+    </div>
+
+    <!-- ═══════════ MEETINGS LIST ═══════════ -->
+    <div class="page" id="page-meetings">
+      <div class="page-title">Созвоны</div>
+      <div class="page-desc">Все встречи команды. Кликни для деталей.</div>
+
+      <div class="info-block">
+        <strong>Как добавляется новый созвон:</strong> после каждой встречи скажи Claude <code>обработай созвон</code> — я создам markdown в <code>Созвоны/</code>, обновлю Obsidian и перегенерирую этот дашборд. В сайдбаре появится новый пункт.
+      </div>
+
+      <div class="card expandable" onclick="this.classList.toggle('open')">
+        <div class="card-header">
+          <div>
+            <span class="card-title">Онбординг-созвон</span>
+            <span class="term-explain">— первая встреча, вводная в проект</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span class="card-meta">6 апреля 2026</span>
+            <span class="expand-icon">▸</span>
+          </div>
+        </div>
+        <div class="expand-content">
+          <div class="card-meta" style="margin-bottom:12px">Участники: Ярослав Коляда, Валерий Примачук, Валерий</div>
+
+          <div class="section-header" style="margin-top:0">Организация</div>
+          <div class="card-body">
+            <div class="action-item"><span class="dot dot-done"></span><div class="action-text">Google Workspace<span class="term-explain"> — корп. почта на домене Klyp, через неё доступы</span></div></div>
+            <div class="action-item"><span class="dot dot-done"></span><div class="action-text">Slack<span class="term-explain"> — основной мессенджер команды</span></div></div>
+            <div class="action-item"><span class="dot dot-done"></span><div class="action-text">Telegram — резервный канал</div></div>
+            <div class="action-item"><span class="dot dot-done"></span><div class="action-text">Влад<span class="term-explain"> — орг. процессы, бюджет, финансы, договоры</span></div></div>
+            <div class="action-item"><span class="dot dot-done"></span><div class="action-text">Понедельничные синки лидов<span class="term-explain"> — еженедельная встреча руководителей всех направлений</span></div></div>
+            <div class="action-item"><span class="dot dot-done"></span><div class="action-text">Компенсация AI-подписок — регламент на этой неделе</div></div>
+            <div class="action-item"><span class="dot dot-done"></span><div class="action-text">Бюджет на конкурентов — через Влада</div></div>
+          </div>
+
+          <div class="section-header">Продукт</div>
+          <div class="card-body">
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Позиционирование:</strong> НЕ микродрамы<span class="term-explain"> — не азиатский формат DramaBox/ReelShort</span>. Сериальный контент — связанные шорты.</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Publishing Console</strong><span class="term-explain"> — кабинет креатора, аналог YouTube Studio</span>: библиотека → аналитика → создание → заработки → рефералка</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Video Editor</strong>: контент по центру, управление справа. Вдохновение — Sims character editor<span class="term-explain"> — RPG-стиль: объект по центру, панель настроек сбоку</span></div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Файл-шеринг</strong><span class="term-explain"> — бесшовная передача файлов между AI-инструментами без скачивания/загрузки</span> = главный UX-дифференциатор</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Два уровня:</strong> новичок (guided path<span class="term-explain"> — пошаговый путь с подсказками</span>) и про (full customization) в одном интерфейсе</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Языки:</strong> 10-20 бесплатных, допязыки за деньги. Обложка: картинка + переводимый текст. Видео отдельно от аудио/субтитров.</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Загрузка своего контента</strong> — без доп. оплаты, только подписка на паблишинг</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Шеринг в соцсети</strong><span class="term-explain"> — кнопка публикации в Instagram/TikTok</span> — основной движок привлечения зрителей</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Монетизация:</strong> подписка на паблишинг (основная) + токены за AI-редактор (отдельно)</div></div>
+          </div>
+
+          <div class="section-header">Дизайн-решения</div>
+          <div class="card-body">
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Double Diamond</strong><span class="term-explain"> — процесс: исследование → сужение → прототип → итерации</span></div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text">Без брендинга на MVP. Функция > визуал.</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><strong>Токенизация цвета</strong><span class="term-explain"> — один параметр меняет весь цвет интерфейса</span>. Ч/Б прототипы + варианты.</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text">Избегать токсичных цветов. Ориентир — кино (Netflix, Кинопоиск).</div></div>
+            <div class="action-item"><span class="dot dot-active"></span><div class="action-text">Прототип помогает формировать бизнес-требования<span class="term-explain"> — требования не финальные, уточняются через прототипы</span></div></div>
+          </div>
+
+          <div class="section-header">Ключевые цитаты</div>
+          <div class="quote">Самая большая боль везде — изолированное общение с нейронками. Если мы пофиксим, мы будем в плане UX прямо выделяться.<span class="quote-author">— Ярослав</span></div>
+          <div class="quote">Бизнес-требования не до конца сформированы. Будет намного легче это делать, глядя на примерное что-то, что мы нарисовали.<span class="quote-author">— Ярослав</span></div>
+          <div class="quote">Мы связаны с сериальным контентом. Это просто шорты, которые не рандомно заполняют фид, а связаны по смыслу.<span class="quote-author">— Ярослав</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ REQUIREMENTS ═══════════ -->
+    <div class="page" id="page-requirements">
+      <div class="page-title">Требования</div>
+      <div class="page-desc">Все продуктовые требования, извлечённые из созвонов</div>
+
+      <div class="section-header">Publishing Console — 8 требований</div>
+      <div class="grid-2">
+        <div class="card req-card" data-p="critical">
+          <div class="card-header"><span class="req-id">REQ-PUB-001</span><span class="priority priority-critical">critical</span></div>
+          <div class="card-title" style="margin-top:6px">Библиотека тайтлов</div>
+          <div class="card-body">Главный экран. Все тайтлы<span class="term-explain"> — единицы контента, сериалы</span> с минимальной аналитикой. Клик → детали.</div>
+        </div>
+        <div class="card req-card" data-p="critical">
+          <div class="card-header"><span class="req-id">REQ-PUB-002</span><span class="priority priority-critical">critical</span></div>
+          <div class="card-title" style="margin-top:6px">Загрузка контента</div>
+          <div class="card-body">Свой контент без доп. оплаты. Выбор серий, расписание, файлы. Бесконечная догрузка.</div>
+        </div>
+        <div class="card req-card" data-p="high">
+          <div class="card-header"><span class="req-id">REQ-PUB-003</span><span class="priority priority-high">high</span></div>
+          <div class="card-title" style="margin-top:6px">Шеринг в соцсети</div>
+          <div class="card-body">Кнопка → Instagram, TikTok. Основной движок привлечения. Креатор выкладывает куски → приводит аудиторию.</div>
+        </div>
+        <div class="card req-card" data-p="high">
+          <div class="card-header"><span class="req-id">REQ-PUB-004</span><span class="priority priority-high">high</span></div>
+          <div class="card-title" style="margin-top:6px">Детальная аналитика</div>
+          <div class="card-body">Отдельный раздел. Best performing<span class="term-explain"> — самые успешные тайтлы</span>, зрители/месяц, пиковая аудитория, охват.</div>
+        </div>
+        <div class="card req-card" data-p="medium">
+          <div class="card-header"><span class="req-id">REQ-PUB-005</span><span class="priority priority-medium">medium</span></div>
+          <div class="card-title" style="margin-top:6px">Кабинет заработков</div>
+          <div class="card-body">Earnings dashboard<span class="term-explain"> — экран с данными о доходах креатора</span>. Детали не обсуждались.</div>
+        </div>
+        <div class="card req-card" data-p="medium">
+          <div class="card-header"><span class="req-id">REQ-PUB-006</span><span class="priority priority-medium">medium</span></div>
+          <div class="card-title" style="margin-top:6px">Реферальная система</div>
+          <div class="card-body">Две рефералки<span class="term-explain"> — механизм, где креатор получает бонус за привлечение</span>: креаторы + зрители. Не на главной.</div>
+        </div>
+        <div class="card req-card" data-p="critical">
+          <div class="card-header"><span class="req-id">REQ-PUB-007</span><span class="priority priority-critical">critical</span></div>
+          <div class="card-title" style="margin-top:6px">Языки и локализация</div>
+          <div class="card-body">10-20 языков бесплатно. Обложка: картинка + переводимый текст. Видео отдельно от аудио/субтитров.</div>
+        </div>
+        <div class="card req-card" data-p="high">
+          <div class="card-header"><span class="req-id">REQ-PUB-008</span><span class="priority priority-high">high</span></div>
+          <div class="card-title" style="margin-top:6px">Монетизация</div>
+          <div class="card-body">Подписка на паблишинг<span class="term-explain"> — основная, даёт право публиковать</span> + токены за редактор.</div>
+        </div>
+      </div>
+
+      <div class="section-header">Video Editor — 6 требований</div>
+      <div class="grid-2">
+        <div class="card req-card" data-p="high">
+          <div class="card-header"><span class="req-id">REQ-VID-001</span><span class="priority priority-high">high</span></div>
+          <div class="card-title" style="margin-top:6px">Layout</div>
+          <div class="card-body">Контент по центру, управление справа. Не prompt-first<span class="term-explain"> — не большая строка ввода внизу, как в ChatGPT</span>.</div>
+        </div>
+        <div class="card req-card" data-p="critical">
+          <div class="card-header"><span class="req-id">REQ-VID-002</span><span class="priority priority-critical">critical</span></div>
+          <div class="card-title" style="margin-top:6px">Файл-шеринг между AI</div>
+          <div class="card-body">Главный дифференциатор. Pipeline<span class="term-explain"> — цепочка обработки файла через несколько AI-сервисов</span> без скачивания/загрузки.</div>
+        </div>
+        <div class="card req-card" data-p="high">
+          <div class="card-header"><span class="req-id">REQ-VID-003</span><span class="priority priority-high">high</span></div>
+          <div class="card-title" style="margin-top:6px">Два уровня</div>
+          <div class="card-body">Новичок: guided path. Про: full customization. Один интерфейс, не два кабинета.</div>
+        </div>
+        <div class="card req-card" data-p="high">
+          <div class="card-header"><span class="req-id">REQ-VID-004</span><span class="priority priority-high">high</span></div>
+          <div class="card-title" style="margin-top:6px">Этапность</div>
+          <div class="card-body">Каждый этап = действие с файлом. Видишь: текущий файл, этап, действие.</div>
+        </div>
+        <div class="card req-card" data-p="high">
+          <div class="card-header"><span class="req-id">REQ-VID-005</span><span class="priority priority-high">high</span></div>
+          <div class="card-title" style="margin-top:6px">Языки в пайплайне</div>
+          <div class="card-body">Финальный этап: 10-20 языков, аудио + субтитры, обложка с переводом текста.</div>
+        </div>
+        <div class="card req-card" data-p="medium">
+          <div class="card-header"><span class="req-id">REQ-VID-006</span><span class="priority priority-medium">medium</span></div>
+          <div class="card-title" style="margin-top:6px">Монетизация</div>
+          <div class="card-body">Токены<span class="term-explain"> — внутренняя валюта за использование AI</span>. Подписки или прямая покупка.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ DECISIONS ═══════════ -->
+    <div class="page" id="page-decisions">
+      <div class="page-title">Решения</div>
+      <div class="page-desc">Что согласовано, что обсуждается</div>
+
+      <div class="section-header">Согласовано</div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Double Diamond</strong> — референсы → выбор → прототип → итерации<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>НЕ микродрамы</strong> — сериальный контент, связанные шорты<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Токенизация цвета</strong> — Ч/Б прототипы, один клик меняет цвет<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Без брендинга на MVP</strong> — функция > визуал<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Один интерфейс, два уровня</strong> — не два кабинета<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Файл-шеринг = главная фишка</strong> — бесшовный pipeline<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Sims editor = вдохновение</strong> — контент по центру, управление сбоку<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Скорость > детали</strong> — прототип формирует требования<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Паблишинг = приоритет №1</strong> — но начать с Video Editor<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Мультиязычность из коробки</strong> — 10-20 языков, обложка с переводом<div class="action-note">Созвон 06.04</div></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Загрузка своего контента</strong> — без доп. оплаты, только подписка<div class="action-note">Созвон 06.04</div></div></div>
+
+      <div class="section-header">Обсуждается</div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text"><strong>Промт-инпут: центр vs бок</strong> — оба варианта допустимы, нужно проработать<div class="action-note">Созвон 06.04</div></div></div>
+    </div>
+
+    <!-- ═══════════ ACTIONS ═══════════ -->
+    <div class="page" id="page-actions">
+      <div class="page-title">Action Items</div>
+      <div class="page-desc">Все задачи, сгруппированные по срочности</div>
+
+      <div class="section-header">До 8 апреля 2026</div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Собрать референсы Video Editor<div class="action-note">Syntax AI, Hixfield, Mira, Sims editor, RPG char creators</div></div><span class="action-badge">8 апр</span></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Собрать референсы Publishing Console<div class="action-note">YouTube Studio, Google Play Console, OnlyFans, Instagram Studio</div></div><span class="action-badge">8 апр</span></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Создать прототип Video Editor<div class="action-note">Layout, элементы, не интерактивный</div></div><span class="action-badge">8 апр</span></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Ч/Б + токенизированные цветовые варианты</div><span class="action-badge">8 апр</span></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Показать результат команде</div><span class="action-badge">8 апр</span></div>
+
+      <div class="section-header">Эта неделя</div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Ответить на опрос AI-подписок в Slack</div><span class="action-badge">неделя</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Получить прототип стриминга → оценить, дать фидбэк</div><span class="action-badge">ожидание</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Познакомиться с Владом<span class="term-explain"> — орг/финансы/договоры</span></div><span class="action-badge">ожидание</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Доступы: Workspace, Slack, Telegram</div><span class="action-badge">ожидание</span></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text">Изучить AI Drama Guide.docx</div><span class="action-badge">неделя</span></div>
+
+      <div class="section-header">С 13 апреля</div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Понедельничный синк лидов<span class="term-explain"> — еженедельная встреча руководителей</span></div><span class="action-badge">13 апр</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Итерации по фидбэку на прототип</div><span class="action-badge">после показа</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Начать Publishing часть</div><span class="action-badge">после VE</span></div>
+
+      <div class="section-header">Среднесрочные</div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Получить документ по миссии Klyp</div><span class="action-badge">ожидание</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Сформировать цветовое решение<span class="term-explain"> — data-driven, привязка к кино</span></div><span class="action-badge">позже</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Оформить доступы к конкурентам через Влада</div><span class="action-badge">позже</span></div>
+      <div class="action-item"><span class="dot dot-wait"></span><div class="action-text">Начать формировать дизайн-систему</div><span class="action-badge">по ходу</span></div>
+    </div>
+
+    <!-- ═══════════ TEAM ═══════════ -->
+    <div class="page" id="page-team">
+      <div class="page-title">Команда</div>
+      <div class="page-desc">Ключевые люди и роли</div>
+
+      <div class="card" style="margin-bottom:8px">
+        <div class="team-card">
+          <div class="team-avatar">АН</div>
+          <div><div class="team-name">Артём Николаев</div><div class="team-role">CEO / Founder<span class="term-explain"> — ex-Azur Games, 10B+ downloads</span></div></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:8px">
+        <div class="team-card">
+          <div class="team-avatar">ЯК</div>
+          <div><div class="team-name">Ярослав Коляда</div><div class="team-role">Head of Platform<span class="term-explain"> — руководитель, тех. архитектура, дизайн-стратегия</span></div></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:8px">
+        <div class="team-card">
+          <div class="team-avatar">ВП</div>
+          <div><div class="team-name">Валера Примачук</div><div class="team-role">Product<span class="term-explain"> — требования, приоритизация, 27 лет</span></div></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:8px">
+        <div class="team-card">
+          <div class="team-avatar">ВЛ</div>
+          <div><div class="team-name">Влад</div><div class="team-role">Finance / Ops<span class="term-explain"> — бюджеты, договоры, компенсации</span></div></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:8px">
+        <div class="team-card">
+          <div class="team-avatar">МК</div>
+          <div><div class="team-name">Максим Казадаев</div><div class="team-role">Designer, Streaming App<span class="term-explain"> — менее опытный, отдельный продукт</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ WORK PLAN ═══════════ -->
+    <div class="page" id="page-workplan">
+      <div class="page-title">Рабочий план</div>
+      <div class="page-desc">Пайплайн дизайна: от ресёрча до прототипа. Дедлайн: 8 апреля.</div>
+
+      <div class="section-header">Сейчас — Sprint 1 (6-8 апреля)</div>
+
+      <div class="pipeline-step">
+        <div class="step-num done">1</div>
+        <div class="step-content">
+          <div class="step-title">Ресёрч конкурентов и инструментов</div>
+          <div class="step-desc">60+ платформ проанализировано. ТОП-8 референсов для Video Editor, ТОП-6 для Publishing Console. Архитектура pipeline, паттерны двойного UI.</div>
+          <div class="step-tools"><span class="tag">done</span><span class="tag">4 research files</span><span class="tag">summary</span></div>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="step-num done">2</div>
+        <div class="step-content">
+          <div class="step-title">Stitch-промпты для визуальной генерации</div>
+          <div class="step-desc">4 промпта для Google Stitch: Video Editor, Library, Pipeline Monitor, Title Detail. Готовы к генерации.</div>
+          <div class="step-tools"><span class="tag">done</span><span class="tag">google-stitch-prompt-video-editor.md</span></div>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="step-num active">3</div>
+        <div class="step-content">
+          <div class="step-title">Reference Board — визуальный</div>
+          <div class="step-desc">Собрать скриншоты ключевых референсов (LTX Studio, Runway Workflows, CapCut, Mira, Sims editor). Каждый — с пояснением что берём и почему.</div>
+          <div class="step-tools"><span class="tag">в работе</span><span class="tag">browser automation</span><span class="tag">screenshots</span></div>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Wireframe Video Editor — HTML-прототип</div>
+          <div class="step-desc">3-колоночный layout. Assets слева, preview по центру (9:16), RPG-контролы справа. 6-stage pipeline внизу. Toggle Guided/Full Control.</div>
+          <div class="step-tools"><span class="tag">HTML</span><span class="tag">Tailwind</span><span class="tag">responsive</span><span class="tag">tokenized color</span></div>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Wireframe Publishing Console — Library</div>
+          <div class="step-desc">Grid карточек тайтлов с inline-метриками. Sidebar навигация. Фильтры, поиск, "+ New Title".</div>
+          <div class="step-tools"><span class="tag">HTML</span><span class="tag">grid layout</span><span class="tag">cards</span></div>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Цветовая токенизация</div>
+          <div class="step-desc">CSS custom properties. Ч/Б базовый → warm (cinema) → cool (tech). Один переключатель меняет весь интерфейс. Подготовка к MUI createTheme().</div>
+          <div class="step-tools"><span class="tag">CSS tokens</span><span class="tag">MUI theme</span><span class="tag">DTCG format</span></div>
+        </div>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <div class="step-title">Показ команде + итерации</div>
+          <div class="step-desc">Показать Ярославу и Валере. Собрать фидбэк. Итерировать. "Вот нарисовал за 2 дня, вот тут не углублялся".</div>
+          <div class="step-tools"><span class="tag">презентация</span><span class="tag">фидбэк</span><span class="tag">итерации</span></div>
+        </div>
+      </div>
+
+      <div class="section-header">Следующий — Sprint 2 (с 13 апреля)</div>
+      <div class="info-block">
+        <strong>10 апреля</strong> — синк с фронтами (Иван Шведков). Обсуждение MUI-компонентов, theme structure, токенов.<br>
+        <strong>13 апреля</strong> — первый понедельничный синк лидов.<br>
+        <strong>После фидбэка:</strong> Publishing Console детально, Title Detail page, Analytics, Earnings.
+      </div>
+    </div>
+
+    <!-- ═══════════ RESEARCH ═══════════ -->
+    <div class="page" id="page-research">
+      <div class="page-title">Ресёрч и референсы</div>
+      <div class="page-desc">60+ платформ проанализировано. Ключевые находки.</div>
+
+      <div class="info-block">
+        <strong>Главный вывод:</strong> Ни один конкурент не объединяет AI video creation + serial content workflow + publishing console + creator analytics. Это окно возможностей. Но "бесшовный pipeline" уже не уникален (Runway, Adobe, Krea). <strong>Уникальность = serial content + creator economy поверх pipeline.</strong>
+      </div>
+
+      <div class="section-header">ТОП референсы — Video Editor</div>
+      <table class="ref-table">
+        <tr><th>Платформа</th><th>Score</th><th>Что берём</th></tr>
+        <tr><td>LTX Studio</td><td><span class="ref-score">10/10</span></td><td>Полный production pipeline: script → storyboard → multi-model video → audio → export. Character Profiles<span class="term-explain"> — сохранённые персонажи для consistency между эпизодами</span></td></tr>
+        <tr><td>Runway Workflows</td><td><span class="ref-score">9/10</span></td><td>Node-based chaining<span class="term-explain"> — визуальное соединение инструментов в цепочку</span>, цветовая кодировка медиа-типов, LLM nodes</td></tr>
+        <tr><td>CapCut Video Studio</td><td><span class="ref-score">9/10</span></td><td>Timeline-free canvas, 6-stage pipeline, AI Agent инициирует процесс</td></tr>
+        <tr><td>Adobe Project Graph</td><td><span class="ref-score">9/10</span></td><td><strong>Capsules</strong><span class="term-explain"> — сложный pipeline упакованный в простую форму. Профи строит, новичок использует</span></td></tr>
+        <tr><td>InVideo AI</td><td><span class="ref-score">8/10</span></td><td>Лучший dual beginner/pro: prompt-to-video vs manual scene editor</td></tr>
+        <tr><td>ComfyUI</td><td><span class="ref-score">8/10</span></td><td>App View / Node View toggle<span class="term-explain"> — переключение между простым и продвинутым интерфейсом</span></td></tr>
+        <tr><td>Krea Nodes</td><td><span class="ref-score">8/10</span></td><td>Node Agent<span class="term-explain"> — AI строит pipeline из текстового описания пользователя</span></td></tr>
+        <tr><td>Pika (Pikascenes)</td><td><span class="ref-score">7/10</span></td><td>Visual scene composition: ingredients (char + obj + bg) → sliders → prompt</td></tr>
+      </table>
+
+      <div class="section-header">ТОП референсы — Publishing Console</div>
+      <table class="ref-table">
+        <tr><th>Платформа</th><th>Score</th><th>Что берём</th></tr>
+        <tr><td>YouTube Studio</td><td><span class="ref-score">9/10</span></td><td>Golden standard. Inline-метрики в библиотеке, upload flow, progressive disclosure<span class="term-explain"> — постепенное раскрытие сложности</span></td></tr>
+        <tr><td>StoReel Canvas</td><td><span class="ref-score">9/10</span></td><td>Прямой конкурент: tool + community + platform. Canvas не self-serve</td></tr>
+        <tr><td>Google Play Console</td><td><span class="ref-score">8/10</span></td><td>Goal-oriented навигация<span class="term-explain"> — навигация по целям, не по функциям</span>, AI action cards</td></tr>
+        <tr><td>Vigloo Studio</td><td><span class="ref-score">8/10</span></td><td>Первый creator dashboard в microdrama: Performance + Revenue + AI insights</td></tr>
+        <tr><td>TikTok Studio</td><td><span class="ref-score">7/10</span></td><td>Insight → Action proximity<span class="term-explain"> — кнопки действий рядом с аналитикой</span></td></tr>
+        <tr><td>OnlyFans</td><td><span class="ref-score">7/10</span></td><td>Модель creator→audience, простота upload, Jakob's Law<span class="term-explain"> — пользователь ожидает знакомые паттерны</span></td></tr>
+      </table>
+
+      <div class="section-header">Угрозы</div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><span class="threat-high">HIGH</span> — <strong>Volcano Drama Creator (ByteDance)</strong>. Seedance 2.0 + TikTok дистрибуция. Если откроют для внешних creators — прямой удар.<div class="action-note">Защита: скорость выхода на рынок.</div></div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><span class="threat-medium">MEDIUM</span> — <strong>StoReel Canvas</strong>. $34M funding, 100 AI dramas/мес к концу 2026. Но Canvas internal, не self-serve.</div></div>
+      <div class="action-item"><span class="dot dot-active"></span><div class="action-text"><span class="threat-medium">MEDIUM</span> — <strong>Runway Workflows</strong> commoditizing pipelines. Pipeline как таковой уже не дифференциатор.</div></div>
+
+      <div class="section-header">6 уникальных дифференциаторов Klyp</div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Serial Content Pipeline</strong> — episode templates, character persistence, season management, batch generation</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Creation → Publishing единый flow</strong> — из Video Editor прямо в Library → schedule → publish</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Built-in Social Sharing</strong> — share to TikTok/Instagram прямо из кабинета</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Localization-first</strong> — 10-20 языков, обложки с раздельным image/text</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Dual Referral</strong> — creator→creator + creator→viewer</div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Files Stay on Servers</strong> — zero download/reupload friction</div></div>
+
+      <div class="section-header">Полные отчёты (файлы)</div>
+      <div class="info-block" style="font-family:var(--mono);font-size:.8rem;line-height:2">
+        Claude/research-ai-video-tools.md<span style="color:var(--ink-4)"> — 16+ AI video tools</span><br>
+        Claude/research-ai-video-platforms.md<span style="color:var(--ink-4)"> — 16+ конкурентов</span><br>
+        Claude/research-ai-pipelines.md<span style="color:var(--ink-4)"> — 27 pipeline-инструментов</span><br>
+        Claude/research-creator-studios.md<span style="color:var(--ink-4)"> — 11 creator studio UI</span><br>
+        Claude/research-summary.md<span style="color:var(--ink-4)"> — сводка всего</span>
+      </div>
+    </div>
+
+    <!-- ═══════════ ARCHITECTURE ═══════════ -->
+    <div class="page" id="page-architecture">
+      <div class="page-title">Архитектура</div>
+      <div class="page-desc">Layout, pipeline, режимы — синтез из ресёрча</div>
+
+      <div class="section-header">Video Editor — Layout</div>
+      <div class="arch-box">┌──────────────────────────────────────────────────┐
+│  [Stage 1] [Stage 2] [Stage 3] [Stage 4] [5] [6]│  ← Stage navigation
+├────────┬────────────────────────┬─────────────────┤
+│        │                        │                 │
+│ Assets │    CONTENT PREVIEW     │   CONTROLS      │
+│ Layers │    (vertical video)    │   (RPG sliders) │
+│ History│    9:16 centered       │   Parameters    │
+│        │                        │   Model select  │
+│        │                        │   AI suggestions│
+│        │                        │                 │
+├────────┴────────────────────────┴─────────────────┤
+│  [ Pipeline Monitor: Script ✓ → Scenes ✓ → ◐ ]  │  ← Bottom
+└──────────────────────────────────────────────────┘</div>
+
+      <div class="section-header">6-Stage Pipeline (MVP)</div>
+      <div class="grid-2">
+        <div class="card"><div class="card-title">1. Character/Asset Setup</div><div class="card-body">Character Profiles<span class="term-explain"> — сохранённые персонажи</span> для consistency в серии. Новичок выбирает из готовых, про создаёт с нуля.</div></div>
+        <div class="card"><div class="card-title">2. Scene Composition</div><div class="card-body">Ingredients drag & drop<span class="term-explain"> — перетаскивание элементов</span>: character + object + background. Как Pika Pikascenes.</div></div>
+        <div class="card"><div class="card-title">3. AI Generation</div><div class="card-body">Multi-model selection<span class="term-explain"> — выбор лучшей AI-модели под задачу</span>. Kling для motion, Runway для стиля, Fast для превью.</div></div>
+        <div class="card"><div class="card-title">4. Refinement</div><div class="card-body">Parametric controls<span class="term-explain"> — ползунки и дропдауны</span>: camera, motion, lighting. RPG-стиль, как в Sims.</div></div>
+        <div class="card"><div class="card-title">5. Audio/Voice</div><div class="card-body">Generation + sync + multilingual. 10-20 языков. Субтитры автоматически.</div></div>
+        <div class="card"><div class="card-title">6. Assembly & Export</div><div class="card-body">Прямо в Library для публикации. Обложка: image + переводимый текст.</div></div>
+      </div>
+
+      <div class="section-header">Beginner/Pro — один UI, два режима</div>
+      <div class="info-block">
+        <strong>Паттерн Capsules (Adobe Project Graph):</strong> профи строит pipeline → упаковывает в Recipe → новичок использует Recipe как простую форму.<br><br>
+        <strong>Beginner (Guided):</strong> AI Director выбирает модели и настройки. Каждый stage = одно действие. Template-based.<br>
+        <strong>Pro (Full Control):</strong> все parameters visible. Manual model selection. Custom pipeline.<br>
+        <strong>Toggle:</strong> кнопка "Guided / Full Control" в top bar. Beginner видит simplified subset того же canvas.
+      </div>
+
+      <div class="section-header">Prompt Interface — НЕ chatbot</div>
+      <div class="arch-box">Scene Ingredients (visual, drag & drop)
+  → Sliders (parametric, RPG-like)
+    → Text prompt (fine-tuning, optional)
+
+Ingredients first → Sliders second → Text prompt last.</div>
+
+      <div class="section-header">Publishing Console — Навигация</div>
+      <div class="arch-box">Dashboard         — обзор
+Library (ГЛАВНЫЙ) — grid/list/calendar views
+  ├── Title Detail → серии, аналитика, preview, sharing
+  └── Upload / Add Series
+Video Editor      — переход в создание
+Analytics         — hero metrics + recommendations
+Earnings          — revenue + payouts + churn
+Referral          — creators + viewers
+Settings</div>
+
+      <div class="section-header">5 паттернов для внедрения</div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Progressive Disclosure + Inline-метрики</strong> (YouTube)<span class="term-explain"> — карточки тайтлов с ключевыми метриками, детали по клику</span></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Goal-Oriented Navigation</strong> (Google Play)<span class="term-explain"> — навигация по целям (опубликовать, проанализировать), не по функциям</span></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Insight → Action Proximity</strong> (TikTok)<span class="term-explain"> — кнопка "Поделиться" прямо рядом с графиком роста</span></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Content Calendar</strong> (Instagram + OnlyFans)<span class="term-explain"> — визуальное расписание серий на календаре</span></div></div>
+      <div class="action-item"><span class="dot dot-done"></span><div class="action-text"><strong>Transparent Earnings</strong> (Patreon)<span class="term-explain"> — gross → fees → net, понятная воронка дохода</span></div></div>
+
+      <div class="section-header">5 антипаттернов — чего избегать</div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text"><strong>Data Overload</strong> — max 3-5 hero metrics, остальное через progressive disclosure</div></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text"><strong>Rigid Timelines</strong> — гибкий date picker + маркеры событий, не фиксированная шкала</div></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text"><strong>Broken Navigation</strong> — persistent breadcrumbs, предсказуемый back</div></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text"><strong>Feed-Only Content</strong> — структурированная библиотека (Title → Season → Episode), не бесконечный скролл</div></div>
+      <div class="action-item"><span class="dot dot-todo"></span><div class="action-text"><strong>Social Comparison</strong> — self-comparison only, milestone celebrations</div></div>
+    </div>
+
+    <!-- ═══════════ STITCH PROMPTS ═══════════ -->
+    <div class="page" id="page-stitch">
+      <div class="page-title">Stitch-промпты</div>
+      <div class="page-desc">Готовые промпты для Google Stitch. Копируй и вставляй.</div>
+
+      <div class="info-block">
+        <strong>Как использовать:</strong> Открой Google Stitch → вставь текст из секции PROMPT → сгенерируй. При необходимости разбей на несколько генераций по экранам. Файл-источник: <code>Claude/google-stitch-prompt-video-editor.md</code>
+      </div>
+
+      <details class="prompt-block">
+        <summary>1. Video Editor — полный layout</summary>
+        3-колоночный layout. Left: Assets/Layers/History. Center: 9:16 preview + 6-stage pipeline. Right: RPG controls + model selector + prompt.<br><br>
+        Ключевые элементы:<br>
+        • Toggle "Guided / Full Control" в top bar<br>
+        • Scene Ingredients: карточки Character, Object, Background (drag & drop)<br>
+        • Parametric sliders: Motion Intensity, Camera, Duration, Style<br>
+        • Model selector: pills для Kling, Runway, Fast<br>
+        • Text prompt = secondary, внизу, optional<br>
+        • Pipeline: Characters ✓ → Scene ✓ → Generate ◐ 67% → Refine ○ → Audio ○ → Export ○<br>
+        • Цветовая кодировка: orange=text, pink=image, green=video, purple=audio
+        <pre>Полный промпт → Claude/google-stitch-prompt-video-editor.md → секция "PROMPT (Full Video Editor)"</pre>
+      </details>
+
+      <details class="prompt-block">
+        <summary>2. Publishing Console — Library</summary>
+        Grid карточек тайтлов. Sidebar навигация (Dashboard, Library, Editor, Analytics, Earnings, Referral, Settings).<br><br>
+        Ключевые элементы:<br>
+        • View toggle: Grid / List / Calendar<br>
+        • Filter pills: All, Published, Scheduled, Draft<br>
+        • Карточка: 9:16 thumbnail, title, status badge, inline metrics (views, trend arrow), episode count<br>
+        • Social sharing icons на каждой карточке<br>
+        • "+ New Title" primary button
+        <pre>Полный промпт → Claude/google-stitch-prompt-video-editor.md → секция "PROMPT (Publishing Console — Library)"</pre>
+      </details>
+
+      <details class="prompt-block">
+        <summary>3. Pipeline Monitor — детальный progress</summary>
+        Горизонтальная полоса с 6 connected stages. Expanded detail для активного stage.<br><br>
+        Ключевые элементы:<br>
+        • Completed: checkmark, subtle green<br>
+        • Active: pulsing accent, progress %, spinning indicator<br>
+        • Detail: "Generating with Kling AI...", 67%, ~45 sec remaining<br>
+        • Thumbnail preview (low-res, updating)<br>
+        • "Cancel" и "Try Different Model" buttons<br>
+        • Connecting lines — gradient-colored
+        <pre>Полный промпт → Claude/google-stitch-prompt-video-editor.md → секция "PROMPT (Pipeline Monitor Detail)"</pre>
+      </details>
+
+      <details class="prompt-block">
+        <summary>4. Title Detail Page</summary>
+        Страница тайтла из Library. Cover + info + inline analytics + episode list.<br><br>
+        Ключевые элементы:<br>
+        • Cover image + title info + status + languages (EN, ES, FR + 12 more)<br>
+        • Action buttons: "Add Episode", "Share to TikTok", "Share to Instagram"<br>
+        • 4 metric cards: Views 45.2K (↑23%), Viewers 12.1K, Watch Time 2m34s, Revenue $342.50<br>
+        • Sparkline chart (30 days)<br>
+        • Episode table: # | Thumb | Name | Status | Views | Date | Actions<br>
+        • Drag-and-drop reorder<br>
+        • Insight → Action proximity: "Share" рядом с хорошими метриками
+        <pre>Полный промпт → Claude/google-stitch-prompt-video-editor.md → секция "PROMPT (Title Detail Page)"</pre>
+      </details>
+
+      <div class="section-header">Тех-стек для прототипа</div>
+      <div class="info-block">
+        <strong>Утверждённый стек:</strong> React + TypeScript + Vite + MUI + SCSS + Redux Toolkit + RTK Query<br>
+        <strong>Иконки:</strong> MUI Icons / Phosphor / Lucide<br>
+        <strong>Токены:</strong> W3C DTCG standard → JSON → MUI <code>createTheme()</code><br>
+        <strong>Синк с фронтами:</strong> четверг, 10 апреля (Иван Шведков)
+      </div>
+    </div>
+
+    <!-- ═══════════ REFERENCE BOARD ═══════════ -->
+    <div class="page" id="page-refboard">
+      <div class="page-title">Reference Board</div>
+      <div class="page-desc">Визуальный анализ конкурентов. Кликни по картинке — откроется на полный экран.</div>
+
+      <div class="section-header">Video Editor — Layout и Pipeline</div>
+      <div class="ref-grid">
+        <div class="ref-card"><img src="_screenshots/ltx-studio-elements-storyboard.webp" alt="LTX Pipeline"><div class="ref-card-body"><div class="ref-card-title">Full Production Pipeline</div><div class="ref-card-platform">LTX Studio — 10/10</div><div class="ref-card-text">Settings → Elements → Scenes → Generate Storyboard. <em>Главный архитектурный референс.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: 6-stage pipeline</span><span class="tag tag-take">берём: Character Profiles</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/ltx-studio-storyboard-view.webp" alt="LTX Storyboard"><div class="ref-card-body"><div class="ref-card-title">Storyboard — Scene Cards</div><div class="ref-card-platform">LTX Studio</div><div class="ref-card-text">Shot cards с @character mentions. Edit Image / Generate Video на карточке.</div><div class="ref-card-tags"><span class="tag tag-take">берём: shot cards</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/ltx-studio-auto-element-creation.webp" alt="LTX Character"><div class="ref-card-body"><div class="ref-card-title">Character Profiles</div><div class="ref-card-platform">LTX Studio</div><div class="ref-card-text">Edit Element: Name, Source Image, тип Character/Object. <em>Критично для serial content.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: character persistence</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/ltx-studio-model-aspect-ratio.webp" alt="LTX Models"><div class="ref-card-body"><div class="ref-card-title">Model Selector</div><div class="ref-card-platform">LTX Studio</div><div class="ref-card-text">Nano Banana Pro, FLUX.2 Max/Flex + aspect ratio. <em>Multi-model approach.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: multi-model selector</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/runway-workflows-why-03.png" alt="Runway Pipeline"><div class="ref-card-body"><div class="ref-card-title">Node-based Pipeline</div><div class="ref-card-platform">Runway Workflows — 9/10</div><div class="ref-card-text">Text → Image → Gen-4 Image → Video. <em>Паттерн бесшовного файл-шеринга.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: visual pipeline</span><span class="tag tag-take">берём: файл-шеринг</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/runway-workflows-building-02.png" alt="Runway Nodes"><div class="ref-card-body"><div class="ref-card-title">Connected Nodes</div><div class="ref-card-platform">Runway Workflows</div><div class="ref-card-text">Image prompt → Image generation → Video generation с labels.</div><div class="ref-card-tags"><span class="tag">node connections</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/runway-workflows-why-02.png" alt="Runway Templates"><div class="ref-card-body"><div class="ref-card-title">Workflow Templates (Capsules)</div><div class="ref-card-platform">Runway Workflows</div><div class="ref-card-text">Готовые шаблоны. <em>Профи строит → новичок использует как рецепт.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: Capsules pattern</span><span class="tag tag-take">берём: beginner/pro</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/krea-nodes.png" alt="Krea Nodes"><div class="ref-card-body"><div class="ref-card-title">Node Agent — AI строит pipeline</div><div class="ref-card-platform">Krea Nodes — 8/10</div><div class="ref-card-text">Inspiration → ChatGPT Image → Seedance Video. <em>AI помощник строит pipeline.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: AI-assisted building</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/krea-nodes-dark.webp" alt="Krea Pipeline"><div class="ref-card-body"><div class="ref-card-title">Pipeline с ценами за шаг</div><div class="ref-card-platform">Krea Nodes</div><div class="ref-card-text">Krea-1 (6 CU) → Enhance → Hailuo (222 CU). <em>Прозрачная стоимость = trust.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: cost transparency</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/capcut-pipeline.png" alt="CapCut"><div class="ref-card-body"><div class="ref-card-title">Scenes View — Stages</div><div class="ref-card-platform">CapCut — 9/10</div><div class="ref-card-text">Script/Scenes/Elements/Music. Voiceover/Media/Avatar. <em>Ближайший аналог stages view.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: stage tabs</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/pika-editor.png" alt="Pika"><div class="ref-card-body"><div class="ref-card-title">Pikascenes — Ingredients</div><div class="ref-card-platform">Pika — 7/10</div><div class="ref-card-text">Visual scene composition: ingredients → слайдеры → промт.</div><div class="ref-card-tags"><span class="tag tag-take">берём: ingredients approach</span></div></div></div>
+      </div>
+
+      <div class="section-header">RPG Controls — правая панель</div>
+      <div class="ref-grid">
+        <div class="ref-card"><img src="_screenshots/sims-character-editor.png" alt="Sims CAS"><div class="ref-card-body"><div class="ref-card-title">Create-a-Sim</div><div class="ref-card-platform">Sims 4 — UX-вдохновение</div><div class="ref-card-text">Персонаж по центру, категории слева, управление сверху/снизу. <em>Паттерн Ярослава для Video Editor.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: center + side controls</span><span class="tag tag-take">берём: parametric UI</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/sims-cas-detail.png" alt="Sims Detail"><div class="ref-card-body"><div class="ref-card-title">Detail Controls</div><div class="ref-card-platform">Sims 4</div><div class="ref-card-text">Крупный план + пресеты справа. <em>Progressive disclosure: общее → детали.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: progressive detail</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/runway-gen4-character-grid.png" alt="Character Grid"><div class="ref-card-body"><div class="ref-card-title">Character Consistency</div><div class="ref-card-platform">Runway Gen-4</div><div class="ref-card-text">6 кадров одного персонажа в разных сценах. <em>Один персонаж, много эпизодов.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: consistency validation</span></div></div></div>
+      </div>
+
+      <div class="section-header">Publishing Console — Creator Dashboards</div>
+      <div class="ref-grid">
+        <div class="ref-card"><img src="_screenshots/youtube-studio-library.png" alt="YouTube Dashboard"><div class="ref-card-body"><div class="ref-card-title">Channel Dashboard</div><div class="ref-card-platform">YouTube Studio — 9/10</div><div class="ref-card-text">Sidebar nav, latest video performance, channel analytics. <em>Golden standard.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: sidebar nav</span><span class="tag tag-take">берём: inline analytics</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/youtube-studio-content-list.png" alt="YouTube Content"><div class="ref-card-body"><div class="ref-card-title">Content Tab</div><div class="ref-card-platform">YouTube Studio</div><div class="ref-card-text">Videos, Shorts, Live, Playlists. Table + filters.</div><div class="ref-card-tags"><span class="tag tag-take">берём: content tabs</span><span class="tag tag-take">берём: table + filters</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/youtube-studio-analytics.png" alt="YouTube Analytics"><div class="ref-card-body"><div class="ref-card-title">Analytics Dashboard</div><div class="ref-card-platform">YouTube Studio</div><div class="ref-card-text">KPI-карточки, графики, Top 10, income, demographics.</div><div class="ref-card-tags"><span class="tag tag-take">берём: KPI cards + charts</span></div></div></div>
+        <div class="ref-card"><img src="_screenshots/google-play-console.png" alt="Google Play"><div class="ref-card-body"><div class="ref-card-title">Goal-Oriented Dashboard</div><div class="ref-card-platform">Google Play Console — 8/10</div><div class="ref-card-text">KPI: audience, growth, visitors, DAU/MAU. <em>Навигация по целям.</em></div><div class="ref-card-tags"><span class="tag tag-take">берём: goal-oriented nav</span></div></div></div>
+      </div>
+
+      <div class="verdict-box">
+        <strong>Синтез для Klyp:</strong><br><br>
+        <strong>Video Editor Layout:</strong> LTX pipeline + Sims controls + Runway nodes<br>
+        <strong>Левая:</strong> Assets/Characters/History (LTX)<br>
+        <strong>Центр:</strong> 9:16 preview (Sims center object)<br>
+        <strong>Правая:</strong> Ingredients → Sliders → Prompt (Pika + Sims)<br>
+        <strong>Низ:</strong> 6-stage monitor (LTX + Runway + CapCut)<br>
+        <strong>Режимы:</strong> Capsules (Runway) + Toggle (ComfyUI)<br><br>
+        <strong>Publishing Console:</strong><br>
+        <strong>Library:</strong> YouTube Content tab<br>
+        <strong>Analytics:</strong> YouTube KPIs + Google Play goals<br>
+        <strong>Title Detail:</strong> YouTube video + TikTok action proximity
+      </div>
+    </div>
+
+    <!-- ═══════════ HOW IT WORKS ═══════════ -->
+    <div class="page" id="page-howto">
+      <div class="page-title">Как это работает</div>
+      <div class="page-desc">Архитектура, обновление, масштабирование</div>
+
+      <div class="section-header">Архитектура</div>
+      <div class="info-block">
+        <strong>Этот дашборд</strong> — статичный HTML-файл с встроенными данными. Он НЕ подтягивает данные автоматически из markdown. Данные захардкожены внутри HTML.<br><br>
+        <strong>Source of truth</strong><span class="term-explain"> — единственный источник правды</span> — это markdown-файлы:<br>
+        • <code>Созвоны/</code> — протоколы встреч<br>
+        • <code>Requirements/</code> — продуктовые требования<br>
+        • <code>ACTION-ITEMS.md</code> — задачи<br><br>
+        <strong>Obsidian Dashboard</strong> — отдельный файл <code>Dashboard.md</code> в Obsidian. Он использует Dataview-запросы и подтягивает данные автоматически из YAML frontmatter<span class="term-explain"> — метаданные в начале каждого markdown-файла</span>. Создал новую заметку → она сразу в таблице.
+      </div>
+
+      <div class="section-header">Как обновлять</div>
+      <div class="info-block">
+        <strong>После созвона:</strong><br>
+        1. Скажи Claude <code>обработай созвон</code> + вставь транскрипт<br>
+        2. Claude создаст markdown в <code>Созвоны/</code><br>
+        3. Claude обновит Obsidian<br>
+        4. Скажи <code>обнови дашборд</code> → Claude перегенерирует этот HTML<br><br>
+        <strong>Новая задача:</strong><br>
+        • Добавляется в <code>ACTION-ITEMS.md</code> и в этот HTML при обновлении<br><br>
+        <strong>Obsidian (автоматически):</strong><br>
+        • Создаёшь заметку по шаблону (Ctrl+N → Templater) → она сразу в Dashboard.md<br>
+        • Нужны плагины: <strong>Dataview</strong>, <strong>Templater</strong>, <strong>Homepage</strong>
+      </div>
+
+      <div class="section-header">Как масштабируется</div>
+      <div class="info-block">
+        <strong>Созвоны:</strong> каждый новый созвон → новый пункт в сайдбаре + раскрывающаяся карточка на странице "Созвоны". Не отдельная HTML-страница — всё в одном файле с навигацией.<br><br>
+        <strong>Требования:</strong> новые REQ-* карточки добавляются в грид. При росте до 30+ можно добавить фильтрацию и поиск.<br><br>
+        <strong>Action Items:</strong> список растёт вниз, группировка по срочности сохраняется.<br><br>
+        <strong>Когда файлов станет 50+:</strong> переход на Astro<span class="term-explain"> — генератор статических сайтов, автоматически читает markdown</span> или MkDocs Material<span class="term-explain"> — генератор docs-сайтов из markdown</span>. Те же markdown-файлы, но автогенерация без ручного обновления.
+      </div>
+
+      <div class="section-header">Структура файлов</div>
+      <div class="info-block" style="font-family:var(--mono);font-size:.7rem;line-height:2">
+        D:/1Design/Klyp/<br>
+        ├── dashboard.html<span style="color:var(--ink-3)"> ← этот файл</span><br>
+        ├── ACTION-ITEMS.md<br>
+        ├── CLAUDE.md<br>
+        ├── Созвоны/<br>
+        │   ├── 2026-04-06-onboarding.md<br>
+        │   └── README.md<br>
+        ├── Requirements/<br>
+        │   ├── publishing-console.md<br>
+        │   ├── video-editor.md<br>
+        │   ├── design-decisions.md<br>
+        │   └── positioning.md<br>
+        └── Claude/<span style="color:var(--ink-3)"> ← исследования, артефакты</span><br>
+        <br>
+        d:/D/hater obsidian/01-Проекты/Klyp/<br>
+        ├── Dashboard.md<span style="color:var(--ink-3)"> ← Obsidian auto-dashboard</span><br>
+        ├── _templates/<span style="color:var(--ink-3)"> ← шаблоны Templater</span><br>
+        └── *.md<span style="color:var(--ink-3)"> ← зеркало ключевых документов</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

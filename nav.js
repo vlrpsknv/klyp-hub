@@ -121,8 +121,32 @@ function buildNav() {
   // Footer
   const footer = document.createElement('div');
   footer.className = 'sidebar-footer';
-  footer.innerHTML = 'Обновлено 6 апр 2026<br>Klyp Design Hub';
+  footer.innerHTML = 'Обновлено 7 апр 2026<br>Klyp Design Hub';
   sidebar.appendChild(footer);
+
+  // Desktop collapse button
+  const collapseBtn = document.createElement('button');
+  collapseBtn.className = 'sidebar-collapse-btn';
+  collapseBtn.id = 'sidebar-collapse-btn';
+  collapseBtn.setAttribute('aria-label', 'Toggle sidebar');
+  collapseBtn.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg>';
+
+  collapseBtn.addEventListener('click', () => {
+    const isCollapsed = document.body.classList.toggle('sidebar-collapsed');
+    localStorage.setItem('klyp-sidebar', isCollapsed ? 'collapsed' : 'expanded');
+  });
+
+  // Restore saved state
+  if (localStorage.getItem('klyp-sidebar') === 'collapsed') {
+    document.body.classList.add('sidebar-collapsed');
+  }
+
+  // Keyboard shortcut: [ to toggle sidebar
+  document.addEventListener('keydown', e => {
+    if (e.key === '[' && !e.ctrlKey && !e.metaKey && !['INPUT','TEXTAREA'].includes(e.target.tagName)) {
+      collapseBtn.click();
+    }
+  });
 
   // Mobile toggle button
   const toggle = document.createElement('button');
@@ -145,6 +169,7 @@ function buildNav() {
 
   document.body.prepend(overlay);
   document.body.prepend(toggle);
+  document.body.prepend(collapseBtn);
   document.body.prepend(sidebar);
 }
 

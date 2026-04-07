@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klyp — Competitive Research Dashboard</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #08080C;
+  --surface: #111116;
+  --raised: #1A1A21;
+  --elevated: #24242D;
+  --border: #2A2A35;
+  --text-1: #F0F0F3;
+  --text-2: #A0A0A8;
+  --text-3: #6B6B73;
+  --accent: #E8913A;
+  --accent-dim: #E8913A33;
+  --green: #3ECF6A;
+  --red: #E84057;
+  --blue: #4A90D9;
+  --purple: #9B6BDF;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- NAV --- */
+.topnav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex; align-items: center; gap: 32px;
+  height: 56px;
+  backdrop-filter: blur(12px);
+}
+.topnav .logo { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; color: var(--accent); flex-shrink: 0; }
+.topnav .tabs { display: flex; gap: 4px; overflow-x: auto; }
+.topnav .tab {
+  padding: 8px 16px; font-size: 13px; font-weight: 500; color: var(--text-3);
+  cursor: pointer; border-radius: 6px; white-space: nowrap; transition: all .15s;
+  border: none; background: none;
+}
+.topnav .tab:hover { color: var(--text-2); background: var(--raised); }
+.topnav .tab.active { color: var(--text-1); background: var(--elevated); }
+
+/* --- SECTIONS --- */
+.section { display: none; padding: 32px; max-width: 1400px; margin: 0 auto; }
+.section.active { display: block; }
+.section h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+.section .subtitle { color: var(--text-3); font-size: 14px; margin-bottom: 32px; }
+
+/* --- SUMMARY --- */
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+.stat-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px;
+}
+.stat-card .num { font-size: 36px; font-weight: 800; letter-spacing: -1px; color: var(--accent); }
+.stat-card .label { font-size: 13px; color: var(--text-3); margin-top: 4px; }
+
+.insight-block {
+  background: var(--surface); border-left: 3px solid var(--accent);
+  padding: 20px 24px; border-radius: 0 10px 10px 0; margin-bottom: 16px;
+}
+.insight-block h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.insight-block p { font-size: 14px; color: var(--text-2); }
+
+/* --- PLATFORMS --- */
+.platform-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.platform-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; cursor: pointer; transition: all .2s;
+}
+.platform-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.platform-card .card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.platform-card .card-head h3 { font-size: 16px; font-weight: 700; }
+.platform-card .score {
+  background: var(--accent-dim); color: var(--accent); padding: 4px 10px;
+  border-radius: 20px; font-size: 13px; font-weight: 700;
+}
+.platform-card .desc { font-size: 13px; color: var(--text-2); margin-bottom: 12px; }
+.platform-card .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.platform-card .tag {
+  font-size: 11px; padding: 3px 8px; border-radius: 4px;
+  background: var(--raised); color: var(--text-3); border: 1px solid var(--border);
+}
+.tag.adopt { background: #3ECF6A18; color: var(--green); border-color: #3ECF6A33; }
+.tag.avoid { background: #E8405718; color: var(--red); border-color: #E8405733; }
+
+/* --- PLATFORM DETAIL MODAL --- */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: #000000CC; overflow-y: auto; padding: 40px 20px;
+}
+.modal-overlay.open { display: flex; justify-content: center; }
+.modal-content {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 14px;
+  max-width: 900px; width: 100%; padding: 32px; position: relative;
+  max-height: 90vh; overflow-y: auto;
+}
+.modal-close {
+  position: sticky; top: 0; float: right; background: var(--elevated); border: none;
+  color: var(--text-2); width: 36px; height: 36px; border-radius: 8px; cursor: pointer;
+  font-size: 18px; z-index: 10;
+}
+.modal-close:hover { background: var(--accent); color: var(--bg); }
+.detail-section { margin-bottom: 24px; }
+.detail-section h4 { font-size: 14px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.detail-section p, .detail-section li { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+.detail-section ul { padding-left: 20px; }
+.detail-section li { margin-bottom: 4px; }
+.pro { color: var(--green); }
+.con { color: var(--red); }
+.screenshot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; }
+.screenshot-grid img {
+  width: 100%; border-radius: 6px; border: 1px solid var(--border);
+  cursor: pointer; transition: transform .2s;
+}
+.screenshot-grid img:hover { transform: scale(1.03); }
+
+/* --- MATRIX --- */
+.matrix-wrap { overflow-x: auto; margin-bottom: 32px; }
+.matrix {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  font-size: 12px; background: var(--surface); border-radius: 10px; overflow: hidden;
+}
+.matrix th {
+  position: sticky; top: 56px; background: var(--elevated);
+  padding: 10px 8px; text-align: left; font-weight: 600; color: var(--text-2);
+  border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.matrix th:first-child { position: sticky; left: 0; z-index: 10; background: var(--elevated); min-width: 140px; }
+.matrix td {
+  padding: 8px; border-bottom: 1px solid var(--border); color: var(--text-3);
+  vertical-align: top; min-width: 100px;
+}
+.matrix td:first-child { position: sticky; left: 0; background: var(--surface); font-weight: 600; color: var(--text-2); }
+.matrix td:last-child { color: var(--accent); font-weight: 500; }
+.matrix tr:hover td { background: var(--raised); }
+.matrix tr:hover td:first-child { background: var(--raised); }
+
+/* --- PATTERNS --- */
+.pattern-list { display: flex; flex-direction: column; gap: 12px; }
+.pattern-item {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; display: grid; grid-template-columns: 48px 1fr; gap: 16px;
+}
+.pattern-item .idx {
+  width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 20px;
+}
+.pattern-item.adopt .idx { background: var(--green); color: var(--bg); }
+.pattern-item.avoid .idx { background: var(--red); color: #fff; }
+.pattern-item h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.pattern-item .source { font-size: 12px; color: var(--accent); margin-bottom: 6px; }
+.pattern-item p { font-size: 13px; color: var(--text-2); }
+
+/* --- BLUEPRINT --- */
+.blueprint { background: var(--surface); border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+.blueprint pre {
+  font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px;
+  color: var(--accent); line-height: 1.5; overflow-x: auto; white-space: pre;
+}
+
+/* --- IMAGE LIGHTBOX --- */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: #000000EE; cursor: zoom-out; padding: 40px;
+  justify-content: center; align-items: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 95vw; max-height: 90vh; border-radius: 8px; object-fit: contain; }
+
+@media (max-width: 768px) {
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .platform-grid { grid-template-columns: 1fr; }
+  .topnav { padding: 0 16px; gap: 16px; }
+  .section { padding: 20px; }
+}
+</style>
+</head>
+<body data-page="research-dashboard">
+<div class="shell">
+<div class="main" style="padding:0;">
+
+<nav class="topnav">
+  <div class="logo">Klyp Research</div>
+  <div class="tabs">
+    <button class="tab active" onclick="showSection('summary')">Сводка</button>
+    <button class="tab" onclick="showSection('platforms')">Платформы</button>
+    <button class="tab" onclick="showSection('matrix')">Матрица</button>
+    <button class="tab" onclick="showSection('patterns')">Паттерны</button>
+    <button class="tab" onclick="showSection('antipatterns')">Антипаттерны</button>
+    <button class="tab" onclick="showSection('differentiators')">Дифференциаторы</button>
+    <button class="tab" onclick="showSection('blueprint')">Blueprint</button>
+  </div>
+</nav>
+
+<!-- ========== SUMMARY ========== -->
+<div id="summary" class="section active">
+  <h1>Конкурентный анализ AI Video Creation</h1>
+  <p class="subtitle">60+ платформ проанализировано, 13 детально поэкранно. Апрель 2026.</p>
+
+  <div class="stat-row">
+    <div class="stat-card"><div class="num">60+</div><div class="label">Платформ исследовано</div></div>
+    <div class="stat-card"><div class="num">13</div><div class="label">Детальных поэкранных ревью</div></div>
+    <div class="stat-card"><div class="num">127</div><div class="label">Скриншотов собрано</div></div>
+    <div class="stat-card"><div class="num">0</div><div class="label">Конкурентов с serial content + publishing</div></div>
+  </div>
+
+  <div class="insight-block">
+    <h3>Главный вывод</h3>
+    <p>Ни один конкурент не объединяет AI video creation + serial content workflow + publishing console + creator analytics в одном продукте. Все 13 платформ решают задачу "сгенерируй одно видео". Klyp решает задачу "создай сериал".</p>
+  </div>
+
+  <div class="insight-block">
+    <h3>Pipeline уже не уникален</h3>
+    <p>Runway Workflows, Krea Nodes, Adobe Capsules запустили node-based pipelines в 2025. Уникальность Klyp = serial content + creator economy ПОВЕРХ pipeline.</p>
+  </div>
+
+  <div class="insight-block">
+    <h3>Character consistency — нерешённая проблема</h3>
+    <p>Только LTX Studio имеет entity-level character management, но без cross-episode tracking. Klyp добавляет Episode History — consistency растёт автоматически.</p>
+  </div>
+
+  <div class="insight-block">
+    <h3>Creation-to-Publishing</h3>
+    <p>Все конкуренты заканчивают на "скачай файл". Klyp доводит до "опубликуй в TikTok/Instagram за один клик" — аналитика, расписание, монетизация.</p>
+  </div>
+</div>
+
+<!-- ========== PLATFORMS ========== -->
+<div id="platforms" class="section">
+  <h1>13 платформ</h1>
+  <p class="subtitle">Кликни на карточку для детального разбора со скриншотами</p>
+
+  <div class="platform-grid" id="platformGrid"></div>
+</div>
+
+<!-- ========== MATRIX ========== -->
+<div id="matrix" class="section">
+  <h1>Сравнительная матрица</h1>
+  <p class="subtitle">10 UX-паттернов × 14 платформ</p>
+  <div class="matrix-wrap">
+    <table class="matrix" id="matrixTable"></table>
+  </div>
+</div>
+
+<!-- ========== PATTERNS ========== -->
+<div id="patterns" class="section">
+  <h1>ТОП-10 паттернов для Klyp</h1>
+  <p class="subtitle">Ранжированный список — что внедрять</p>
+  <div class="pattern-list" id="patternList"></div>
+</div>
+
+<!-- ========== ANTI-PATTERNS ========== -->
+<div id="antipatterns" class="section">
+  <h1>ТОП-10 антипаттернов</h1>
+  <p class="subtitle">Что точно НЕ делать</p>
+  <div class="pattern-list" id="antipatternList"></div>
+</div>
+
+<!-- ========== DIFFERENTIATORS ========== -->
+<div id="differentiators" class="section">
+  <h1>Уникальные дифференциаторы Klyp</h1>
+  <p class="subtitle">Чего НЕТ ни у одного конкурента</p>
+  <div class="pattern-list" id="diffList"></div>
+</div>
+
+<!-- ========== BLUEPRINT ========== -->
+<div id="blueprint" class="section">
+  <h1>Blueprint Video Editor</h1>
+  <p class="subtitle">Финальная архитектура на основе анализа всех платформ</p>
+
+  <div class="blueprint">
+    <h3 style="margin-bottom:12px; color:var(--accent)">Master Layout (1440×900)</h3>
+    <pre>
+┌──────────────────────────────────────────────────────────────┐
+│  [Capsule ▾] [Guided ▾] [Full Pipeline ▾]  ← Entry Points   │
+├────────┬────────────────────────────────┬────────────────────┤
+│        │  [①Chars] [②Scenes] [③Gen]    │                    │
+│ L1/L2  │  [④Refine] [⑤Audio] [⑥Export] │                    │
+│SIDEBAR │                                │    CONTROLS        │
+│ 240px  │     CONTENT PREVIEW            │    340px           │
+│        │     (vertical 9:16)            │                    │
+│Library │     centered                   │  Ingredients       │
+│Analyt. │                                │  Sliders (RPG)     │
+│Editor  │                                │  Model select      │
+│Earn    │                                │  @ entity mentions │
+│Referral│                                │  [Generate ✦]      │
+│Settings│                                │                    │
+├────────┴────────────────────────────────┴────────────────────┤
+│  Pipeline Monitor: Chars ✓ → Scenes ✓ → Gen ◐ 67% → ...    │
+│  [Kling AI processing... ~2min]                              │
+└──────────────────────────────────────────────────────────────┘
+    </pre>
+  </div>
+
+  <div class="blueprint">
+    <h3 style="margin-bottom:12px; color:var(--accent)">Entry Points (3 уровня)</h3>
+    <pre>
+┌─────────────────┬──────────────────────┬─────────────────────┐
+│    🎬 Capsule    │   📋 Guided          │   🔧 Full Pipeline  │
+│                 │                      │                     │
+│  "Заполни форму │  "6 шагов с          │  "Полный контроль   │
+│   получи эпизод"│   AI-ассистентом"    │   + node view"      │
+│                 │                      │                     │
+│  Для: новичков  │  Для: creators       │  Для: pro           │
+│  Время: 5 мин  │  Время: 15-30 мин   │  Время: без лимита  │
+│                 │                      │                     │
+│  [Начать →]     │  [Начать →]          │  [Начать →]         │
+└─────────────────┴──────────────────────┴─────────────────────┘
+    </pre>
+  </div>
+
+  <div class="blueprint">
+    <h3 style="margin-bottom:12px; color:var(--accent)">6 Stages Pipeline</h3>
+    <pre>
+Stage 1: Characters    → RPG-editor: presets grid, photo upload, reverse-prompt
+Stage 2: Scenes        → Storyboard rows: scene cards, @ mentions, drag-drop
+Stage 3: Generation    → Multi-model select, batch 3-4 variants, approve/regen
+Stage 4: Refinement    → Before/after, camera/motion sliders, style transfer
+Stage 5: Audio/Voice   → Waveform, multilingual TTS (10-20 langs), lip sync
+Stage 6: Export        → Format settings → Publish to Library → Share to socials
+    </pre>
+  </div>
+
+  <div class="insight-block">
+    <h3>P0 — Прототипировать первым</h3>
+    <p>1. Entry Points экран (3 карточки). 2. Character Setup (Stage 1) с presets + reverse-prompt. 3. Scene Composition (Stage 2) со storyboard. 4. Pipeline Monitor (bottom bar).</p>
+  </div>
+</div>
+
+<!-- ========== MODAL ========== -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-content" id="modalContent"></div>
+</div>
+
+<!-- ========== LIGHTBOX ========== -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+  <img id="lightboxImg" src="">
+</div>
+
+<script>
+// ============ DATA ============
+const platforms = [
+  {
+    id: "runway", name: "Runway ML", url: "runwayml.com", score: 8,
+    desc: "Флагманская AI video платформа с Workflows (node-based), Multi-Shot Video и Characters.",
+    screenshots: ["runway-multishot-click.jpg","runway-gen4-editor.jpg","runway-workflows-app.jpg","runway-workflows-live.png","runway-workflows-hero.png","runway-workflows-building-01.png","runway-gen4-workflow-demo.png","runway-gen4-tool.jpg","runwayml-01.jpg"],
+    layout: "Icon sidebar (~56px) | 2-col: Input 30% / Output 70% | Workflows: free canvas с nodes",
+    keyPattern: "Auto/Custom toggle — один переключатель трансформирует весь UI. Auto = AI разбивает историю на шоты, Custom = ручной контроль.",
+    pipeline: "Workflows = node-based editor с card-type nodes, connection ports, color-coded data flow. Multi-Shot = Auto-декомпозиция на шоты.",
+    promptModel: "Story-first textarea (8+ строк) + Auto/Custom toggle. Badges для параметров (модель, aspect ratio, resolution, duration).",
+    characterMgmt: "Characters tool — persistent identity через reference images. Но: изолирован от проектов, нет привязки к сериям.",
+    strengths: ["Auto/Custom toggle — элегантный beginner/pro","Story-first нарративный промптинг","Node-based Workflows — мощная pipeline визуализация","Grid вариаций с consistent character","Card-based ноды дружелюбнее ComfyUI"],
+    weaknesses: ["Multi-Shot, Workflows, Characters — три разных UI без связи","Workflows слишком developer-facing","Нет session/project иерархии","Безлейбельные connection ports","Нет pipeline progress — промптишь и ждёшь"],
+    critique: "Runway пытается быть meta-platform (включает Kling 3.0, Nano Banana в pills), создавая confusion. Dashboard перегружен — Featured Apps + поиск + табы + hero + pills. Multi-Shot не решает character consistency между шотами. 70% экрана под примеры — пустая трата после первого использования.",
+    adopt: ["Auto/Custom toggle → Guided/Full Control","Story-first + AI-декомпозиция","Card-based stage visualization","Badges для параметров","Grid вариаций"],
+    avoid: ["App-launcher с конкурирующими entry points","Node editor как default view","Characters как отдельный isolated tool","Свободное расположение нод"]
+  },
+  {
+    id: "kling", name: "Kling AI", url: "klingai.com", score: 7,
+    desc: "AI-платформа от Kuaishou с революционной Motion Library и community Canvas. Visual presets вместо текстовых промптов.",
+    screenshots: ["kling-imagegen-click.jpg","kling-videogen-click.jpg","kling-motionctl-click.jpg","kling-canvas-page.jpg","kling-01.jpg","kling-motion-control.jpg"],
+    layout: "Icon sidebar (~64px): Explore/Assets/Omni/Generate/Canvas/All Tools | Top tabs: Image/Video/Motion/Avatar | 2-panel: Input 50% / Results 50%",
+    keyPattern: "Motion Library — визуальная библиотека пресетов движений (grid видеокарточек: Ghost Step Dance, Martial Art). RPG-подход в чистом виде.",
+    pipeline: "Нет pipeline. Каждый tab изолирован. Image → Video = ручной transfer (скачай → загрузи).",
+    promptModel: "Textarea + Image Reference (0/10 slots) + Styles + DeepSeek reverse-generate. Compact parameter bar: '2K HD · 3:4 · 2'.",
+    characterMgmt: "IMAGE 3.0 'Strengthen Consistency' — до 10 reference images. Character Orientation Matching. Но: session-level, не project-level.",
+    strengths: ["Motion Library — революционное снижение порога входа","DeepSeek reverse-prompting","Multi-reference (10 слотов) для consistency","Compact parameter bar","Community Canvas + Publish"],
+    weaknesses: ["Tab-based фрагментация — Image/Video/Motion без связи","Зелёный неоновый акцент — 'казиношная' эстетика","'Subscribe!' в основном UI","50% экрана placeholder при пустом state","Credits без пояснения стоимости"],
+    critique: "Kling страдает от identity crisis: professional tool + social platform одновременно. Зелёный акцент агрессивен. 'Subscribe!' давит в зоне творчества. Video Generation — катастрофический empty state. 4 уровня навигации (Canvas + icons + tabs + subtabs).",
+    adopt: ["Motion/Style Library как visual presets — ко ВСЕМ stages","Reverse-prompting из reference image","Presets / My Library tabs","Compact parameter bar одной строкой","Разделение 'КТО' и 'КАК'"],
+    avoid: ["Зелёный акцент — категорически","Tab-based фрагментация","'Subscribe!' в рабочей зоне","Пустые placeholder'ы вместо onboarding"]
+  },
+  {
+    id: "pika", name: "Pika", url: "pika.art", score: 6,
+    desc: "Prompt-bar-centric AI video генератор с модульными режимами. Максимальный минимализм — Pikascenes = ingredients-first подход.",
+    screenshots: ["pika-scenes-click.jpg","pika-frames-click.jpg","pika-effects-click.jpg","pika-01.jpg","pika-scenes.png"],
+    layout: "Top pills: Inspiration/Pikaffects/Library | Bottom tool bar: Pikascenes/Pikaformance/Pikadditions/Pikaswaps/Pikatwists | 1-column + bottom bar",
+    keyPattern: "Pikascenes = ingredients-first. 'Upload photos to combine into a single video'. Загрузка ингредиентов (персонажи + объекты + локация) ДО промпта.",
+    pipeline: "Нет. Каждый режим изолирован. Нет цепочки, нет multi-step.",
+    promptModel: "Центральный prompt bar (1 строка). Creative/Precise toggle. Upload фото как overlay. Frames: Start+End frame слоты.",
+    characterMgmt: "Нет. Upload photos = session-only. Library = flat list.",
+    strengths: ["Ingredients-first (Pikascenes) — самый близкий к Klyp","Creative/Precise toggle","'Make it yours' на карточках — remix-культура","Persistent prompt bar"],
+    weaknesses: ["80% экрана пустые","Prompt-bar-centric для serial content — катастрофа","Нет project management","Одинаковый layout для всех режимов","QR-промо модал поверх workspace"],
+    critique: "Pika — glorified chat prompt. Минимализм маскирует отсутствие depth. Для одноразовых 'вау-видео' ок, для production — нет. Bottom tool bar — мобильный паттерн на desktop. Promotional noise внутри рабочего инструмента.",
+    adopt: ["'Загрузи ингредиенты → опиши сцену' как базовый flow","Разделение characters/objects/location","Контекстуальная адаптация промпт-поля","'Make it yours' для templates"],
+    avoid: ["Prompt-bar-centric layout","80% пустого экрана","Bottom tool bar для desktop","Flat Library","Promotional modals"]
+  },
+  {
+    id: "luma", name: "Luma AI", url: "lumalabs.ai", score: 7,
+    desc: "Наиболее структурированная AI video платформа. Sidebar с чёткой information architecture, visual style/effect карточки.",
+    screenshots: ["luma-create-page.jpg","luma-text-to-video.jpg","luma-styles.jpg","luma-effects.jpg","luma-photo-to-video.jpg"],
+    layout: "Text sidebar (~160px): Create (10 подпунктов) / Library / Account / Referral / Help | 2-col: Upload+Prompt / Cards+Gallery",
+    keyPattern: "Навигационная модель — лучшая из 13 платформ для SaaS. Sidebar с группировкой Create/Library/Account. Chip-селекторы для параметров.",
+    pipeline: "Нет. Sidebar submenu = параллельные tools, не связанная цепочка.",
+    promptModel: "Structured form: Upload Photo + Enter Prompt + Visual Selectors (style cards, effect carousel). Chip-селекторы: Eco/5s/1:1.",
+    characterMgmt: "Нет. Style cards (3D Animation, Ghibli) не character-specific.",
+    strengths: ["Лучшая навигационная модель (text sidebar)","Chip-селекторы — компактно и элегантно","Visual style grid с превью","'Generate N' как CTA с количеством","Trendy/Styles как discovery"],
+    weaknesses: ["Prompt-first подход","Одинаковый layout для ВСЕХ режимов","Нет project/episode контекста","Пустые style карточки без превью"],
+    critique: "Luma — добротный SaaS с хорошей навигацией, но generic. Все страницы одинаковые. Для разных задач одинаковый UI = неэффективно. Стили показывают пустые квадраты — провал UX.",
+    adopt: ["Sidebar навигация с группировкой","Chip-селекторы для параметров","Visual style grid с превью","'Generate N variants' CTA","Инверсия обязательности полей"],
+    avoid: ["Одинаковый layout для разных задач","Prompt-first подход","Пустые карточки без превью"]
+  },
+  {
+    id: "vidu", name: "Vidu", url: "vidu.com", score: 6,
+    desc: "Dashboard-ориентированный AI video hub. Позиционирование 'Built for Storytelling'. Templates как first-class entity.",
+    screenshots: ["vidu-create-page.jpg","vidu-templates.jpg","vidu-01.jpg","vidu-text-to-video.jpg"],
+    layout: "Icon-only sidebar (~48px): Home/R2V/I2V/T2V/Images/Tools/Assets/Agent | Dashboard с tool cards + content feed",
+    keyPattern: "Templates как first-class навигационный элемент. Крупные визуальные карточки с pill-фильтрами по тематике.",
+    pipeline: "Нет. Tool cards = отдельные точки входа.",
+    promptModel: "Tool cards → forms. Ограниченная информация (3/5 внутренних страниц = 404).",
+    characterMgmt: "'Vidu Reference Hub'. Assets в sidebar. Reference-based generation.",
+    strengths: ["'Built for Storytelling' — правильное позиционирование","Templates как first-class entity","'+ Publish' кнопка","Social sharing icons","Agent как AI-ассистент"],
+    weaknesses: ["Icon-only sidebar — 'R2V', 'I2V' нечитаемы","Перегруженный dashboard (баннеры + промо + feed)","3/5 страниц = 404","'40% OFF' в рабочей зоне"],
+    critique: "Vidu громко заявляет 'Built for Storytelling', но за этим нет substance — те же одноразовые генерации. Icon-only sidebar — дизайнерский фетишизм за счёт usability. Dashboard перегружен маркетинговым шумом.",
+    adopt: ["Templates как first-class entity","Крупные превью для шаблонов","Жанровая фильтрация","'+ Publish' в creation flow","Agent AI-ассистент"],
+    avoid: ["Icon-only sidebar без текста","Dashboard с промо-баннерами","'Built for X' без substance","Нестабильный UI (404)"]
+  },
+  {
+    id: "krea", name: "Krea", url: "krea.ai", score: 8,
+    desc: "AI creation платформа с Node Editor как first-class feature. Визуализирует pipeline между AI-сервисами — главный референс для pro-mode Klyp.",
+    screenshots: ["krea-01.jpg","krea-nodes-feature-live.jpg","krea-nodes-scroll-live.jpg","krea-image-generate.jpg"],
+    layout: "Text sidebar с группировкой (~180px): Home/Train Lora/Node Editor/Assets | Tools: Image/Video/Enhancer/Nano Banana/Realtime | Sessions",
+    keyPattern: "Node Editor — DAG-граф узлов где каждый = AI-сервис. Model labels на узлах. Reusable workflows = прообраз Capsules.",
+    pipeline: "Node graph = полноценная pipeline визуализация. Linked model nodes, typed connections. Единственная платформа (кроме Runway) с visual pipeline.",
+    promptModel: "Node inputs / tool-specific forms. Node Agent — AI строит pipeline из описания.",
+    characterMgmt: "LoRA training. Нет entity-level management.",
+    strengths: ["Node Editor — pipeline visualization","Sidebar с группировкой (как Luma, но глубже)","4 action cards на Home (task-oriented)","LoRA training для кастомных моделей","Sessions — history management"],
+    weaknesses: ["Node Editor только для pro","Image/Video tools — generic формы","Нет character persistence","Нет serial content фич"],
+    critique: "Krea отлично реализовала Node Editor, но это остаётся pro-only feature. Обычный creator никогда не откроет Node Editor. Home dashboard с 4 карточками — правильный task-oriented подход, но tools внутри generic.",
+    adopt: ["Pipeline визуализация через nodes (для Full Pipeline mode)","Model labels на каждом stage","Sidebar с группировкой","Task-oriented Home cards","Node Agent — AI строит pipeline"],
+    avoid: ["Node Editor как единственный pipeline view","Generic tool forms без personality","LoRA training на MVP"]
+  },
+  {
+    id: "heygen", name: "HeyGen", url: "heygen.com", score: 9,
+    desc: "Главный референс для Klyp. 3 уровня автоматизации: Video Agent / Script to Video / AI Studio. Avatar ecosystem — модель для Character Library.",
+    screenshots: ["heygen-01.jpg","heygen-avatars-page.jpg","heygen-new-video.jpg"],
+    layout: "L1 icon sidebar + L2 text panel (двухуровневый). Card-grid для entry points. Каждый level = своя архитектура.",
+    keyPattern: "Три уровня автоматизации — самый продуманный beginner/pro подход из всех 13 платформ. Пользователь сам выбирает глубину контроля на entry screen.",
+    pipeline: "Скрытый per-level. Video Agent = чёрный ящик. Script to Video = controlled pipeline. AI Studio = manual.",
+    promptModel: "Card entry с 3 уровнями. Каждая карточка = описание ЧТО и ДЛЯ КОГО.",
+    characterMgmt: "Avatar ecosystem — полноценная библиотека аватаров с категоризацией. Stock + Custom. Ближайшая модель для Klyp Character Library.",
+    strengths: ["3 уровня автоматизации — прямая модель для Klyp","L1/L2 sidebar — масштабируемая навигация","Avatar ecosystem — character management","Card-based entry с описаниями","Clean, professional UI"],
+    weaknesses: ["Ограниченная информация (мало доступных скриншотов)","Avatar = talking head, не full-body character","Нет serial content features"],
+    critique: "HeyGen — самый зрелый продуктовый подход из всех. 3 уровня автоматизации — единственное правильное решение для 'два уровня в одном UI'. Avatar ecosystem показывает, что characters должны быть first-class. Но HeyGen решает другую задачу (talking head videos), не serial content.",
+    adopt: ["3 уровня автоматизации → Capsule/Guided/Full Pipeline","L1/L2 sidebar навигация","Avatar/Character Library как first-class entity","Card-based entry с описаниями"],
+    avoid: ["Talking head = не наш формат","Скрытый pipeline (нужна transparency)"]
+  },
+  {
+    id: "synthesia", name: "Synthesia", url: "synthesia.io", score: 7,
+    desc: "AI Video Assistant с scene-based storyboard preview ДО генерации. Multi-source input: File/URL/Prompt/Script.",
+    screenshots: ["synthesia-01.jpg","synthesia-templates-click.jpg"],
+    layout: "Sidebar + top bar. Templates gallery. Scene breakdown modal с parameter chips.",
+    keyPattern: "Storyboard preview ДО генерации — показать plan перед execution. 'Recreate outline' бесплатен, 'Regenerate video' стоит токенов.",
+    pipeline: "Scene breakdown → preview → generate. Промежуточный этап validation перед дорогой генерацией.",
+    promptModel: "Tabs: File/URL/Prompt/Script + parameter chips. Multi-source input.",
+    characterMgmt: "Personal Avatars. Но: talking head формат.",
+    strengths: ["Storyboard preview ДО генерации — экономия токенов","Multi-source input (File/URL/Prompt/Script)","Parameter chips","'Recreate outline' бесплатно"],
+    weaknesses: ["Talking head формат","Ограниченная информация","Нет serial content"],
+    critique: "Synthesia правильно решает проблему 'дорогая генерация' через preview-first подход. Klyp должен это перенять.",
+    adopt: ["Storyboard preview ДО генерации","Multi-source input tabs","Parameter chips","Dual CTA: 'Continue editing' / 'Generate all'"],
+    avoid: ["Talking head = не наш формат","Modal-based wizard"]
+  },
+  {
+    id: "descript", name: "Descript", url: "descript.com", score: 4,
+    desc: "Transcript-first video editor, перестроившийся на chat-first 'What can I help you with?'. Антипаттерн для Klyp.",
+    screenshots: ["descript-editor.jpg","web-01.jpg"],
+    layout: "Sidebar + workspaces. Chat-style central input. 'Auto' mode.",
+    keyPattern: "Chat-first — антипаттерн. Zero visual feedback, no pipeline visibility, no staged workflow.",
+    pipeline: "Hidden (auto). AI решает pipeline, пользователь не видит процесс = чёрный ящик.",
+    promptModel: "Chat prompt central. 'What can I help you with?'",
+    characterMgmt: "AI speakers. Ограниченно.",
+    strengths: ["Workspace с project management","Transcript-first для podcast/video editing"],
+    weaknesses: ["Chat-first = ChatGPT для видео","Zero pipeline visibility","'Auto' mode = чёрный ящик","Нет visual feedback"],
+    critique: "Descript — warning sign: перестроился на ChatGPT-стиль и потерял identity. 'What can I help you with?' — для creative tool это капитуляция перед UX-дизайном. Если Klyp сделает то же самое — провал.",
+    adopt: ["Workspace с project cards (подтверждение InVideo)"],
+    avoid: ["Chat-first interface — категорически","'Auto' mode без visibility","'What can I help you with?' как entry point","Чёрный ящик вместо pipeline"]
+  },
+  {
+    id: "capcut", name: "CapCut", url: "capcut.com", score: 5,
+    desc: "All-in-one video editor с AI фичами поверх традиционного NLE. Timeline-first = антипаттерн для AI-native.",
+    screenshots: ["capcut-01.jpg","capcut-editor.png","capcut-ai-generator-live.jpg"],
+    layout: "Canvas + Timeline внизу. L1 icon + L2 content sidebar. 13+ категорий ресурсов.",
+    keyPattern: "'All-in-one' — CapCut собирает всё (editor + AI + avatars + brainstorm). Feature soup без focus.",
+    pipeline: "Timeline + tools. Classic NLE. AI вплетены в традиционный editor.",
+    promptModel: "Feature grid на Home. 'Brainstorm with AI' — creative ideation.",
+    characterMgmt: "Avatar video как entry point. Brand kit. NLE-centric, не AI-native.",
+    strengths: ["L1/L2 sidebar масштабируется","Onboarding tooltip с шагами","'Brainstorm with AI'","Avatar подтверждает characters = first-class"],
+    weaknesses: ["Timeline = антипаттерн для AI-native","13+ категорий = overload","'All-in-one' = feature soup","Light theme + gradients"],
+    critique: "CapCut — это Premiere Pro с AI сверху. Timeline-first антагонистичен AI-native workflow. 13 категорий — overkill. 'Brainstorm with AI' — единственная интересная фича, остальное — legacy NLE.",
+    adopt: ["L1/L2 sidebar","'Brainstorm with AI' для ideation","Onboarding tooltip"],
+    avoid: ["Timeline-first","13+ категорий","'All-in-one' feature soup","Light theme + gradients"]
+  },
+  {
+    id: "ltx", name: "LTX Studio", url: "ltx.studio", score: 10,
+    desc: "Единственная платформа для production pipeline + serial content. Entity-based character management с @ mentions. ГЛАВНЫЙ РЕФЕРЕНС.",
+    screenshots: ["ltx-studio-storyboard-view.webp","ltx-studio-elements-storyboard.webp","ltx-studio-gen-space.png","ltx-studio-homepage-hero.webp","ltx-studio-timeline-editor.webp","ltx-studio-elements-brand.png"],
+    layout: "Top horizontal tabs: Elements/Gen Space/Storyboard/Video Editor | Storyboard: строки = сцены, ячейки = шоты | Wizard: Settings → Elements → Scenes & Shots",
+    keyPattern: "Entity-based prompting — CHARACTER/OBJECT/LOCATION как именованные entities с thumbnails. @ mentions: '@Isabella Moretti standing in @Villa Courtyard'.",
+    pipeline: "Настоящий production pipeline: Elements → Gen Space → Storyboard → Video Editor. Wizard: Settings → Elements → Scenes → Generate.",
+    promptModel: "Scene description + Location/Style selectors + per-shot prompt + @ entity mentions.",
+    characterMgmt: "ЛУЧШАЯ СИСТЕМА. CHARACTER/OBJECT/LOCATION — категоризированные assets. @ mentions для привязки к shots. Entities переиспользуются МЕЖДУ сценами.",
+    strengths: ["Единственный настоящий production pipeline","Entity-based character management + @ mentions","Storyboard rows (Scene → Shots)","Wizard для пошагового создания","Per-shot actions: Edit Image / Generate Video","Style и Cast на уровне проекта"],
+    weaknesses: ["4 режима = 'разные приложения'","Нет Publishing Console/analytics","Нет cross-episode tracking","Geo-block","Только маркетинговые скриншоты"],
+    critique: "LTX Studio — главный референс и потенциальный конкурент. Entity system с @ mentions — гениально. Но: 4 режима ощущаются фрагментированно. Нет publishing, analytics, monetization — pure creation tool без creator economy.",
+    adopt: ["Entity-based character management","@ mentions в shot descriptions","Storyboard rows (Scene → Shots)","Wizard для пошагового создания","Per-shot dual actions","Style/Cast как project-level settings"],
+    avoid: ["4 отдельных режима — Klyp = 6 stages в одном flow","Rigid wizard","Отсутствие publishing/analytics"]
+  },
+  {
+    id: "invideo", name: "InVideo AI", url: "invideo.io", score: 8,
+    desc: "Лучший dual beginner/pro: prompt-to-video (beginner) vs manual scene editor (pro) в одном продукте.",
+    screenshots: ["invideo-ai-live.jpg","invideo-workspace.jpg","invideo-features-live.jpg"],
+    layout: "Workspace с project cards. Prompt-to-video flow + Scene editor.",
+    keyPattern: "Dual mode — два полноценных flow с общей библиотекой. Prompt → AI генерирует сцены → user редактирует → export.",
+    pipeline: "Prompt → AI generates scenes → user edits → export. Промежуточное положение.",
+    promptModel: "Beginner: текстовый промпт с AI-директором. Pro: per-scene editor.",
+    characterMgmt: "Ограниченный. Нет entity-level.",
+    strengths: ["Dual beginner/pro — два полноценных flow","Prompt-to-video для quick start","Scene editor для контроля","Workspace с project management"],
+    weaknesses: ["Нет character persistence","Нет serial content","Generic UI"],
+    critique: "InVideo AI — достойный 'middle of the road'. Dual mode хорошо задуман. Отсутствие character management ставит в категорию one-shot генераторов.",
+    adopt: ["Dual beginner/pro (подтверждение HeyGen)","Workspace с project cards"],
+    avoid: ["Generic UI без personality"]
+  },
+  {
+    id: "storeel", name: "StoReel / Vigloo", url: "storeel.com / vigloo.com", score: 7,
+    desc: "Прямые конкуренты в стриминговом пространстве. StoReel — $34M funding, Canvas (internal). Vigloo — первый creator dashboard в microdrama.",
+    screenshots: ["vigloo-01.jpg","vigloo-02.jpg"],
+    layout: "Ограниченная информация. StoReel Canvas закрыт. Vigloo: dashboard с Performance/Revenue/AI insights.",
+    keyPattern: "Vigloo Studio — первый creator dashboard в microdrama. Performance + Revenue + AI insights.",
+    pipeline: "StoReel Canvas — полный production pipeline (внутренний). Vigloo — publishing/analytics.",
+    promptModel: "Недостаточно данных.",
+    characterMgmt: "Недостаточно данных.",
+    strengths: ["StoReel: $34M funding, 100 AI dramas/мес","Vigloo: первый creator dashboard","Оба понимают serial content"],
+    weaknesses: ["StoReel Canvas не self-serve","Мало данных","Vigloo = analytics, не creation"],
+    critique: "StoReel — серьёзная угроза, если откроет Canvas. Пока Klyp имеет window of opportunity. Vigloo — хороший референс для Analytics раздела Publishing Console.",
+    adopt: ["Vigloo: Performance + Revenue + AI insights для Klyp Analytics","Подтверждение product-market fit для serial content"],
+    avoid: ["Закрытая модель (Canvas not self-serve)"]
+  }
+];
+
+const matrixData = {
+  headers: ["Паттерн","Runway","Kling","Pika","Luma","Vidu","Krea","HeyGen","Synthesia","Descript","CapCut","LTX Studio","InVideo","Klyp (target)"],
+  rows: [
+    ["Навигация","Icon sidebar","Icon + tabs","Pills + bottom","Text sidebar","Icon-only","Text + groups","L1 icon + L2 text","Sidebar + top","Sidebar + ws","L1+L2","Top tabs","Workspace","L1/L2 sidebar + Top stepper"],
+    ["Layout","2-col input/output","2-col input/output","1-col + bottom","1.5-col sidebar+form","1-col dashboard","Dashboard / nodes","Card grid","Modal + sidebar","Chat central","Canvas + timeline","Storyboard rows","Workspace + editor","3-col: sidebar/preview/controls"],
+    ["Prompt","Story textarea + Auto/Custom","Textarea + Ref + Styles","Prompt bar + ingredients","Form: photo+prompt+cards","Tool cards → forms","Node inputs","Card entry (3 levels)","File/URL/Prompt/Script","Chat prompt","Feature grid","Scene desc + @ mentions","Prompt / scene editor","Ingredients → Sliders → Prompt"],
+    ["Pipeline","Node Workflows","Нет (tab switch)","Нет (isolated)","Нет","Нет","Node graph (pro)","Hidden per-level","Scene breakdown","Hidden (auto)","Timeline","4-mode + wizard","Prompt→scenes→export","6-stage stepper + monitor + nodes"],
+    ["Character","Characters tool","Multi-ref (10)","Нет","Нет","Reference Hub","LoRA","Avatar ecosystem","Personal Avatars","AI speakers","Avatar entry","Entity + @ mentions","Нет","Profiles + Episode History + @"],
+    ["Beginner/Pro","Auto/Custom toggle","Presets/Custom","Creative/Precise","Single","Нет","Single","3 explicit levels","2 CTAs","Auto mode","Single","Wizard + manual","Dual flows","Capsule / Guided / Full"],
+    ["Результаты","Grid 3×2","Grid + list","Library flat","Gallery","Feed","Cards","—","Scene preview","—","Timeline","Storyboard cards","Scene editor","Storyboard + Grid 3-4 + Approve"],
+    ["Social sharing","Нет","Canvas Publish","Нет","Нет","+ Publish + icons","Нет","Нет","Нет","Нет","Нет","Нет","Нет","TikTok/Instagram/YouTube"],
+    ["Analytics","Нет","Нет","Нет","Нет","Нет","Нет","Нет","Нет","Нет","Нет","Нет","Нет","Views, audience, revenue"],
+    ["Монетизация UI","Credits","Credits + Subscribe!","Credits","—","Credits + 40% OFF","Credits + Try Pro","Plan-based","Freemium","Free+upgrade","Free+export","—","—","Подписка + токены (ненавязчиво)"]
+  ]
+};
+
+const topPatterns = [
+  {n:"Три уровня автоматизации",src:"HeyGen",desc:"Capsule = 'заполни форму, получи эпизод'. Guided = '6 шагов с AI-ассистентом'. Full Pipeline = 'полный контроль + node view'. Три карточки на entry screen."},
+  {n:"Entity-based Characters + @ Mentions",src:"LTX Studio",desc:"Character Profile: имя + visual refs + description + style. @ mentions в prompt для entity references. Episode History: какие кадры уже сгенерированы."},
+  {n:"Storyboard Preview до генерации",src:"Synthesia",desc:"Показать plan перед execution = экономия токенов. 'Recreate outline' бесплатен, 'Regenerate video' стоит. Dual CTA."},
+  {n:"Motion/Style Library — Visual Presets",src:"Kling AI",desc:"Grid видеокарточек вместо текстовых промптов. RPG character editor. Применить ко ВСЕМ stages: Character presets, Scene presets, Camera presets."},
+  {n:"Pipeline Monitor (Bottom Bar)",src:"Krea Nodes + Klyp",desc:"Persistent bottom bar 40px. Каждый этап кликабелен. Имя модели показано. Progress bar на активном шоте. Уникальный дифференциатор."},
+  {n:"Auto/Custom Toggle",src:"Runway Multi-Shot",desc:"Один переключатель: Guided = AI defaults, Full Control = все 20+ параметров. Переключает VISIBILITY, не layout."},
+  {n:"L1/L2 Sidebar Navigation",src:"HeyGen + CapCut",desc:"L1 (icon): Library/Analytics/Editor/Earnings. L2 (text): подразделы. Editor → полноэкранный режим со своим stepper."},
+  {n:"Node-based Pipeline (Pro Mode)",src:"Krea Nodes",desc:"DAG-граф узлов = AI-сервисы. Toggle 'Pipeline View' в Full Control. Collapsed graph = Capsule для beginners."},
+  {n:"Multi-Source Input",src:"Synthesia",desc:"Entry tabs: 'From Script' / 'From Prompt' / 'From Reference' / 'Continue Previous Episode' — killer feature для serial content."},
+  {n:"Reverse-Prompting из Reference",src:"Kling AI",desc:"Upload reference → AI описывает → ты редактируешь → генерируй. Снижает промпт-барьер радикально. На каждом Stage."}
+];
+
+const antiPatterns = [
+  {n:"Chat-First Interface",src:"Descript",desc:"'What can I help you with?' — zero visual feedback, no pipeline, no stages. Для serial content = катастрофа."},
+  {n:"Tab-Based Fragmentation",src:"Kling AI",desc:"Image/Video/Motion/Avatar как изолированные вкладки. Потеря контекста, ручной transfer данных."},
+  {n:"Пустые Empty States",src:"Kling Video, CapCut",desc:"50% экрана с 'Release your creative potential'. Drop-off moment. Нет guidance, нет examples."},
+  {n:"Promotional Noise в рабочей зоне",src:"Kling, Vidu, Pika",desc:"'Subscribe!', '40% OFF!', QR-модал. Creator tool ≠ e-commerce. Промо отвлекает от creative flow."},
+  {n:"Icon-Only Navigation",src:"Vidu",desc:"'R2V', 'I2V', 'T2V' без текста. Discoverability = 0. Зависимость от tooltip для базовой навигации."},
+  {n:"'Auto' без Pipeline Visibility",src:"Descript",desc:"AI решает pipeline, пользователь не видит = чёрный ящик. Transparency = trust."},
+  {n:"Timeline-First Layout",src:"CapCut",desc:"Canvas + Timeline = NLE mental model. Для AI generation нужны stages, не timeline."},
+  {n:"Одинаковый Layout для разных задач",src:"Luma AI",desc:"Все страницы = 'Upload + Prompt + Cards'. Разные задачи = разные optimal UI. Скучно, неэффективно."},
+  {n:"Зелёный неоновый акцент",src:"Kling AI",desc:"#7CFF00 — агрессивный, gaming/crypto, не premium creative. 'Казиношный матрас'."},
+  {n:"Feature Soup / 'All-in-One'",src:"CapCut Home",desc:"8+ capabilities без иерархии. Jack of all trades, master of none. Confusing."}
+];
+
+const differentiators = [
+  {n:"Serial Content Pipeline",desc:"Эпизоды, сезоны как first-class entities. Episode templates наследуют characters + style. 'New Episode' = pre-populated pipeline. Batch generation. Ни одна из 13 платформ не делает это."},
+  {n:"Character Episode History",desc:"В профиле персонажа — все кадры со всех эпизодов. Consistency растёт автоматически. LTX имеет profiles, но без cross-episode tracking."},
+  {n:"Creation → Publishing единый flow",desc:"Из Video Editor прямо в Library → schedule → publish → share to socials. Все конкуренты заканчивают на 'скачай файл'."},
+  {n:"Pipeline Monitor",desc:"Bottom bar показывает как файлы перемещаются между AI-сервисами. Имя модели, прогресс, estimated time. Transparency = trust."},
+  {n:"Localization-First",desc:"10-20 языков из коробки. Обложки с раздельным image/text. Audio + subtitles = отдельные файлы."},
+  {n:"Dual Referral",desc:"Creator→creator + creator→viewer. Два потока привлечения в одном интерфейсе."},
+  {n:"Built-in Social Sharing",desc:"Share to TikTok/Instagram прямо из кабинета. Кнопка рядом с метриками. Insight → Action proximity."},
+  {n:"Creator Analytics",desc:"Views, audience, revenue, retention. AI insights. Ни один конкурент (кроме Vigloo) не даёт analytics."},
+  {n:"Season Templates",desc:"Создай style guide для сезона → каждый эпизод наследует цвет, стиль, characters, intro/outro."},
+  {n:"Files Stay on Servers",desc:"Zero download/reupload friction. Server-side file routing между AI-сервисами. Версионирование на каждом шаге."}
+];
+
+// ============ RENDER ============
+function renderPlatforms() {
+  const grid = document.getElementById('platformGrid');
+  grid.innerHTML = platforms.map(p => `
+    <div class="platform-card" onclick="openModal('${p.id}')">
+      <div class="card-head">
+        <h3>${p.name}</h3>
+        <span class="score">${p.score}/10</span>
+      </div>
+      <p class="desc">${p.desc}</p>
+      <div class="tag-row">
+        ${p.adopt.slice(0,2).map(a => `<span class="tag adopt">✓ ${a.substring(0,35)}${a.length>35?'...':''}</span>`).join('')}
+        ${p.avoid.slice(0,1).map(a => `<span class="tag avoid">✗ ${a.substring(0,35)}${a.length>35?'...':''}</span>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function openModal(id) {
+  const p = platforms.find(x => x.id === id);
+  if (!p) return;
+  const mc = document.getElementById('modalContent');
+  mc.innerHTML = `
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2 style="font-size:24px;margin-bottom:4px">${p.name} <span style="color:var(--accent);font-size:16px">${p.score}/10</span></h2>
+    <p style="color:var(--text-3);font-size:13px;margin-bottom:24px">${p.url}</p>
+
+    <div class="detail-section">
+      <h4>Описание</h4>
+      <p>${p.desc}</p>
+    </div>
+
+    <div class="detail-section">
+      <h4>Скриншоты</h4>
+      <div class="screenshot-grid">
+        ${p.screenshots.map(s => `<img src="_screenshots/${s}" alt="${s}" onclick="openLightbox('_screenshots/${s}')" onerror="this.style.display='none'">`).join('')}
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Layout и навигация</h4>
+      <p>${p.layout}</p>
+    </div>
+
+    <div class="detail-section">
+      <h4>Ключевой UX-паттерн</h4>
+      <p>${p.keyPattern}</p>
+    </div>
+
+    <div class="detail-section">
+      <h4>Pipeline / Workflow</h4>
+      <p>${p.pipeline}</p>
+    </div>
+
+    <div class="detail-section">
+      <h4>Prompt / Input модель</h4>
+      <p>${p.promptModel}</p>
+    </div>
+
+    <div class="detail-section">
+      <h4>Character / Asset Management</h4>
+      <p>${p.characterMgmt}</p>
+    </div>
+
+    <div class="detail-section">
+      <h4>Сильные стороны</h4>
+      <ul>${p.strengths.map(s => `<li class="pro">✓ ${s}</li>`).join('')}</ul>
+    </div>
+
+    <div class="detail-section">
+      <h4>Слабые стороны</h4>
+      <ul>${p.weaknesses.map(s => `<li class="con">✗ ${s}</li>`).join('')}</ul>
+    </div>
+
+    <div class="detail-section">
+      <h4>Критика</h4>
+      <p>${p.critique}</p>
+    </div>
+
+    <div class="detail-section">
+      <h4>Что берём для Klyp</h4>
+      <ul>${p.adopt.map(s => `<li class="pro">→ ${s}</li>`).join('')}</ul>
+    </div>
+
+    <div class="detail-section">
+      <h4>Что НЕ берём</h4>
+      <ul>${p.avoid.map(s => `<li class="con">✗ ${s}</li>`).join('')}</ul>
+    </div>
+  `;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openLightbox(src) {
+  event.stopPropagation();
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function renderMatrix() {
+  const t = document.getElementById('matrixTable');
+  const hdr = matrixData.headers.map(h => `<th>${h}</th>`).join('');
+  const rows = matrixData.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('');
+  t.innerHTML = `<thead><tr>${hdr}</tr></thead><tbody>${rows}</tbody>`;
+}
+
+function renderPatterns() {
+  document.getElementById('patternList').innerHTML = topPatterns.map((p,i) => `
+    <div class="pattern-item adopt">
+      <div class="idx">${i+1}</div>
+      <div>
+        <h3>${p.n}</h3>
+        <div class="source">Источник: ${p.src}</div>
+        <p>${p.desc}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAntiPatterns() {
+  document.getElementById('antipatternList').innerHTML = antiPatterns.map((p,i) => `
+    <div class="pattern-item avoid">
+      <div class="idx">${i+1}</div>
+      <div>
+        <h3>${p.n}</h3>
+        <div class="source">Пример: ${p.src}</div>
+        <p>${p.desc}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderDifferentiators() {
+  document.getElementById('diffList').innerHTML = differentiators.map((d,i) => `
+    <div class="pattern-item adopt">
+      <div class="idx" style="background:var(--accent)">${i+1}</div>
+      <div>
+        <h3>${d.n}</h3>
+        <p>${d.desc}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Init
+renderPlatforms();
+renderMatrix();
+renderPatterns();
+renderAntiPatterns();
+renderDifferentiators();
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); document.getElementById('lightbox').classList.remove('open'); }
+});
+</script>
+
+</div>
+</div>
+
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Override klyp-hub sidebar styles for this page */
+  .main { margin-left: var(--sidebar-w); padding: 0 !important; }
+  .sidebar-collapsed .main { margin-left: 0; }
+  @media (max-width: 768px) { .main { margin-left: 0; } }
+</style>
+<script src="nav.js"></script>
+</body>
+</html>

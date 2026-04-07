@@ -28,6 +28,7 @@ const NAV_STRUCTURE = [
 
   { type: 'divider' },
   { type: 'group', title: 'Исследования' },
+  { page: 'research-dashboard', label: 'Competitive Research', href: 'research-dashboard.html' },
   { page: 'pipeline', label: 'AI Drama Pipeline', href: 'pipeline.html' },
 
   { type: 'divider' },

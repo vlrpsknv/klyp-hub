@@ -27,6 +27,10 @@ const NAV_STRUCTURE = [
   { page: 'stitch', label: 'Stitch-промпты', href: 'index.html#stitch', parent: 'dashboard' },
 
   { type: 'divider' },
+  { type: 'group', title: 'Исследования' },
+  { page: 'pipeline', label: 'AI Drama Pipeline', href: 'pipeline.html' },
+
+  { type: 'divider' },
   { type: 'group', title: 'Документы' },
   { page: 'briefing', label: 'Day 1 Briefing', href: 'briefing.html' },
   { page: 'playbook', label: 'Design Playbook', href: 'playbook.html' },
